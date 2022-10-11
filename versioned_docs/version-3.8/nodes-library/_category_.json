@@ -1,0 +1,8 @@
+{
+  "label": "Nodes Library",
+  "position": 10,
+  "link": {
+    "type": "generated-index",
+    "description": "List of TreeNodes natively implemented by the library"
+  }
+}

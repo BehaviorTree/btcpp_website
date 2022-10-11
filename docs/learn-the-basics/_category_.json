@@ -1,0 +1,8 @@
+{
+  "label": "Learn the Basic Concepts",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "Learn what Behavior Trees are and how to use them."
+  }
+}

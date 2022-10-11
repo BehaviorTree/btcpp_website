@@ -1,0 +1,104 @@
+
+h1 {
+    font-size: 38px;
+    padding: 0.5rem 0;
+}
+
+h2 {
+    font-size: 32px;
+    padding: 0.5rem 0;
+}
+
+h3{
+    font-size: 24px;
+}
+
+p{
+    font-size: 18px;
+}
+
+li{
+    font-size: 18px;
+}
+
+.heroBanner {
+    padding: 2.5rem 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.heroBanner h1{
+    padding: 0.5rem 0;
+    font-size: 48px;
+}
+
+.heroText {
+    padding: 2.5rem 0;
+    color: #3b3b3b;
+    padding: 3.5rem 0;
+}
+
+.heroSvg {
+    max-width: 550px;
+    max-height: 550px;
+}
+
+@media screen and (max-width: 966px) {
+    .heroBanner {
+        padding: 2rem;
+    }
+}
+
+.sectionText {
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3b3b3b;
+}
+
+.sectionText p{
+    font-size: 20px;
+}
+
+.sectionText li{
+    font-size: 20px;
+}
+
+.features {
+    display: flex;
+    align-items: center;
+    padding: 4rem 0;
+    width: 100%;
+    background-color: #383838;
+    color: white;
+}
+
+.features h3 {
+    color: rgb(0, 217, 94);
+}
+
+.features p {
+    font-size: 20px;
+}
+
+.supportFrame {
+    display: flex;
+    align-items: center;
+    padding: 2rem 0;
+    width: 100%;
+    color: rgb(53, 53, 53);
+    background-image: linear-gradient(to bottom, #00a639, #1eb645, #30c651, 
+    #3fd65d, #4de769, #4eef69, #4ff669, #51fe68, #46fe59, #39ff47, #2bff30, #17ff00);
+
+}
+.supportFrame a
+{
+    font-weight: bold;
+    color: rgb(13, 47, 65);
+}
+
