@@ -118,23 +118,23 @@ function Home() {
       <div className={styles.supportFrame}>
         <div className="container">
           <div className="row">
-            <div className={styles.sectionText}>
-              <div className="col col--9">
+            <div className="col col--9">
+              <div className={styles.sectionText}>
                 <h1>Software and Technical Support</h1>
                 <p><b>BehaviorTree.CPP</b> is Open Source software and can be download for free on
                   <a href="https://github.com/BehaviorTree/BehaviorTree.CPP"> Github.</a>
                   <br />You can ask questions and reach other users in our
                   <a href="https://discourse.behaviortree.dev/"> community forum.</a>
-                  <br />If you are using BehaviorTree.CPP in your commercial product and need support,
-                  <a href="mailto:dfaconti@aurynrobotics"> contact u!</a>
+                  <br />If you are using BehaviorTree.CPP in your commercial product and you need support,
+                  <a href="mailto:dfaconti@aurynrobotics"> contact us!</a>
                 </p>
               </div>
-              <div className="col col--3 ">
-                <img
-                  alt="behavior tree animation"
-                  src={useBaseUrl('img/support.svg')}
-                />
-              </div>
+            </div>
+            <div className="col col--3 ">
+              <img
+                alt="behavior tree animation"
+                src={useBaseUrl('img/support.svg')}
+              />
             </div>
           </div>
         </div>
