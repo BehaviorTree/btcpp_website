@@ -63,14 +63,23 @@ private:
 };
 ```
 
-Registering this node and passing the known arguments is as easy as:
+To register this node and passing the known arguments:
 
 ``` cpp
 BT::BehaviorTreeFactory factory;
-factory.registerBuilder<Action_A>("Action_A", 42, "hello world");
 
-// If you prefer to specify the template parameters
-// factory.registerBuilder<Action_A, int , std::string>("Action_A", 42, "hello world");
+// A node builder is a functor that creates a std::unique_ptr<TreeNode>.
+// Using lambdas or std::bind, we can easily "inject" additional arguments.
+BT::NodeBuilder builder_A =
+   [](const std::string& name, const NodeConfiguration& config)
+{
+    return std::make_unique<Action_A>( name, config, 42, "hello world" );
+};
+
+// BehaviorTreeFactory::registerBuilder is a more general way to
+// register a custom node.
+factory.registerBuilder<Action_A>( "Action_A", builder_A);
+
 ```
 
 ## Use an "initialize" method
