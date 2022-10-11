@@ -16,7 +16,7 @@ function Home() {
   return (
     <Layout
       permalink={'/'}
-      description={'Set up a modern web app by running one command.'}
+      description={'The leading C++ BehaviorTree Library.'}
     >
       <div className={clsx('hero hero--light', styles.heroBanner)}>
         <div className="container ">
@@ -98,11 +98,12 @@ function Home() {
               <video src={EditorVideo} muted autoPlay width="100%"></video>
             </div>
             <div className="col col--5 col--offset-1">
-              <h2>Easy to Maintain</h2>
+              <h2>Visual Editing and Monitoring</h2>
               <p>
                 <b>Groot</b> is our "IDE for Behavior Trees".<br />It allows users to
                 visualize, create, edit and monitor Behavior Trees, using
-                a simple drag and drop interface.
+                a simple drag and drop interface. <br />
+                Trees can be monitore in real-time
               </p>
               <Link
                 className="button button--outline button--primary button--lg"
@@ -118,8 +119,8 @@ function Home() {
       <div className={styles.supportFrame}>
         <div className="container">
           <div className="row">
-            <div className="col col--9">
-              <div className={styles.sectionText}>
+            <div className={styles.sectionText}>
+              <div className="col col--9">
                 <h1>Software and Technical Support</h1>
                 <p><b>BehaviorTree.CPP</b> is Open Source software and can be download for free on
                   <a href="https://github.com/BehaviorTree/BehaviorTree.CPP"> Github.</a>
