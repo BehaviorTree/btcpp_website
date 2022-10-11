@@ -145,7 +145,7 @@ is interrupted.
 
 ### Second ControlNode: Fallback
 
-[FallbackNodes](FallbackNode.md), known also as __"Selectors"__,
+[FallbackNodes](nodes-library/FallbackNode.md), known also as __"Selectors"__,
 are nodes that can express, as the name suggests, fallback strategies, 
 i.e. what to do next if a child returns FAILURE.
 

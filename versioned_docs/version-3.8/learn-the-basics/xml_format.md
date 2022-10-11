@@ -1,7 +1,7 @@
 
 # The XML schema
 
-In the [first tutorial](tutorial_01_first_tree.md) this simple tree
+In the [first tutorial](tutorial-basics/tutorial_01_first_tree.md) this simple tree
 was presented.
 
 ``` XML
@@ -43,7 +43,7 @@ You may notice that:
 
 ## Ports Remapping and pointers to Blackboards entries
 
-As explained in the [second tutorial](tutorial_02_basic_ports.md)
+As explained in the [second tutorial](tutorial-basics/tutorial_02_basic_ports.md)
 input/output ports can be remapped using the name of an entry in the
 Blackboard, in other words, the __key__ of a __key/value__ pair of the BB.
 
@@ -130,7 +130,7 @@ must be modified as follows:
 
 ## Subtrees
 
-As we saw in [this tutorial](tutorial_06_subtree_ports.md), it is possible to include
+As we saw in [this tutorial](tutorial-basics/tutorial_06_subtree_ports.md), it is possible to include
 a Subtree inside another tree to avoid "copy and pasting" the same tree in
 multiple location and to reduce complexity.
 

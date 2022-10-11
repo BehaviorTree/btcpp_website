@@ -25,6 +25,11 @@ const config = {
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
+    localeConfigs: {
+      en: {
+        htmlLang: 'en-US',
+      },
+    },
   },
   
   plugins: [require.resolve("@cmfcmf/docusaurus-search-local")],
@@ -39,7 +44,6 @@ const config = {
           versions: {
             current: {
               label: '4.0',
-              path: '4.0',
             },
             3.8: {
               label: '3.8',
@@ -94,7 +98,6 @@ const config = {
           {
             type: 'docsVersionDropdown',
             position: 'right',
-            dropdownItemsAfter: [{to: '/versions'}],
             dropdownActiveClassDisabled: true,
           },
           {to: '/blog', label: 'Blog', position: 'right'},

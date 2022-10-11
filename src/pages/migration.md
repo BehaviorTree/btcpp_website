@@ -39,7 +39,7 @@ more consistent.
 
 ## SetBlackbard and BlackboardPrecondition
 
-The new [scripting language](docs/tutorial-advanced/scripting)
+The new [scripting language](/docs/tutorial-advanced/scripting)
 is much simpler and more powerful.
 
 Old code in **3.8+**:

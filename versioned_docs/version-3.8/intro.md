@@ -43,7 +43,7 @@ This blocks are implemented in C++ and are "composable": in other words, can be
 
 In the image above, you can see as we are arranging these actions in a simple Sequence;
 actions will be executed in order from left to right. To learn mode, visit the page 
-[Introduction to BTs](learn-the-basic/BT_basics.md).
+[Introduction to BTs](learn-the-basics/BT_basics.md).
 
 ### Main Advantages of Behavior Trees
 
