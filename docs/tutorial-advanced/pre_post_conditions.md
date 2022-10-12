@@ -82,10 +82,10 @@ Previous version:
 <Fallback>
     <Sequence>
         <MoveBase  goal="{target}"/>
-        <Script script=" result:='goal reached' " />
+        <SetBlackboard output_key="result" value="0" />
     </Sequence>
     <ForceFailure>
-        <Script script=" result:='error' " />
+        <SetBlackboard output_key="result" value="-1" />
     </ForceFailure>
 </Fallback>
 ```
@@ -94,8 +94,8 @@ New implementation:
 
 ``` xml
 <MoveBase goal="{target}" 
-          _onSuccess=" result:='goal reached' "
-          _onFailure=" result:='error' "/>
+          _onSuccess=" result:=OK' "
+          _onFailure=" result:=ERROR "/>
 ```
 
 # Design pattern: error codes
