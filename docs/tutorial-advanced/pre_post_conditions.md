@@ -74,6 +74,11 @@ In a [tutorial about subtrees](tutorial-basics/tutorial_06_subtree_ports.md),
  we saw how a specific blackboard variable was written based on the result
  of __MoveBase__. 
 
+On the left side, you can see how this logic would be
+implemented in BT.CPP 3.x and how much simpler it is to use post conditions instead.
+
+Additionally, the new syntax support **enums**.
+
 ![](images/post_example.svg)
 
 Previous version:
@@ -94,8 +99,8 @@ New implementation:
 
 ``` xml
 <MoveBase goal="{target}" 
-          _onSuccess=" result:=OK' "
-          _onFailure=" result:=ERROR "/>
+          _onSuccess="result:=OK"
+          _onFailure="result:=ERROR"/>
 ```
 
 # Design pattern: error codes
