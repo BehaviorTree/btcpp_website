@@ -22,7 +22,7 @@ writing documentation.
 - I wanted to build an inclusive project, where people needs and opinions are heard.
 I am the "benevolent dictator" of the project, but I **do** listen and I **do** learn from others!
 
-## Adoption in the recent years
+## Adoption in recent years, 
 
 **BT.CPP** is gaining traction in robotics, as shown in the image
 below (note as the Y-axis is logarithmic):

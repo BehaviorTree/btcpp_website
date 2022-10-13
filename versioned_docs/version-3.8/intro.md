@@ -10,15 +10,15 @@ This  __C++__ library provides a framework to create **BehaviorTrees**.
 It is designed to be flexible, easy to use and fast.
 
 Even if our main use-case is __robotics__, you can use this library to build
-__AI for games__, or to replace Finite State Machines in you application.
+__AI for games__, or to replace Finite State Machines in your application.
 
 __BehaviorTree.CPP__ has many interesting features, when compared to other implementations:
 
 - It makes __asynchronous Actions__, i.e. non-blocking routines, a first-class citizen.
-- Trees are created at run-time, using am __interpreted language__ (based on XML).
+- Trees are created at run-time, using an __interpreted language__ (based on XML).
 - It includes a __logging/profiling__ infrastructure that allows the user 
 to visualize, record, replay and analyze state transitions.
-- You can link staticaly your custom TreeNodes or convert them into plugins
+- You can link statically your custom TreeNodes or convert them into plugins
 which are loaded at run-time.
 
 
@@ -36,7 +36,7 @@ easily grasp most of the concepts but, hopefully, you will find that BTs
 are more expressive and easier to reason about.
 
 Think about the __Nodes of the tree__ as a set of building blocks.
-This blocks are implemented in C++ and are "composable": in other words, can be 
+These blocks are implemented in C++ and are "composable": in other words, they can be 
 "assembled" to build behaviors.
 
 ![](intro_build_trees.svg)
@@ -47,8 +47,8 @@ actions will be executed in order from left to right. To learn mode, visit the p
 
 ### Main Advantages of Behavior Trees
 
-- __They are intrinsically Hierarchical__: this means that we can _compose_
-complex behaviors including entire trees as sub-branches of a bigger tree. 
+- __They are intrinsically Hierarchical__: we can _compose_
+complex behaviors, including entire trees as sub-branches of a bigger tree. 
 For instance, the behavior "Fetch Beer" may reuse the tree
 "Grasp Object".
 
@@ -58,7 +58,7 @@ State transitions in FSMs, by comparisons, are harder to understand
 both in their textual and graphical representation.    
 
 - __They are more expressive__: Ready to use ControlNodes and DecoratorNodes
-make possible to express more complex control flows. The user can extend the
+make it possible to express more complex control flows. The user can extend the
 "vocabulary" with his/her own custom nodes.
 
 
@@ -89,9 +89,9 @@ Frequently, the business logic of a software system is "spread" into many
 components and it is __hard for the developer
 to reason about it and to debug errors__.
 
-To achieve strong separation of concerns it is better to centralize
+To achieve a strong separation of concerns, it is better to centralize
 the business logic in a single location. 
 
 __Finite State Machines__ were created specifically with this goal in mind, but in
-the recent years __Behavior Trees__ gained popularity, especially in the game industry.
+recent years,  __Behavior Trees__ gained popularity, especially in the game industry.
 
