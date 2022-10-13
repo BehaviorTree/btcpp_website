@@ -76,8 +76,7 @@ In a [tutorial about subtrees](tutorial-basics/tutorial_06_subtree_ports.md),
 
 On the left side, you can see how this logic would be
 implemented in BT.CPP 3.x and how much simpler it is to use post conditions instead.
-
-Additionally, the new syntax support **enums**.
+Additionally, the new syntax supports **enums**.
 
 ![](images/post_example.svg)
 

@@ -70,28 +70,42 @@ A serious problem was detected by a user
 > If a **ControlNode** or **DecoratorNode** has synchronous children only,
 it is impossible to interrupt it.
 
-The only way to solve this was to add a `return RUNNING` statement
-every time a **Synchronous** child is executed (unless it is the last one).
-
-For instance, given a tree:
+Consider this example:
 
 ```xml
-<Sequence name="synch_sequence">
-    <SyncActionA/>
-    <SyncActionB/>
-    <SyncActionC/>
-<Sequence>
+<ReactiveSequence>
+    <AbortCondition/>
+    <Sequence name="synch_sequence">
+        <SyncActionA/>
+        <SyncActionB/>
+        <SyncActionC/>
+    <Sequence>
+</ReactiveSequence>   
 ```
-Version **3.X** would execute this in a single **tick()**.
 
-In version **4.X** the node `Sequence` will return **RUNNING**
-twice: after executing `SyncActionA` and `SyncActionB`.
+:::danger
+Once the Sequence "synch_sequence" starts, with BT.CPP 3.X
+it is impossible for **AbortCondition** to stop it.
+:::
 
-The advantage is that now **synch_sequence** can be pontentially interrupted.
-The drawback is that we need to tick the tree more often.
+In BT.CPP 4.X we modified our Controls and Decorators to
+prevent this potential issue.
 
-To be sure that this is done correctly and **to avoid introducing any additional latency" 
-(no sleep between the children), we changed the API of `Tree::tickRoot()`:
+Now, when a Synchronous child is executed, **RUNNING is returned** before moving to the next child.
+In this way, we give the opportunity to the tree to check ReactiveSequences or other Conditions.  
+
+From a practical point of view, this means that we must call **tick()** more often.
+
+:::tip
+This new behavior should NOT introduce any additional latency, at least not a significant one.
+
+When Controls and Decorator return RUNNING, the method `Tree::sleep()` will **not**
+block and won't introduce any additional delay. This is the reason why you should never use 
+"normal" sleep functions.
+:::
+
+To make this new behavior more explicit, the method `Tree::tickRoot()` was removed,
+and we introduce these two new methods instead:
 
 - `Tree::tickOnce()` works as usual. It should run inside a while-loop.
 - `Tree::tickWhileRunning()` has its own while-loop, and will continue ticking until either 

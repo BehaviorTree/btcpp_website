@@ -124,10 +124,6 @@ must be modified as follows:
  </root>
 ```
 
-!!! Note "XML Schema available for explicit version"
-    You can download the [XML Schema](https://www.w3schools.com/xml/schema_intro.asp) here:
-    [behaviortree_schema.xsd](https://github.com/BehaviorTree/BehaviorTree.CPP/blob/master/behaviortree_schema.xsd).
-
 ## Subtrees
 
 As we saw in [this tutorial](tutorial-basics/tutorial_06_subtree_ports.md), it is possible to include

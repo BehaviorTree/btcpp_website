@@ -67,10 +67,10 @@ Registering this node and passing the known arguments is as easy as:
 
 ``` cpp
 BT::BehaviorTreeFactory factory;
-factory.registerBuilder<Action_A>("Action_A", 42, "hello world");
+factory.registerNodeType<Action_A>("Action_A", 42, "hello world");
 
 // If you prefer to specify the template parameters
-// factory.registerBuilder<Action_A, int , std::string>("Action_A", 42, "hello world");
+// factory.registerNodeType<Action_A, int , std::string>("Action_A", 42, "hello world");
 ```
 
 ## Use an "initialize" method
