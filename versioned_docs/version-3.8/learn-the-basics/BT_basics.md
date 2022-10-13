@@ -1,6 +1,6 @@
 # Introduction to BTs
 
-Unlike a Finite State Machine, a Behaviour Tree is a __tree of hierarchical nodes__ 
+Unlike a Finite State Machine, a behavior Tree is a __tree of hierarchical nodes__ 
 that controls the flow of execution of "tasks". 
 
 ## Basic Concepts
@@ -8,14 +8,14 @@ that controls the flow of execution of "tasks".
 - A signal called "__tick__" is sent to the root of the tree
 and propagates through the tree until it reaches a leaf node.
 
-- Any TreeNode that receives a __tick__ signal executes it's callback.
+- Any TreeNode that receives a __tick__ signal executes its callback.
   This callback must return either
 
     - **SUCCESS**
     - **FAILURE**
     - **RUNNING**
 
-- RUNNING means that a action is needs 
+- RUNNING means that the action needs 
 more time to return a valid result.
 
 - If a TreeNode has one or more children, it is its
@@ -48,7 +48,7 @@ A __Sequence__ is the simplest __ControlNode__: it executes
 its children one after the other and, if they all Succeed,
 it returns SUCCESS too.
 
-1. The first tick set the Sequence node to RUNNING (orange).
+1. The first tick sets the Sequence node to RUNNING (orange).
 2. Sequence tick the first child, "OpenDoor", that eventually returns SUCCESS.
 3. As a result, the second child "Walk" and later "CloseDoor"
 are ticked.
@@ -105,7 +105,7 @@ In short:
 :::caution Find the BUG!
 
 If the action __GrabBeer__ fails, the door of the 
-fridge would remain open, since the last action __CloseFridge__ is skipped.
+fridge will remain open, since the last action __CloseFridge__ is skipped.
 :::
 
 ### Decorators
@@ -122,7 +122,7 @@ this node could be either:
 
 The node __Inverter__ is a Decorator that inverts 
 the result returned by its child; An Inverter followed by the node called
-__isDoorOpen__ is therefore equivalent to 
+__isDoorOpen__ is, therefore, equivalent to 
 
     "Is the door closed?".
 
@@ -137,7 +137,7 @@ __Apparently__, the branch on the right side means:
 But...
     
 :::caution Find the BUG!
-If __isDoorOpen__ returns FAILURE, we have the desired behaviour.
+If __isDoorOpen__ returns FAILURE, we have the desired behavior.
 But if it returns SUCCESS, the left branch fails and the entire Sequence
 is interrupted.
 :::
@@ -145,7 +145,7 @@ is interrupted.
 
 ### Second ControlNode: Fallback
 
-[FallbackNodes](nodes-library/FallbackNode.md), known also as __"Selectors"__,
+[FallbackNodes](nodes-library/FallbackNode.md), also known as __"Selectors"__,
 are nodes that can express, as the name suggests, fallback strategies, 
 i.e. what to do next if a child returns FAILURE.
 
@@ -193,7 +193,7 @@ Both these trees will close the door of the fridge, eventually, but:
 - the tree on the __left__ side will always return SUCCESS, no matter if
 we have actually grabbed the beer.
  
-- the tree on the __right__ side will return SUCCESS if the beer was there, 
+- the tree on the __right__ side would return SUCCESS if the beer was there, 
 FAILURE otherwise.
 
 Everything works as expected if __GrabBeer__ returns SUCCESS.
