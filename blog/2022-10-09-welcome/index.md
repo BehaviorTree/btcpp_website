@@ -5,11 +5,10 @@ authors: [davide]
 tags: [updates]
 ---
 
-Sometimes people ask me if 4 years ago, when I started this project,
+Sometimes people ask me if, when I started this project 4 years ago,
 I expected **BehaviorTree.CPP** to gain so much adoption in the robotic community.
 Even if that is generally meant as a rhetorical question that expects and humble answer,
 I usually answer "yes". 
-
 
 There are few reasons why I was optimistic about the fact that this
 library might be well received:
@@ -21,12 +20,12 @@ Task Planning; this part is often neglected until the end of the project.
 writing documentation.
 
 - I wanted to build an inclusive project, where people needs and opinions are heard.
-I am still a "benevolent dictator", but I **do** listen and I **do** learn from others!
+I am the "benevolent dictator" of the project, but I **do** listen and I **do** learn from others!
 
-## Growth in recent years
+## Adoption in the recent years
 
 **BT.CPP** is gaining traction in robotics, as shown in the image
-below (note that the Y-axis is logarithmic):
+below (note as the Y-axis is logarithmic):
 
 ![adoption](adoption.png)
 
@@ -34,13 +33,13 @@ This data was obtained from the paper:
 
  [Behavior Trees and State Machines in Robotics Applications](https://arxiv.org/abs/2208.04211)
 
-SMACH is certainly an early adopter and it is still the strongest contender,
-but you can also note as BT.CPP and PyTrees are gained more
-an more popularity in the community.
+SMACH is still the strongest contender,
+but you can also note as **BT.CPP** and **PyTrees** are gained more
+an more popularity in our community.
 
-Please refer to the publication mentioned above to
-learn more about the methodology used to obtain
-these numbers and to compare the frameworks.
+If you want to learn more about the 
+methodology used to obtain these numbers, 
+please refer to the publication mentioned above.
 
 ## Documentation is a super power
 
@@ -49,16 +48,16 @@ You might be familiar with the phrase:
 >"[If a tree falls in a forest](https://en.wikipedia.org/wiki/If_a_tree_falls_in_a_forest)
 and no one is around to hear it, does it make a sound?"
 
-My personal take on this is:
+My personal version of it is:
 
-> If an open source software is not used by other people but the author, is it still "good" software?
+> If an open source software is not used by anyone else but the author, is it still useful?
 
-In both cases, we know that the answer is (or might be) **"yes"**, but hopefully you see where this is going.
+In both cases, we know that the answer is (or might be) **"yes"**, but hopefully you see what I mean.
 
 Very often, open source is about "scratching your own hitch" and share what you did with others. That is fine!
 
-But in my case, I created this project **specifically to help others**; the more it is adopted and used, the more
-I feel like my initial goal has been achieved.
+But in my case, This project was created **specifically to help others**; the more it is adopted and used, the more
+I feel that my initial goal has been achieved.
 
 In my career, I learn that the best way to drive adoption is:
 
@@ -70,11 +69,11 @@ The latter point is particularly important and it is often underestimated.
 For me, lowering the entry barrier involved three key steps:
 
 - writing good documentation (this website).
-- adding tutorials whcih give the new usuers a sense of progression.
+- adding tutorials which give the new users a sense of progression.
 - providing a tool that help people learn visually (Groot).
 
-The documentation of **BT.CPP** is not perfect, but probably a little above the average from what you
-would expect from an open source project: this costed a lot of time, but paid off enormously.
+The documentation of **BT.CPP** is not perfect, but probably a little above the average,
+considering the average open source project: this costed a lot of time, but paid off enormously.
 
-
-
+If you have any suggestion about how to improve this site, 
+[let me know](https://github.com/BehaviorTree/btcpp_website/issues).
