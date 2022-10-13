@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Introdution to Scripting
+# Introduction to Scripting
 
 Behavior Tree 4.X introduces a simple but powerful new concept:
 a scripting language with XML.
