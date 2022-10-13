@@ -5,7 +5,7 @@ sidebar_label: 06. Port Remapping
 
 # Remapping ports of a SubTrees 
 
-In the CrossDoor example we saw that a `SubTree` looks like a single
+In the CrossDoor example, we saw that a `SubTree` looks like a single
 leaf Node from the point of view of its parent tree.
 
 To avoid name clashing in very large trees, any tree and subtree
@@ -61,7 +61,7 @@ with other ports in the `MainTree`.
 
 # The CPP code
 
-Not much to be done here. We use the method `debugMessage` to
+Not much to be done here. We use the `debugMessage` method to
 inspect the value of the blackboard.
 
 ``` cpp

@@ -10,16 +10,16 @@ I expected **BehaviorTree.CPP** to gain so much adoption in the robotic communit
 Even if that is generally meant as a rhetorical question that expects and humble answer,
 I usually answer "yes". 
 
-There are few reasons why I was optimistic about the fact that this
+There are a few reasons why I was optimistic about the fact that this
 library might be well received:
 
-- It helps implementing a crucial component of a robotic software system,
+- It helps implement a crucial component of a robotic software system,
 Task Planning; this part is often neglected until the end of the project.
 
-- I spent an unusual amount of time (may be 30% of my whole development time)
+- I spent an unusual amount of time (maybe 30% of my whole development time)
 writing documentation.
 
-- I wanted to build an inclusive project, where people needs and opinions are heard.
+- I wanted to build an inclusive project, where people's needs and opinions are heard.
 I am the "benevolent dictator" of the project, but I **do** listen and I **do** learn from others!
 
 ## Adoption in recent years, 
@@ -34,8 +34,8 @@ This data was obtained from the paper:
  [Behavior Trees and State Machines in Robotics Applications](https://arxiv.org/abs/2208.04211)
 
 SMACH is still the strongest contender,
-but you can also note as **BT.CPP** and **PyTrees** are gained more
-an more popularity in our community.
+but you can also note as **BT.CPP** and **PyTrees** 
+have gained more and more popularity in our community.
 
 If you want to learn more about the 
 methodology used to obtain these numbers, 
@@ -54,12 +54,12 @@ My personal version of it is:
 
 In both cases, we know that the answer is (or might be) **"yes"**, but hopefully you see what I mean.
 
-Very often, open source is about "scratching your own hitch" and share what you did with others. That is fine!
+Very often, open source is about "scratching your own hitch" and sharing what you did with others. That is fine!
 
 But in my case, This project was created **specifically to help others**; the more it is adopted and used, the more
 I feel that my initial goal has been achieved.
 
-In my career, I learn that the best way to drive adoption is:
+In my career, I have learned that the best way to drive adoption is:
 
 - built something that people need.
 - build trust with your users.
@@ -69,11 +69,11 @@ The latter point is particularly important and it is often underestimated.
 For me, lowering the entry barrier involved three key steps:
 
 - writing good documentation (this website).
-- adding tutorials which give the new users a sense of progression.
-- providing a tool that help people learn visually (Groot).
+- adding tutorials that give the new users a sense of progression.
+- providing a tool that helps people learn visually (Groot).
 
 The documentation of **BT.CPP** is not perfect, but probably a little above the average,
-considering the average open source project: this costed a lot of time, but paid off enormously.
+considering the average open source project: this cost a lot of time, but paid off enormously.
 
-If you have any suggestion about how to improve this site, 
+If you have any suggestions about how to improve this site, 
 [let me know](https://github.com/BehaviorTree/btcpp_website/issues).

@@ -6,11 +6,11 @@ sidebar_position: 2
 
 Leveraging the power of the scripting language
 introduced in the [previous tutorial](tutorial-advanced/scripting.md),
-BT.CPP 4.x introcude the concept of Pre and Post Conditions,
-i.e script that can run either before or after the actual 
+BT.CPP 4.x introduces the concept of Pre and Post Conditions,
+i.e scripts that can run either before or after the actual 
 __tick()__ of a Node.
 
-Pre and Post condition are supported by __all__ the nodes and
+Pre and Post conditions are supported by __all__ the nodes and
  don't need any modifications in your C++ code.
 
 :::caution
@@ -20,7 +20,7 @@ reduce the need for custom C++ Nodes in very simple
 use cases.
 
 If your scripts become too long, you may want to 
-reconsider your decision of using them.
+reconsider your decision to use them.
 :::
 
 ## Pre conditions
@@ -30,11 +30,11 @@ reconsider your decision of using them.
 | **_skipIf**    |  Skip the execution of this Node, if the condition is true   |
 | **_failureIf** |  Skip and return FAILURE, if the condition os true |
 | **_successIf** |  Skip and return SUCCESS, if the condition os true |
-| **_while**     |  Same as _skipIf, but mau also interrupt a RUNNING Node if  the condition becomes false. |
+| **_while**     |  Same as _skipIf, but may also interrupt a RUNNING Node if  the condition becomes false. |
 
 ### Example
 
-In a previous tutorials we saw how to build an if-then-else
+In previous tutorials we saw how to build an if-then-else
 logic in the tree using a fallback.
 
 The new syntax is much more compact:
@@ -106,16 +106,16 @@ New implementation:
 
 One of the areas where Behavior Trees may struggle, when 
 compared to State Machines, is in those patterns where
-a diferent strategy should be executed based on the 
+a different strategy should be executed based on the 
 result of an Action. 
 
 Since BTs are limited to SUCCESS and FAILURE, that could 
 be unintuitive.
 
-A solution is to store the __result / error code__ in the
+A solution is storing the __result / error code__ in the
 blackboard, but that was cumbersome in version 3.X.
 
-Pre conditions can help us implementing code that is more
+Pre conditions can help us implement code that is more
 readable, like this one:
 
 ![error_codes.svg](images/error_codes.svg)
@@ -124,13 +124,13 @@ In the tree above, we added an Output port __return__ to
 __MoveBase__ and we conditionally take the second or third branch
 of the Sequence based on the value of `error_code`.
 
-# Design pattern: states and declarrative trees
+# Design pattern: states and declarative trees
 
 Even if the promise of Behavior Tree is to free us from 
-the tiranny of states, but the truth is that sometimes it is
+the tyranny of states, but the truth is that sometimes it is
 hard to reason about our application without states.
 
-Using states can make our Tree easier. For instance we can 
+Using states can make our Tree easier. For instance, we can 
 take a certain branch of the tree only when the robot
 (or a subsystem) is in a particular state.
 
@@ -138,12 +138,12 @@ Consider this Node and its pre/post conditions:
 
 ![landing.svg](images/landing.svg)
 
-This node will be executed only if state is equal to **DO_LANDING** and, once the value of `altitude` is small
-enough, the stated is changed to **LANDED**.
+This node will be executed only if the state is equal to **DO_LANDING** and, once the value of `altitude` is small
+enough, the state is changed to **LANDED**.
 
 Note as DO_LANDING and LANDED are enums, not strings
 
 :::tip
-A surprising side effect of this patterns is that we made our
+A surprising side effect of this pattern is that we made our
 Node more __declarative__ i.e. it is easier to move this specific Node/Subtree into a different portion of the tree.
 :::

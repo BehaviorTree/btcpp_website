@@ -7,13 +7,13 @@ sidebar_position: 1
 Behavior Tree 4.X introduces a simple but powerful new concept:
 a scripting language with XML.
 
-The implemented scriting language has a familiar syntax; it allow the user to quickly
-read from / writeto the variables of the blackboard.
+The implemented scripting language has a familiar syntax; it allows the user to quickly
+read from / write to the variables of the blackboard.
 
 The simpler way to learn how scripting works is using the built-in action __Script__,
-that was introcuded first in the [second tutorial](tutorial-basics/tutorial_02_basic_ports.md)
+which was introduced in the [second tutorial](tutorial-basics/tutorial_02_basic_ports.md)
 
-## Assignemnt operators, strings and numbers
+## Assignment operators, strings and numbers
 
 Example:
 
@@ -28,9 +28,9 @@ message = 'hello world'
 - The third line assigns the string "hello world" to the blackboard entry __message__.
 
 :::tip
-The difference beyween the operator __":="__ and __"="__ is that the former
+The difference between the operator __":="__ and __"="__ is that the former
 may create a new entry in the blackboard, if it doesn't exist, whilst the latter will throw
-an exception of the blackboard doesn't contain the entry.
+an exception if the blackboard doesn't contain the entry.
 :::
 
 You can also use __semicolons__ to add multiple
@@ -40,7 +40,7 @@ commands in a single script.
 A:= 42; B:=24
 ```
 
-### Arithmetic operators and parentesis 
+### Arithmetic operators and parenthesis 
 
 Example:
 
@@ -53,7 +53,7 @@ param_C := (param_A * 3) + param_B
 
 The resulting values of `param_B` is 10 and `param_C` is 31. 
 
-The following operatos are supported:
+The following operators are supported:
 
 | Operator | Assign Operator  | Description |
 |----------|---------|---------|
@@ -62,14 +62,14 @@ The following operatos are supported:
 | *        |  *=     | Multiply |
 | /        |  /=     | Divide   |
 
-Note that the addition operator is the only one that works also with string (used to cancatenate two strings).
+Note that the addition operator is the only one that also works with string (used to concatenate two strings).
 
 ## Bitwise operator and hexadecimal numbers
 
-This operators work only if the value can be casted to
+These operators work only if the value can be cast to
 an integer number.
 
-Trying to use them with a string or real number will
+Using them with a string or real number will
 cause an exception.
 
 Example:
@@ -129,8 +129,8 @@ val_B = (val_A > 1) ? 42 : 24
 
 ## C++ example
 
-Demonstration of the scripting langiage, including how to use enums to 
-represent **integer value**.
+Demonstration of the scripting language, including how to use enums to 
+represent **integer values**.
 
 The XML:
 
@@ -158,7 +158,7 @@ The C++ code to register the Nodes and the enums:
 ``` cpp
 int main()
 {
-  // Simple tree: a sequence of two asycnhronous actions,
+  // Simple tree: a sequence of two asynchronous actions,
   // but the second will be halted because of the timeout.
 
   BehaviorTreeFactory factory;

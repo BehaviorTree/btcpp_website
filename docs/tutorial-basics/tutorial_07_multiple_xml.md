@@ -5,10 +5,10 @@ sidebar_label: 07. Use multiple XML files
 
 # How to use multiple XML files
 
-In the examples which we presented so far, we always create an entire Tree
+In the examples we have presented, we always create an entire Tree
 and its SubTrees from a **single XML file**.
 
-But has the number of SubTrees grows, it is convenient to use multiple files.
+But as the number of SubTrees grows, it is convenient to use multiple files.
 
 ## Our subtrees
 
@@ -34,7 +34,7 @@ File **subtree_B.xml**:
 
 ## Load multiple files manually (recommended)
 
-Let's consider a file **main_tree.xml** that should be include the other 2 files:
+Let's consider a file **main_tree.xml** that should include the other 2 files:
 
 ``` xml 
 <root>
@@ -50,7 +50,7 @@ Let's consider a file **main_tree.xml** that should be include the other 2 files
 <root>
 ```
 
-To load manually the multiple files:
+To load multiple files manually:
 
 ``` cpp
 int main()
@@ -124,9 +124,9 @@ to include into the XML itself, you can modify **main_tree.xml** as shown below:
 ```
 
 As you may notice, we included two relative paths in **main_tree.xml**
-that tells to `BehaviorTreeFactory` where to find the required dependencies.
+that tells `BehaviorTreeFactory` where to find the required dependencies.
 
-Path are relative to **main_tree.xml**.
+Paths are relative to **main_tree.xml**.
 
 We can now create the tree as usual:
 

@@ -5,7 +5,7 @@ sidebar_label: 08. Pass additional arguments
 
 # Pass additional arguments to your Nodes
 
-In every single example we explored so far we were "forced" to provide a
+In every single example we explored so far, we were "forced" to provide a
 constructor with the following signature
 
 ``` cpp
@@ -13,8 +13,9 @@ MyCustomNode(const std::string& name, const NodeConfiguration& config);
 
 ```
 
-In same cases, it is desirable to pass to the constructor of our class 
-additional arguments, parameters, pointers, references, etc.
+In some cases, it is desirable to pass 
+additional arguments, parameters, pointers, references, etc,
+to the constructor of our class.
 
 :::caution
 Some people use blackboards to do that. **Don't**.
@@ -84,7 +85,7 @@ factory.registerBuilder<Action_A>( "Action_A", builder_A);
 
 ## Use an "initialize" method
 
-If for any reason you need to pass different values to the
+If, for any reason, you need to pass different values to the
 individual instances of a Node type, you may want to consider this other pattern:
 
 

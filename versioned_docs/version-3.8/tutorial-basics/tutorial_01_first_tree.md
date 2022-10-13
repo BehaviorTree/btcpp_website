@@ -12,7 +12,7 @@ What happens inside these callbacks is up to you.
 We will use the expression  __"to invoke the callback"__ and __"to tick"__ interchangeably.
 
 In this tutorial series, most of the time our dummy Actions will simply
-print some information on console,
+print some information on the console,
 but keep in mind that real "production" code would probably do something
 more complicated.
 
@@ -51,7 +51,7 @@ As you can see:
 - The method __tick()__ is the place where the actual Action takes place.
   It must always return a `NodeStatus`, i.e. RUNNING, SUCCESS or FAILURE. 
 
-Alternatively, we can use __dependecy injection__ to create a TreeNode given 
+Alternatively, we can use __dependency injection__ to create a TreeNode given 
 a function pointer (i.e. "functor"). 
 
 The only requirement of the functor is to have either one of these signatures:

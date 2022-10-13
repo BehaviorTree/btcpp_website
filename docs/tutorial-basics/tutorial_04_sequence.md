@@ -8,14 +8,14 @@ sidebar_label: 04. Reactive behaviors
 The next example shows the difference between a `SequenceNode` and a 
 `ReactiveSequence`.
 
-We will implement an __Asychronous Action__, i.e. an action that
+We will implement an __Asynchronous Action__, i.e. an action that
 takes a long time to be completed and will return RUNNING while
 the completion criterias are not met.
 
-An Asychronous Action has the following requirements:
+An Asynchronous Action has the following requirements:
 
 - It should not block in the method `tick()` too much time.
-Flow of execution should be returned as fast as possible.
+The flow of execution should be returned as fast as possible.
 
 - It should be aborted as fast as possible, if the `halt()` method is called.
 
@@ -30,16 +30,16 @@ Actions. You will find an extensive article
 
 ## StatefulAsyncAction 
 
-The __StatefulAsyncAction__ is the prefered way to implement asynchronous Actions.
+The __StatefulAsyncAction__ is the preferred way to implement asynchronous Actions.
 
 It is particularly useful when your code contains a __request-reply pattern__,
-i.e. when the action sends an asychronous request to another process,
+i.e. when the action sends an asynchronous request to another process,
 and checks periodically if the reply has been received.
 
 Based on that reply, it may return SUCCESS or FAILURE.
 
-If, instead of communicating with an exteral process, you are performing some
-computation that takes a long time, you may want to split it in small "chunks" 
+If instead of communicating with an external process, you are performing some
+computation that takes a long time, you may want to split it into small "chunks" 
 or you may want to move that computation to another thread 
 (see [AsyncThreadedAction](tutorial-advanced/asynchronous_nodes.md) tutorial).
 
@@ -218,7 +218,7 @@ __RUNNING__ the 1st and 2nd time, and eventually __SUCCESS__ the 3rd time.
 If we use a `ReactiveSequence` instead, when the child `MoveBase` returns RUNNING,
 the sequence is restarted and the condition `BatteryOK` is executed __again__.
 
-If, at any point, `BatteryOK` returned __FAILURE__, the `MoveBase` action
+If at any point, `BatteryOK` returned __FAILURE__, the `MoveBase` action
 would be _interrupted_ (_halted_, to be specific).
 
 ``` xml hl_lines="3"

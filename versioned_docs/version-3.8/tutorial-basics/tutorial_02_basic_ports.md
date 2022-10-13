@@ -20,7 +20,7 @@ Similar to functions, we often want to:
 BehaviorTree.CPP provides a basic mechanism of __dataflow__
 through __ports__, that is simple to use but also flexible and type safe.
 
-In this tutorial we will create the following tree:
+In this tutorial, we will create the following tree:
 
 ![Tutorial2](images/tutorial_blackboard.svg)
 
@@ -36,7 +36,7 @@ can write into an entry.
 
 A valid Input can be either:
 
-- a __static string__ which the Node will read and parse, or
+- a __static string__ that the Node will read and parse, or
 - a "pointer" to an entry of the Blackboard, identified by a __key__.
 
 Let's suppose that we want to create an ActionNode called `SaySomething`, 
@@ -51,7 +51,7 @@ Consider these alternative XML syntaxes:
 <SaySomething name="second" message="{greetings}" />
 ```
 
-- In the __first__ node, the port receive the string "hello world";
+- In the __first__ node, the port receives the string "hello world";
 - The __second__ node, instead, is asked to find the value in the blackboard,
 using the entry "greetings".
 
@@ -124,7 +124,7 @@ periodically.
 ## Output ports
 
 An input port pointing to the entry of the blackboard will be valid only
-if another node have already written "something" inside that same entry.
+if another node has already written "something" inside that same entry.
 
 `ThinkWhatToSay` is an example of Node that uses an __output port__ to write a 
 string into an entry.

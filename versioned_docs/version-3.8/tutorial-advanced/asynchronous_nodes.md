@@ -31,12 +31,12 @@ We achieve reactive behaviors through "concurrency" and asynchronous execution.
 In other words, an Action that takes a long time to execute should
 return as soon as possible the state RUNNING.
 
-This tells the tree executor that the action was started and need more time to return
+This tells the tree executor that the action was started and needs more time to return
 the state SUCCESS or FAILURE.
 We need to tick that Node again, to know if the state changed or not (polling).
 
 An Asynchronous node may delegate this long execution either to another process
-(usning inter-process communication) or another thread.
+(using inter-process communication) or another thread.
 
 ## Asynchronous vs Synchronous
 
@@ -63,7 +63,7 @@ the __StatefulAsyncAction__.
 
 using namespace std::chrono;
 
-// Example of Asynchronous node that use StatefulActionNode as base class
+// Example of Asynchronous node that uses StatefulActionNode as base class
 class SleepNode : public BT::StatefulAsyncAction
 {
   public:
@@ -128,7 +128,7 @@ This may return SUCCESS immediately if the sleep time is 0 or will return RUNNIN
 A **wrong** way to implement the `SleepNode` would be this one:
 
 ```c++
-// This is the synchronous version of the Node. probably not what we want.
+// This is the synchronous version of the Node. Probably not what we want.
 class BadSleepNode : public BT::ActionNodeBase
 {
   public:
@@ -152,7 +152,7 @@ class BadSleepNode : public BT::ActionNodeBase
 
     void halt() override
     {
-      // No one can invoke this method, because I freezed the tree.
+      // No one can invoke this method, because I froze the tree.
       // Even if this method COULD be executed, there is no way I can
       // interrupt std::this_thread::sleep_for()
     }

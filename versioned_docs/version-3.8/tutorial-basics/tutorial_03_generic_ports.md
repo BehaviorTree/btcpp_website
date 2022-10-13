@@ -12,9 +12,9 @@ Next, we will show how to assign generic C++ types to your ports.
 
 ## Parsing a string
 
-__BehaviorTree.CPP__ supports automatic conversion of strings into common
+__BehaviorTree.CPP__ supports the automatic conversion of strings into common
 types, such as `int`, `long`, `double`, `bool`, `NodeStatus`, etc.
-User defined types can be supported easily as well. 
+User-defined types can be supported easily as well. 
 
 For instance:
 
