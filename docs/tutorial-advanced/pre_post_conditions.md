@@ -30,11 +30,11 @@ reconsider your decision to use them.
 | **_skipIf**    |  Skip the execution of this Node, if the condition is true   |
 | **_failureIf** |  Skip and return FAILURE, if the condition os true |
 | **_successIf** |  Skip and return SUCCESS, if the condition os true |
-| **_while**     |  Same as _skipIf, but may also interrupt a RUNNING Node if  the condition becomes false. |
+| **_while**     |  Same as _skipIf, but may also interrupt a RUNNING Node if the condition becomes false. |
 
 ### Example
 
-In previous tutorials we saw how to build an if-then-else
+In previous tutorials, we saw how to build an if-then-else
 logic in the tree using a fallback.
 
 The new syntax is much more compact:
@@ -115,8 +115,7 @@ be unintuitive.
 A solution is storing the __result / error code__ in the
 blackboard, but that was cumbersome in version 3.X.
 
-Pre conditions can help us implement code that is more
-readable, like this one:
+Pre conditions can help us implement more readable code, like this one:
 
 ![error_codes.svg](images/error_codes.svg)
 
