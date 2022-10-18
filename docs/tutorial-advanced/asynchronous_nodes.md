@@ -17,7 +17,7 @@ If you Google those words, you will read many good articles about this topic.
 **Concurrency** is when two or more tasks can start, run, and complete in overlapping time periods.
 It doesn't necessarily mean they'll ever both be running at the same instant. 
 
-**Parallelism** is when tasks literally run at the same time in different  threads, e.g., on a multicore processor.
+**Parallelism** is when tasks run at the same time in different threads, e.g., on a multicore processor.
 :::
 
 BT.CPP executes all the nodes **Concurrently**, in other words:
@@ -48,11 +48,11 @@ In general, an Asynchronous Node is one that:
 Frequently, the method **halt()** must be implemented by the developer.
 
 When your Tree executes an Asynchronous Action that returns RUNNING,
-that state is usually **propagated backbard** and the entire Tree is considered
+that state is usually **propagated backward** and the entire Tree is considered
 in the RUNNING state.
 
 In the example below, "ActionE" is asynchronous and RUNNING; when
-a node is RUNNING, usually its parent returns RUNNING too.
+a node is RUNNING, usually, its parent returns RUNNING too.
 
 ![tree in running state](images/RunningTree.svg)
 
@@ -152,7 +152,7 @@ class BadSleepNode : public BT::ActionNodeBase
 
     void halt() override
     {
-      // No one can invoke this method, because I froze the tree.
+      // No one can invoke this method because I froze the tree.
       // Even if this method COULD be executed, there is no way I can
       // interrupt std::this_thread::sleep_for()
     }
@@ -257,7 +257,7 @@ ActionLib provides exactly the kind of API that we need to implement correctly a
 1. A non-blocking function to start the Action.
 2. A way to monitor the current state of execution of the Action.
 3. A way to retrieve the result or the error messages.
-4. The ability to preempt / abort an action that is being executed.
+4. The ability to preempt/abort an action that is being executed.
 
 None of these operations is "blocking", therefore we don't need to spawn our own thread.
 

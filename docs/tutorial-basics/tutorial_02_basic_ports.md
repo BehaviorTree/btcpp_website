@@ -18,7 +18,7 @@ Similar to functions, we often want to:
  - The outputs of a Node can be the inputs of another node. 
 
 BehaviorTree.CPP provides a basic mechanism of __dataflow__
-through __ports__, that is simple to use but also flexible and type safe.
+through __ports__, that is simple to use but also flexible and type-safe.
 
 In this tutorial, we will create the following tree:
 
