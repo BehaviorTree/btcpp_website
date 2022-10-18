@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'BehaviorTree.CPP',
   tagline: 'The C++ Behavior Tree library',
-  url: 'https://behaviortree-cpp-v4-preview.netlify.app/',
+  url: 'https://www.behaviortree.dev/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
