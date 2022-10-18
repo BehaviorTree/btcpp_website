@@ -37,7 +37,7 @@ more consistent.
 | `<SubTree>` | Deprecated |
 | `<SubTreePlus>` | `<SubTree>` |
 
-## SetBlackbard and BlackboardPrecondition
+## SetBlackboard and BlackboardPrecondition
 
 The new [scripting language](/docs/tutorial-advanced/scripting)
 is much simpler and more powerful.
@@ -45,8 +45,8 @@ is much simpler and more powerful.
 Old code in **3.8+**:
 
 ``` xml
-<SetBlackbard output_key="port_A" value="42" />
-<SetBlackbard output_key="port_B" value="69" />
+<SetBlackboard output_key="port_A" value="42" />
+<SetBlackboard output_key="port_B" value="69" />
 <BlackboardCheckInt value_A="{port_A}" value_B="{port_B}" 
                     return_on_mismatch="FAILURE">
     <MyAction/>
