@@ -101,9 +101,9 @@ function Home() {
               <h2>Visual Editing and Monitoring</h2>
               <p>
                 <b>Groot</b> is our "IDE for Behavior Trees".<br />It allows users to
-                visualize, create, edit and monitor Behavior Trees, using
+                visualize, create and edit Behavior Trees, using
                 a simple drag and drop interface. <br />
-                Trees can be monitore in real-time
+                Trees can be monitored in real-time
               </p>
               <Link
                 className="button button--outline button--primary button--lg"
