@@ -23,7 +23,7 @@ The name of the following classes / XML tags changed.
 | AsyncActionNode | ThreadedAction | C++ |
 | Optional | Expected | C++ |
 
-If you want to quickly fix the comilation of your C++ code, **even if refactoring is encorauged**, do:
+If you want to quickly fix the compilation of your C++ code, **even if refactoring is encorauged**, do:
 
 ```cpp
 namespace BT 
