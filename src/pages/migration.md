@@ -16,14 +16,18 @@ that you should be aware of, when migrating.
 
 The name of the following classes / XML tags changed.
 
-| Name in 3.8+ | Name in 4.x |
-|-------------|---------|
-| `NodeConfiguration` | `NodeConfig` | 
-| `SequenceStar` | `SequenceWithMemory` |
-| `AsyncActionNode` | `ThreadedAction` | 
+| Name in 3.8+ | Name in 4.x | Where |
+|-------------|---------|---------|
+| `NodeConfiguration` | `NodeConfig` | C++ |
+| `SequenceStar` | `SequenceWithMemory` | C++ and XMLs |
+| `AsyncActionNode` | `ThreadedAction` | C++ |
+| `Optional` | `Expected` | C++ |
 
 :::info
 These changes can be disabled with the CMake option __USE_V3_COMPATIBLE_NAMES__.
+
+Alternatively, use 'using OldName = NewName;' in your old C++ code to 
+quickly fix the compilation errors.
 :::
 
 ## SubTree and SubTreePlus
