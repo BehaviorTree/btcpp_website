@@ -18,16 +18,24 @@ The name of the following classes / XML tags changed.
 
 | Name in 3.8+ | Name in 4.x | Where |
 |-------------|---------|---------|
-| `NodeConfiguration` | `NodeConfig` | C++ |
-| `SequenceStar` | `SequenceWithMemory` | C++ and XMLs |
-| `AsyncActionNode` | `ThreadedAction` | C++ |
-| `Optional` | `Expected` | C++ |
+| NodeConfiguration | NodeConfig | C++ |
+| SequenceStar | SequenceWithMemory | C++ and XML |
+| AsyncActionNode | ThreadedAction | C++ |
+| Optional | Expected | C++ |
+
+If you want to quickly fix the comilation of your C++ code, even if refactoring is encorauged, dos:
+
+```cpp
+namespace BT 
+{
+  using NodeConfiguration = NodeConfig;
+  using AsyncActionNode = ThreadedAction;
+  using Optional = Expected;
+}
+```
 
 :::info
-These changes can be disabled with the CMake option __USE_V3_COMPATIBLE_NAMES__.
-
-Alternatively, use 'using OldName = NewName;' in your old C++ code to 
-quickly fix the compilation errors.
+These changes can be disabled while compiling BT.CPP with the CMake option __USE_V3_COMPATIBLE_NAMES__.
 :::
 
 ## SubTree and SubTreePlus
