@@ -22,7 +22,7 @@ By definition, your custom Nodes are (or should be) highly __reusable__.
 ## Instantiate trees at run-time using the XML format
 
 Despite the fact that the library is written in C++, trees themselves
-can be created and composed at _run-time_, more specifically, at _deployment-time_, using an XML base scriping language.
+can be created and composed at _run-time_, more specifically, at _deployment-time_, using an XML base scripting language.
 
 An XML format is described in details [here](xml_format.md), but the best way to
 learn the syntax is following the tutorials.

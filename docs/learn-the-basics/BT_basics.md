@@ -20,7 +20,7 @@ more time to return a valid result.
 
 - If a TreeNode has one or more children, it is its
 responsibility to propagate the tick; each Node type may
-have different rules about children are ticked.
+have different rules about if, when and how many times children are ticked.
 
  - The __LeafNodes__, those TreeNodes which don't have any children,
    are the actual commands, i.e. the Nodes where the behavior tree
@@ -53,7 +53,7 @@ it returns SUCCESS too.
 3. As a result, the second child "Walk" and later "CloseDoor"
 are ticked.
 4. Once the last child is completed, the entire Sequence 
-switch from RUNNING to SUCCESS.
+switches from RUNNING to SUCCESS.
 
 ## Types of nodes
 

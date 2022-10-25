@@ -28,8 +28,8 @@ reconsider your decision to use them.
 | Name | Description |
 |-------------|---------|
 | **_skipIf**    |  Skip the execution of this Node, if the condition is true   |
-| **_failureIf** |  Skip and return FAILURE, if the condition os true |
-| **_successIf** |  Skip and return SUCCESS, if the condition os true |
+| **_failureIf** |  Skip and return FAILURE, if the condition is true |
+| **_successIf** |  Skip and return SUCCESS, if the condition is true |
 | **_while**     |  Same as _skipIf, but may also interrupt a RUNNING Node if the condition becomes false. |
 
 ### Example
