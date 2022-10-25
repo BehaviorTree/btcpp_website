@@ -42,12 +42,12 @@ These blocks are implemented in C++ and are "composable": in other words, they c
 ![](intro_build_trees.svg)
 
 In the image above, you can see as we are arranging these actions in a simple Sequence;
-actions will be executed in order from left to right. To learn mode, visit the page 
+actions will be executed in order from left to right. To learn more, visit the page 
 [Introduction to BTs](learn-the-basics/BT_basics.md).
 
 ### Main Advantages of Behavior Trees
 
-- __They are intrinsically Hierarchical__: we can _compose_
+- __They are intrinsically hierarchical__: we can _compose_
 complex behaviors, including entire trees as sub-branches of a bigger tree. 
 For instance, the behavior "Fetch Beer" may reuse the tree
 "Grasp Object".

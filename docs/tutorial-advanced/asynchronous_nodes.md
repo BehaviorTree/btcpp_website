@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # Asynchronous Actions
 
-When designing reactive Behavior Trees, it is important to understand 2two main concepts:
+When designing reactive Behavior Trees, it is important to understand two main concepts:
 
 - what we mean by **"Asynchronous"** Actions VS **"Synchronous"** ones.
 - The difference between **Concurrency** and **Parallelism** in the context of BT.CPP.
