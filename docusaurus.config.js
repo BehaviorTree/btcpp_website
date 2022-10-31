@@ -150,6 +150,8 @@ const config = {
       },
     }),
 
+  scripts: [{src: 'https://plausible.io/js/script.js', defer: true, 'data-domain': 'behaviortree.dev'}],
+
 };
 
 module.exports = config;
