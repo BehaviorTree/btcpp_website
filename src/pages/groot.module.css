@@ -1,0 +1,58 @@
+
+h1 {
+    font-size: 38px;
+    padding: 0.5rem 0;
+}
+
+h2 {
+    font-size: 32px;
+    padding: 0.5rem 0;
+}
+
+h3{
+    font-size: 24px;
+}
+
+p{
+    font-size: 18px;
+}
+
+
+@media screen and (max-width: 966px) {
+    .heroBanner {
+        padding: 2rem;
+    }
+}
+
+.sectionText {
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3b3b3b;
+    font-size: 20px;
+}
+
+.sectionText li{
+    font-size: 20px;
+}
+
+.sectionTable{
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3b3b3b;
+    font-size: 20px;
+}
+
+.sectionTable li{
+    list-style-type: none;
+    font-size: 16px;
+}
+
+table, th, td {
+    font-size: 18px;
+    border: 1px solid;
+  }
+

@@ -32,7 +32,20 @@ const config = {
     },
   },
   
-  plugins: [require.resolve("@cmfcmf/docusaurus-search-local")],
+  plugins: [
+    require.resolve("@cmfcmf/docusaurus-search-local"),
+    async function myPlugin(context, options) {
+      return {
+        name: "docusaurus-tailwindcss",
+        configurePostCss(postcssOptions) {
+          // Appends TailwindCSS and AutoPrefixer.
+          postcssOptions.plugins.push(require("tailwindcss"));
+          postcssOptions.plugins.push(require("autoprefixer"));
+          return postcssOptions;
+        },
+      };
+    },
+  ],
 
   presets: [
     [
@@ -88,7 +101,18 @@ const config = {
             type: 'doc', label: 'Tutorial', docId: 'intro', position: 'left'
           },
           {
-             to: '/editors', label: 'Editors', position: 'left'
+            position: 'left',
+            label: 'Tools',
+            items: [
+              {
+                to: '/groot', 
+                label: 'Groot'
+              },
+              {
+                to: '/moveit_studio', 
+                label: 'MoveIt Studio'
+              }
+            ]
           },
           {
             to: '/migration', label: 'Migration from 3.X', position: 'left'

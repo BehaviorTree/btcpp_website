@@ -107,7 +107,7 @@ function Home() {
               </p>
               <Link
                 className="button button--outline button--primary button--lg"
-                to={useBaseUrl('/editors')}
+                to={useBaseUrl('/groot')}
               >
                 About Groot
               </Link>
