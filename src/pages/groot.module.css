@@ -30,11 +30,15 @@ p{
     align-items: center;
     justify-content: center;
     color: #3b3b3b;
-    font-size: 20px;
+    font-size: 18px;
+}
+
+.sectionText h3{
+    font-size: 22px;
 }
 
 .sectionText li{
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .sectionTable{
