@@ -1,29 +1,25 @@
 import React from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
-
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './groot.module.css';
 import Table from 'react-bootstrap/Table';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
-
 function Check(props) {
   return <img src={useBaseUrl('img/check.png')} width="15" alt="yes" />;
 }
-
 function Cross(props) {
   return <img src={useBaseUrl('img/cross.png')} width="15" alt="no" />;
 }
-
 export default function Groot() {
-  const renderTooltip = (props) => (
-    <Tooltip id="button-tooltip" className={styles.toolTip} {...props}>
-      some extra information
-    </Tooltip>
-  );
+  const renderTooltip = (message, props) => {
+    return (<Tooltip id="button-tooltip" className={styles.toolTip} {...props}>
+      {message}
+    </Tooltip>)
+  }
+  
   return (
     <Layout title="Groot" description="Groot Editor">
-
       {/* groot intro */}
       <div className={`styles.sectionText`}>
         <div className={`container text--left ${styles.sectionText}`}>
@@ -57,7 +53,6 @@ export default function Groot() {
           </div>
         </div>
       </div>
-
       {/* groot versions & cards */}
       <div className={styles.sectionText}>
       </div>
@@ -86,10 +81,12 @@ export default function Groot() {
                 real-time visualization.</p>
             </div>
           </div>
+          
         </div>
       </div>
-      {/* groot features table */}
-      <div className={`container ${styles.sectionText} `}>
+     
+ {/* groot features table */}
+      <div className={`container  ${styles.sectionText}`}>
         <Table className={styles.grootFeatureTable}>
           <thead>
             <tr>
@@ -110,7 +107,7 @@ export default function Groot() {
                 <OverlayTrigger
                   placement="bottom"
                   delay={{  hide: 400 }}
-                  overlay={renderTooltip}
+                  overlay={renderTooltip.bind(null, 'some extra information')}
                 >
                   <button className={styles.tooltipTrigger}>?</button>
                 </OverlayTrigger>
@@ -133,7 +130,6 @@ export default function Groot() {
               <td>Free</td>
               <td>Commercial<br/>(Coming soon)</td>
             </tr>
-
             <tr>
               <th scope="row">Supports the new feature in BehaviorTree.CPP 4.X</th>
               <td><Cross /></td>
@@ -154,11 +150,9 @@ export default function Groot() {
               <td><Cross /></td>
               <td>Coming soon</td>
             </tr>
-
           </tbody>
         </Table>
       </div>
-
      {/* groot download  */}
       <div className={`${styles.sectionText} container ${styles.flexCol} gap-5 `}>
       <h1>Download Groot 2.0</h1>
@@ -193,10 +187,8 @@ export default function Groot() {
             Download for mac
           </Link>
         </div>
-
       </div>
       </div>
-
     </Layout>
   );
 }
