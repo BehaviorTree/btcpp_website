@@ -56,103 +56,110 @@ export default function Groot() {
       {/* groot versions & cards */}
       <div className={styles.sectionText}>
       </div>
-      <div className={`${styles.sectionText} ${styles.flexCol}`}>
-        <h1>Which version of Groot is the right for you?</h1>
-        <div className={`container  text--left ${styles.sectionText}`}>
-          <div className={`row ${styles.grootCardWrapper}`}>
-            <div className={styles.grootCard}>
-              <h2><img
-                src={useBaseUrl('img/pro_logo_icon.svg')}
-                alt="pro" width="40"/>   Groot 2.X</h2>
-              
-              <p><b>Groot 2</b> is the professional successor of Groot, focusing on improved
-                user experience, modularity and scalability.
-                It introduces powerful debugging and introspection tools, to support the
-                entire development cycle, from conception to validation.
-              </p>
+      <div className={`${styles.sectionText} ${styles.comparisionSection} ${styles.flexCol}`}>
+        <div class="container">
+          <h2 className='text--center'>Which version of Groot is the right for you?</h2>
+          <div className="row">
+            <div className="col col--5">
+              <div className={`text--left ${styles.sectionText}`}>
+                <div className={`row ${styles.grootCardWrapper}`}>
+                  <div className={styles.grootCard}>
+                    <h2><img
+                      src={useBaseUrl('img/pro_logo_icon.svg')}
+                      alt="pro" width="40"/>   Groot 2.X</h2>
+                    
+                    <p><b>Groot 2</b> is the professional successor of Groot, focusing on improved
+                      user experience, modularity and scalability.
+                      It introduces powerful debugging and introspection tools, to support the
+                      entire development cycle, from conception to validation.
+                    </p>
+                  </div>
+                  <div className={styles.grootCard}>
+                  <h2><img
+                      src={useBaseUrl('img/open_source_icon.svg')}
+                      alt="pro" width="40"/>   Groot 1.0</h2>
+                    <p><b>Groot</b> is the original <a href="https://github.com/BehaviorTree/Groot">open source editor</a>.
+                      It is not under active development, but it still a valid
+                      option for users who are still using <b>BehaviorTree.CPP 3.8</b> and need
+                      real-time visualization.</p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className={styles.grootCard}>
-            <h2><img
-                src={useBaseUrl('img/open_source_icon.svg')}
-                alt="pro" width="40"/>   Groot 1.0</h2>
-              <p><b>Groot</b> is the original <a href="https://github.com/BehaviorTree/Groot">open source editor</a>.
-                It is not under active development, but it still a valid
-                option for users who are still using <b>BehaviorTree.CPP 3.8</b> and need
-                real-time visualization.</p>
+            <div className="col col--7">
+              {/* groot features table */}
+              <div className={`${styles.sectionText} ${styles.grootFeatureTableWrapper}`}>
+                <Table className={styles.grootFeatureTable}>
+                  <thead>
+                    <tr>
+                      <th scope="col"></th>
+                      <th scope="col" className={`text--center ${styles.whitespaceNoWrap}`}>Groot 1.0</th>
+                      <th scope="col" className={`text--center ${styles.whitespaceNoWrap}`}>Groot 2.x</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">Open Source</th>
+                      <td><Check /></td>
+                      <td><Cross /></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">
+                        Actively developed
+                        <OverlayTrigger
+                          placement="bottom"
+                          delay={{  hide: 400 }}
+                          overlay={renderTooltip.bind(null, 'some extra information')}
+                        >
+                          <button className={styles.tooltipTrigger}>?</button>
+                        </OverlayTrigger>
+                      </th>
+                      <td><Cross /></td>
+                      <td><Check /></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Commercial support</th>
+                      <td><Cross /></td>
+                      <td><Check /></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Tree Editor</th>
+                      <td>Free</td>
+                      <td>Free</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Realtime Monitoring</th>
+                      <td>Free</td>
+                      <td>Commercial<br/><span className={`${styles.whitespaceNoWrap}`}>(Coming soon)</span></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Supports the new feature in BehaviorTree.CPP 4.X</th>
+                      <td><Cross /></td>
+                      <td><Check /></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Multi-file projects<br /></th>
+                      <td><Cross /></td>
+                      <td><Check /></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Realtime Debugging:<br /><ul>
+                        <li>Add breakpoints at run-time</li>
+                        <li>Visualize the content of the Blackboard</li>
+                        <li>Nodes mocking and automated tests</li>
+                        <li>Add fault injection</li>
+                      </ul> </th>
+                      <td><Cross /></td>
+                      <td>Coming soon</td>
+                    </tr>
+                  </tbody>
+                </Table>
+              </div>       
             </div>
           </div>
-          
         </div>
       </div>
      
- {/* groot features table */}
-      <div className={`container  ${styles.sectionText}`}>
-        <Table className={styles.grootFeatureTable}>
-          <thead>
-            <tr>
-              <th scope="col"></th>
-              <th scope="col">Groot 1.0</th>
-              <th scope="col">Groot 2.x</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Open Source</th>
-              <td><Check /></td>
-              <td><Cross /></td>
-            </tr>
-            <tr>
-              <th scope="row">
-                Actively developed
-                <OverlayTrigger
-                  placement="bottom"
-                  delay={{  hide: 400 }}
-                  overlay={renderTooltip.bind(null, 'some extra information')}
-                >
-                  <button className={styles.tooltipTrigger}>?</button>
-                </OverlayTrigger>
-              </th>
-              <td><Cross /></td>
-              <td><Check /></td>
-            </tr>
-            <tr>
-              <th scope="row">Commercial support</th>
-              <td><Cross /></td>
-              <td><Check /></td>
-            </tr>
-            <tr>
-              <th scope="row">Tree Editor</th>
-              <td>Free</td>
-              <td>Free</td>
-            </tr>
-            <tr>
-              <th scope="row">Realtime Monitoring</th>
-              <td>Free</td>
-              <td>Commercial<br/>(Coming soon)</td>
-            </tr>
-            <tr>
-              <th scope="row">Supports the new feature in BehaviorTree.CPP 4.X</th>
-              <td><Cross /></td>
-              <td><Check /></td>
-            </tr>
-            <tr>
-              <th scope="row">Multi-file projects<br /></th>
-              <td><Cross /></td>
-              <td><Check /></td>
-            </tr>
-            <tr>
-              <th scope="row">Realtime Debugging:<br /><ul>
-                <li>Add breakpoints at run-time</li>
-                <li>Visualize the content of the Blackboard</li>
-                <li>Nodes mocking and automated tests</li>
-                <li>Add fault injection</li>
-              </ul> </th>
-              <td><Cross /></td>
-              <td>Coming soon</td>
-            </tr>
-          </tbody>
-        </Table>
-      </div>
      {/* groot download  */}
       <div className={`${styles.sectionText} container ${styles.flexCol} gap-5 `}>
       <h1>Download Groot 2.0</h1>

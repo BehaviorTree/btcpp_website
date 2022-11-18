@@ -60,19 +60,22 @@ table, th, td {
     border: 1px solid;
 }
 
-/* jaydip css */
+.comparisionSection{
+    padding-left: 0;
+    padding-right: 0;
+}
+.comparisionSection .h1{
+    padding-left: 15px;
+    padding-right: 15px;
+}
 .sectionText p{ 
     font-size: 16px;
 }
-
 .grootImg{
     box-shadow: 0 10px 15px rgba(0 0 0 / 0.2);
 }
 .grootCardWrapper {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: nowrap;
-    gap: 20px;
+    gap: 40px;
 }
 .grootCard{
     overflow: hidden;
@@ -84,16 +87,23 @@ table, th, td {
     background: #fafafa;
     box-shadow: 0 10px 15px rgb(0 0 0 / 5%);
 }
+.grootFeatureTableWrapper{
+    padding-left: 0;
+    padding-right: 0;
+    border-radius: 15px;
+    overflow: hidden;
+}
 .grootFeatureTable{
     border: 2px solid #f2f2f2;
     background: #fafafa;
     text-align: left;
-
+    width: 100%;
+    display: table;
 }
 .grootCard h2 {
-        display: flex;
-        align-items: center;
-        gap: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 .grootFeatureTable th ul{
     padding-top: 8px;
@@ -153,12 +163,20 @@ table, th, td {
     font-size: 12px;
     font-weight: bold;
 }
+.whitespaceNoWrap{
+    white-space: nowrap;
+}
+
 @media (max-width: 767px) {
     .grootCardWrapper{
         flex-direction: column;
     }
     .downloadGroup > div {
         text-align: center;
+    }
+    .comparisionSection .container{
+        padding-left: 0;
+        padding-right: 0;
     }
 }
 
