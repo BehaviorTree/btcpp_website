@@ -137,7 +137,7 @@ The tree in the next example is a Sequence of 4 actions
 ``` cpp  
 static const char* xml_text = R"(
 
- <root main_tree_to_execute = "MainTree" >
+ <root BTCPP_format="4" >
      <BehaviorTree ID="MainTree">
         <Sequence name="root">
             <CalculateGoal goal="{GoalPosition}" />

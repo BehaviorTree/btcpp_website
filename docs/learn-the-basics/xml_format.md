@@ -5,7 +5,7 @@ In the [first tutorial](tutorial-basics/tutorial_01_first_tree.md) this simple t
 was presented.
 
 ``` XML
- <root main_tree_to_execute = "MainTree" >
+ <root BTCPP_format="4">
      <BehaviorTree ID="MainTree">
         <Sequence name="root_sequence">
             <SaySomething   name="action_hello" message="Hello"/>
@@ -23,10 +23,7 @@ You may notice that:
 
 - The tag `<BehaviorTree>` should have the attribute `[ID]`.
 
-- The tag `<root>` should contain the attribute `[main_tree_to_execute]`.
-
-- The attribute `[main_tree_to_execute]` is mandatory if the file contains multiple `<BehaviorTree>`, 
-  optional otherwise.
+- The tag `<root>` should contain the attribute `[BTCPP_format]`.
 
 - Each TreeNode is represented by a single tag. In particular:
 
@@ -56,7 +53,7 @@ In the following example:
   the blackboard called "my_message"; 
 
 ``` XML
- <root main_tree_to_execute = "MainTree" >
+ <root BTCPP_format="4" >
      <BehaviorTree ID="MainTree">
         <Sequence name="root_sequence">
             <SaySomething message="Hello"/>
@@ -80,7 +77,7 @@ We will call the former syntax "__compact__" and the latter "__explicit__".
 The first example represented with the explicit syntax would become:
 
 ``` XML
- <root main_tree_to_execute = "MainTree" >
+ <root BTCPP_format="4" >
      <BehaviorTree ID="MainTree">
         <Sequence name="root_sequence">
            <Action ID="SaySomething"   name="action_hello" message="Hello"/>
@@ -102,7 +99,7 @@ must be modified as follows:
 
 
 ``` XML
- <root main_tree_to_execute = "MainTree" >
+ <root BTCPP_format="4" >
      <BehaviorTree ID="MainTree">
         <Sequence name="root_sequence">
            <SaySomething   name="action_hello" message="Hello"/>
@@ -134,7 +131,7 @@ Let's say that we want to incapsulate few action into the behaviorTree "__GraspO
 (being optional, attributes [name] are omitted for simplicity).
 
 ``` XML
- <root main_tree_to_execute = "MainTree" >
+ <root BTCPP_format="4" >
  
      <BehaviorTree ID="MainTree">
         <Sequence>
@@ -173,7 +170,7 @@ using the previous example, we may split the two behavior trees into two files:
 ``` XML hl_lines="5"
  <!-- file maintree.xml -->
 
- <root main_tree_to_execute = "MainTree" >
+ <root BTCPP_format="4" >
 	 
 	 <include path="grasp.xml"/>
 	 
@@ -189,7 +186,7 @@ using the previous example, we may split the two behavior trees into two files:
 ``` XML
  <!-- file grasp.xml -->
 
- <root main_tree_to_execute = "GraspObject" >
+ <root BTCPP_format="4" >
      <BehaviorTree ID="GraspObject">
         <Sequence>
            <Action ID="OpenGripper"/>

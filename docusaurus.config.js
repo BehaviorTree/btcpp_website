@@ -43,7 +43,7 @@ const config = {
           lastVersion: 'current',
           versions: {
             current: {
-              label: '4.0',
+              label: '4.0.1',
             },
             3.8: {
               label: '3.8',

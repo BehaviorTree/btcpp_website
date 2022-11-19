@@ -141,7 +141,7 @@ void MoveBaseAction::onHalted()
 The following example should use a simple `SequenceNode`.
 
 ``` xml hl_lines="3"
- <root>
+ <root BTCPP_format="4">
      <BehaviorTree>
         <Sequence>
             <BatteryOK/>

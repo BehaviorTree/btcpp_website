@@ -23,10 +23,8 @@ It is also the first practical example that uses `Decorators` and `Fallback`.
 
 ![crossdoor_subtree.svg](images/crossdoor_subtree.svg)
 
-
-
 ``` xml
-<root main_tree_to_execute = "MainTree">
+<root BTCPP_format="4">
 
     <BehaviorTree ID="MainTree">
         <Sequence>
@@ -124,8 +122,12 @@ int main()
   CrossDoor cross_door;
   cross_door.registerNodes(factory);
 
-  // the XML is the one shown at the beginning of the tutorial
-  auto tree = factory.createTreeFromText(xml_text);
+  // In this example a single XML contains multiple <BehaviorTree>
+  // To determine which one is the "main one", we should first register
+  // the XML and then allocate a specific tree, using its ID
+
+  factory.registerBehaviorTreeFromText(xml_text);
+  auto tree = factory.createTree("MainTree");
 
   // helper function to print the tree
   printTreeRecursively(tree.rootNode());

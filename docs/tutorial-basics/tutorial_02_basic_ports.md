@@ -178,7 +178,7 @@ In this example, a Sequence of 3 Actions is executed:
 - Action 3 read the input `message` from an entry in the blackboard called `the_answer`.
 
 ``` xml
-<root main_tree_to_execute = "MainTree" >
+<root BTCPP_format="4" >
     <BehaviorTree ID="MainTree">
        <Sequence name="root_sequence">
            <SaySomething     message="hello" />

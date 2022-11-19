@@ -24,7 +24,7 @@ Let's consider this Behavior Tree.
 ![port_remapping.svg](images/port_remapping.svg)
 
 ``` xml
-<root main_tree_to_execute = "MainTree">
+<root BTCPP_format="4">
 
     <BehaviorTree ID="MainTree">
         <Sequence>
@@ -72,7 +72,8 @@ int main()
   factory.registerNodeType<SaySomething>("SaySomething");
   factory.registerNodeType<MoveBaseAction>("MoveBase");
 
-  auto tree = factory.createTreeFromText(xml_text);
+  factory.registerBehaviorTreeFromText(xml_text);
+  auto tree = factory.createTree("MainTree");
 
   // Keep ticking until the end
   tree.tickWhileRunning();

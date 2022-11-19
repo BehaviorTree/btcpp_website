@@ -111,7 +111,7 @@ Let's consider the following XML file named __my_tree.xml__:
 
 
 ``` xml
- <root main_tree_to_execute = "MainTree" >
+ <root BTCPP_format="4" >
      <BehaviorTree ID="MainTree">
         <Sequence name="root_sequence">
             <CheckBattery   name="check_battery"/>

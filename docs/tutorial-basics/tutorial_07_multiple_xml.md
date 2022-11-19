@@ -108,7 +108,7 @@ to include into the XML itself, you can modify **main_tree.xml** as shown below:
 
 
 ``` xml
-<root main_tree_to_execute = "MainTree">
+<root BTCPP_format="4">
     // highlight-start
     <include path="./subtree_A.xml" />
     <include path="./subtree_B.xml" />
