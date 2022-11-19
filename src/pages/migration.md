@@ -12,6 +12,13 @@ are incremental and back compatible with your previous code.
 Here we try to summarize the most relevant difference 
 that you should be aware of, when migrating.
 
+:::note
+In the repository you can find a Python script called **convert_v3_to_v4.py**
+that may save you some time (thanks to use https://github.com/SubaruArai)!
+
+Try it, but make sure that you double check the result first!
+:::
+
 ## Class renaming 
 
 The name of the following classes / XML tags changed.
