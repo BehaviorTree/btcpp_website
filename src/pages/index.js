@@ -8,6 +8,7 @@ import clsx from 'clsx';
 
 import styles from './index.module.css';
 import EditorVideo from "@site/static/img/editor.mp4"
+import Head from '@docusaurus/Head';
 
 function Home() {
   const context = useDocusaurusContext();
@@ -18,6 +19,11 @@ function Home() {
       permalink={'/'}
       description={'The leading C++ BehaviorTree Library.'}
     >
+      <Head>
+      <script async defer data-website-id="b0133a07-1c59-49aa-8f9c-7a0c25711718" 
+              src="https://behaviortree-cpp-umami.netlify.app/umami.js">
+      </script>
+      </Head>
       <div className={clsx('hero hero--light', styles.heroBanner)}>
         <div className="container ">
           <div className="row align-items-center">
