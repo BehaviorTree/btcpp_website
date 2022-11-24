@@ -45,6 +45,23 @@ namespace BT
 These changes can be disabled while compiling BT.CPP with the CMake option __USE_V3_COMPATIBLE_NAMES__.
 :::
 
+## XML  
+
+You should add the attribute `BTCPP_format` to the \<root> tag of your XML:
+
+Before:
+```xml
+<root>
+```
+
+Now:
+```xml
+<root BTCPP_format="4">
+```
+
+This will allow us to be compatible
+with both versions 3 and 4 (in future releases, not yet).
+
 ## SubTree and SubTreePlus
 
 The deafault **SubTree** in 3.X has been deprecated and
