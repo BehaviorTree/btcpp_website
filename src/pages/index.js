@@ -112,7 +112,7 @@ function Home() {
                 Trees can be monitored in real-time
               </p>
               <Link
-                className="button button--outline button--primary button--lg"
+                className="button button--outline button--primary button--lg umami--click--editors"
                 to={useBaseUrl('/editors')}
               >
                 About Groot
