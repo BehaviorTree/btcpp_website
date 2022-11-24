@@ -32,7 +32,22 @@ const config = {
     },
   },
   
-  plugins: [require.resolve("@cmfcmf/docusaurus-search-local")],
+  plugins: [
+    require.resolve("@cmfcmf/docusaurus-search-local"),
+    [
+      "@dipakparmar/docusaurus-plugin-umami",
+      /** @type {import('@dipakparmar/docusaurus-plugin-umami').Options} */
+      ({
+        websiteID: "b0133a07-1c59-49aa-8f9c-7a0c25711718", // Required
+        analyticsDomain: "analytics.behaviortree.dev", // Required
+        scriptName: "umami.js",
+        dataHostURL: "https://lucky-caramel-95018d.netlify.app",
+        dataAutoTrack: true, // Optional
+        dataCache: true, // Optional
+        dataDomains: "behaviortree.dev", // comma separated list of domains, *Recommended*
+      }),
+    ],
+  ],
 
   presets: [
     [
