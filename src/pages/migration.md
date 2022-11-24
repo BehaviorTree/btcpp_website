@@ -47,7 +47,7 @@ These changes can be disabled while compiling BT.CPP with the CMake option __USE
 
 ## XML  
 
-You should add the attribute `BTCPP_format` to the \<root> tag of your XML:
+You should add the attribute `BTCPP_format` to the \<root\> tag of your XML:
 
 Before:
 ```xml
