@@ -23,6 +23,9 @@ function Home() {
       <script async defer data-website-id="b0133a07-1c59-49aa-8f9c-7a0c25711718" 
               src="https://behaviortree-cpp-umami.netlify.app/umami.js">
       </script>
+      <script src="https://cdn.stat-track.com/statics/moosend-tracking.min.js" data-website-id="419144d798774876bcfcd1e1f0b6a2ad">
+      </script>
+      
       </Head>
       <div className={clsx('hero hero--light', styles.heroBanner)}>
         <div className="container ">
@@ -112,8 +115,8 @@ function Home() {
                 Trees can be monitored in real-time
               </p>
               <Link
-                className="button button--outline button--primary button--lg umami--click--editors"
-                to={useBaseUrl('/editors')}
+                className="button button--outline button--primary button--lg"
+                to={useBaseUrl('/groot')}
               >
                 About Groot
               </Link>

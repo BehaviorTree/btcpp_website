@@ -32,3 +32,9 @@ article {
 .theme-doc-sidebar-menu{
   font-size: 18px;
 }
+
+@media (max-width: 567px){
+  .navbar__title {
+    font-size: 14px;
+  }
+}

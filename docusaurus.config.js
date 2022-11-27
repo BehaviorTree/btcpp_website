@@ -90,7 +90,18 @@ const config = {
             type: 'doc', label: 'Tutorial', docId: 'intro', position: 'left'
           },
           {
-             to: '/editors', label: 'Editors', position: 'left'
+            position: 'left',
+            label: 'Tools',
+            items: [
+              {
+                to: '/groot', 
+                label: 'Groot'
+              },
+              {
+                to: '/moveit_studio', 
+                label: 'MoveIt Studio'
+              }
+            ]
           },
           {
             to: '/migration', label: 'Migration from 3.X', position: 'left'
