@@ -113,7 +113,7 @@ export default function Groot() {
                     
                     <p><b>Groot 2</b> is the professional successor of Groot, focusing on improved
                       user experience, debuggability and scalability.<br/>
-                      It introduces advanced tools, to support the
+                      It introduces advanced tools to support the
                       entire development cycle, from conception to validation.
                     </p>
                     <p>
@@ -125,8 +125,8 @@ export default function Groot() {
                       src={useBaseUrl('img/open_source_icon.svg')}
                       alt="pro" width="40"/>   Groot 1.0</h2>
                     <p><b>Groot</b> is the original open source editor for <b>BT.CPP</b>.<br/>
-                      It is not under active development anymore, but it still a great
-                      option for users who are still using <b>BehaviorTree.CPP 3.8</b> and need
+                      It is not under active development anymore, but it is still a great
+                      option for users who are using <b>BehaviorTree.CPP 3.8</b> and need
                       real-time visualization.</p>
                       <div className={styles.buttonGroup}>
                       <Link className="button button--primary" to="https://github.com/BehaviorTree/Groot">
@@ -239,7 +239,7 @@ export default function Groot() {
             className="button button--outline button--primary button--lg"
             to="https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_linux_installer/Groot2-x86_64.AppImage"
           >
-            Download Appimage (Linux)
+            Download AppImage (Linux)
           </Link>
         </div>
       </div>
