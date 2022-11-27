@@ -80,7 +80,7 @@ export default function Groot() {
               <div className={styles.buttonGroup}>
                 <button
                   data-mooform-id="419144d7-9877-4876-bcfc-d1e1f0b6a2ad"
-                  className="button button--primary button--lg"
+                  className="button button--primary button--lg umami--click--signup-button"
                   onClick={openPopup} >
                   Keep me up to date
                 </button>
@@ -218,7 +218,7 @@ export default function Groot() {
         <div>
           <img className={styles.downloadLogo} src={useBaseUrl('img/windows.png')} alt="windows logo"/>
           <Link
-            className="button button--outline button--primary button--lg"
+            className="button button--outline button--primary button--lg umami--click--download-windows"
             to="https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_windows_installer/Groot2-windows-installer.exe"
           >
             Download Windows installer
@@ -227,7 +227,7 @@ export default function Groot() {
         <div>
           <img className={styles.downloadLogo} src={useBaseUrl('img/linux.png')} alt="linux logo"/>
           <Link
-            className="button button--outline button--primary button--lg"
+            className="button button--outline button--primary button--lg umami--click--download-linux"
             to="https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_linux_installer/Groot2-linux-installer.run"
           >
             Download Linux installer
@@ -236,7 +236,7 @@ export default function Groot() {
         <div>
           <img className={styles.downloadLogo} src={useBaseUrl('img/appimage.png')} alt="appimage logo"/>
           <Link
-            className="button button--outline button--primary button--lg"
+            className="button button--outline button--primary button--lg umami--click--download-appimage"
             to="https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_linux_installer/Groot2-x86_64.AppImage"
           >
             Download AppImage (Linux)
