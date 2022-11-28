@@ -136,7 +136,7 @@ const config = {
             items: [
               {
                 label: 'Discourse',
-                href: 'https://https://discourse.behaviortree.dev/',
+                href: 'https://discourse.behaviortree.dev/',
               },
             ],
           },

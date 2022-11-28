@@ -77,7 +77,7 @@ export default function Groot() {
                 we will be happy to help.
               </p>
               
-              <div className={styles.buttonGroup}>
+              <div className={styles.sectionText}>
                 <button
                   data-mooform-id="419144d7-9877-4876-bcfc-d1e1f0b6a2ad"
                   className="button button--primary button--lg umami--click--signup-button"
