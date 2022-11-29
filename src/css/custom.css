@@ -33,8 +33,31 @@ article {
   font-size: 18px;
 }
 
-@media (max-width: 567px){
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .heroBanner_src-pages-index-module h1 {
+    font-size: 30px !important;
+    font-weight: bold;
+  }
+}
+@media (max-width: 580px) {
   .navbar__title {
     font-size: 14px;
+  }
+  .heroBanner_src-pages-index-module h1 {
+    font-size: 32px !important;
+    font-weight: bold;
+  }
+  .heroBanner_src-pages-index-module p {
+    font-size: 20px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroBanner_src-pages-index-module h1 {
+    font-size: 28px !important;
+    font-weight: bold;
+  }
+  .heroBanner_src-pages-index-module p {
+    font-size: 18px !important;
   }
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
 import useBaseUrl from "@docusaurus/useBaseUrl";
@@ -12,6 +12,11 @@ function Cross(props) {
   return <img src={useBaseUrl("img/cross.png")} width="15" alt="no" />;
 }
 export default function Groot() {
+
+  useEffect(() => {
+    openPopup();
+  }, []);
+
   const renderTooltip = (message, props) => {
     return (
       <Tooltip id="button-tooltip" className={styles.toolTip} {...props}>
@@ -67,7 +72,6 @@ export default function Groot() {
                 <b>Groot</b> is the Integrated Development Environment to build
                 and debug Behavior Trees. It allows you to:
               </p>
-              <p>
                 <ul>
                   <li>
                     Create and edit trees, using a drag and drop interface.
@@ -77,7 +81,6 @@ export default function Groot() {
                     Debug and test your behaviors (<b>new in version 2</b>)
                   </li>
                 </ul>
-              </p>
               <h3>Groot 2 is under development (preview now available)</h3>
               <p>
                 We are reimaginging Groot to be easier to use and more scalable,
@@ -89,7 +92,7 @@ export default function Groot() {
                 we will be happy to help.
               </p>
 
-              <div className={styles.sectionText}>
+              <div className={styles.buttonGroup}>
                 <button
                   data-mooform-id="419144d7-9877-4876-bcfc-d1e1f0b6a2ad"
                   className="button button--primary button--lg umami--click--signup-button"
@@ -98,6 +101,7 @@ export default function Groot() {
                   Keep me up to date
                 </button>
               </div>
+              <br />
             </div>
             <div className="col col--6">
               <img
@@ -114,7 +118,7 @@ export default function Groot() {
       <div
         className={`${styles.sectionText} ${styles.comparisionSection} ${styles.flexCol}`}
       >
-        <div class="container">
+        <div className="container">
           <h2 className="text--center">
             Which version of Groot is the right for you?
           </h2>

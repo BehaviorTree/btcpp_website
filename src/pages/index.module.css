@@ -37,7 +37,6 @@ li{
 }
 
 .heroText {
-    padding: 2.5rem 0;
     color: #3b3b3b;
     padding: 3.5rem 0;
 }
@@ -54,7 +53,6 @@ li{
 }
 
 .sectionText {
-    padding: 0.5rem 0;
     display: flex;
     align-items: center;
     justify-content: center;

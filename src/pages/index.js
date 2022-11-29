@@ -9,6 +9,8 @@ import clsx from "clsx";
 import styles from "./index.module.css";
 import EditorVideo from "@site/static/img/editor.mp4";
 import Head from "@docusaurus/Head";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from "react-responsive-carousel";
 
 function Home() {
   const context = useDocusaurusContext();
@@ -36,7 +38,7 @@ function Home() {
           <div className="row align-items-center">
             <div className="col col--6">
               <div className={clsx(styles.heroText)}>
-                <h1 className="hero__title">BehaviorTree.CPP 4.0</h1>
+                <h1 className="hero__title ">BehaviorTree.CPP 4.0</h1>
                 <p className="hero__subtitle">
                   The C++ library to build Behavior Trees.
                   <br />
@@ -103,7 +105,7 @@ function Home() {
       <div className={styles.sectionText}>
         <div className="container padding-vert--xl text--left {styles.sectionText}">
           <div className="row">
-            <div className="col col--5">
+            <div className="col col--6">
               <h2>
                 Perfect for robotics
                 <br />
@@ -118,11 +120,22 @@ function Home() {
                 <li>Automated Ground Vehicles</li>
                 <li>Robotic Manipulators</li>
                 <li>Humanoid and Quadruped robots</li>
+                <li>Semi-autonomous drones</li>
                 <li>Social Robots</li>
               </ul>
             </div>
-            <div className="col col--6 col--offset-1">
-              <img src={useBaseUrl("img/image02.jpg")} alt="robots" />
+            <div className="col col--5 col--offset-1">
+              <Carousel autoPlay showThumbs={false} infiniteLoop={true}>
+                <div>
+                  <img src={useBaseUrl("img/image_agv.jpg")} alt="robots" />
+                </div>
+                <div>
+                  <img src={useBaseUrl("img/image_drone.jpg")} alt="robots" />
+                </div>
+                <div>
+                  <img src={useBaseUrl("img/image_arm.jpg")} alt="robots" />
+                </div>
+              </Carousel>
             </div>
           </div>
         </div>
@@ -131,10 +144,10 @@ function Home() {
       <div className={styles.sectionText}>
         <div className="container padding-vert--xl text--left">
           <div className="row">
-            <div className="col col--6">
+            <div className="col col--5">
               <video src={EditorVideo} muted autoPlay width="100%"></video>
             </div>
-            <div className="col col--5 col--offset-1">
+            <div className="col col--6 col--offset-1">
               <h2>Visual Editing and Monitoring</h2>
               <p>
                 <b>Groot</b> is our "IDE for Behavior Trees".
