@@ -81,7 +81,7 @@ public:
   // Override the virtual function tick()
   NodeStatus tick() override
   {
-    Optional<std::string> msg = getInput<std::string>("message");
+    Expected<std::string> msg = getInput<std::string>("message");
     // Check if optional is valid. If not, throw its error
     if (!msg)
     {
