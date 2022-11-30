@@ -82,7 +82,7 @@ public:
   NodeStatus tick() override
   {
     Expected<std::string> msg = getInput<std::string>("message");
-    // Check if optional is valid. If not, throw its error
+    // Check if expected is valid. If not, throw its error
     if (!msg)
     {
       throw BT::RuntimeError("missing required input [message]: ", 
