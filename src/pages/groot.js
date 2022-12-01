@@ -4,6 +4,7 @@ import Link from "@docusaurus/Link";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./groot.module.css";
 import Table from "react-bootstrap/Table";
+import Head from "@docusaurus/Head";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 function Check(props) {
   return <img src={useBaseUrl("img/check.png")} width="15" alt="yes" />;
@@ -17,6 +18,7 @@ export default function Groot() {
     openPopup();
   }, []);
 
+  
   const renderTooltip = (message, props) => {
     return (
       <Tooltip id="button-tooltip" className={styles.toolTip} {...props}>
@@ -96,6 +98,7 @@ export default function Groot() {
                 <button
                   data-mooform-id="419144d7-9877-4876-bcfc-d1e1f0b6a2ad"
                   className="button button--primary button--lg umami--click--signup-button"
+                  data-analytics='"Signup"'
                   onClick={openPopup}
                 >
                   Keep me up to date
