@@ -65,6 +65,9 @@ export default function Groot() {
   return (
     <Layout title="Groot" description="Groot Editor">
       {/* groot intro */}
+      <Head>
+      <script defer data-domain="behaviortree.dev" src="https://plausible.io/js/script.file-downloads.js"></script>
+      </Head>
       <div className={`styles.sectionText`}>
         <div className={`container text--left ${styles.sectionText}`}>
           <div className="row">
