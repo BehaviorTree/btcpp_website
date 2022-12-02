@@ -130,6 +130,9 @@ function Home() {
                   <img src={useBaseUrl("img/image_agv.jpg")} alt="robots" />
                 </div>
                 <div>
+                  <img src={useBaseUrl("img/image_quadruped.png")} alt="quadrupeds" />
+                </div>
+                <div>
                   <img src={useBaseUrl("img/image_drone.jpg")} alt="robots" />
                 </div>
                 <div>
