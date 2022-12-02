@@ -4,8 +4,8 @@ import Link from "@docusaurus/Link";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./groot.module.css";
 import Table from "react-bootstrap/Table";
-import Head from "@docusaurus/Head";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
+import Head from "@docusaurus/Head";
 function Check(props) {
   return <img src={useBaseUrl("img/check.png")} width="15" alt="yes" />;
 }
@@ -66,7 +66,17 @@ export default function Groot() {
     <Layout title="Groot" description="Groot Editor">
       {/* groot intro */}
       <Head>
-      <script defer data-domain="behaviortree.dev" src="https://plausible.io/js/script.file-downloads.js"></script>
+        <script
+          defer
+          file-types="run,AppImage"
+          data-domain="behaviortree.dev"
+          src="https://plausible.io/js/script.file-downloads.js"
+        ></script>
+        <script
+          defer
+          data-domain="behaviortree.dev"
+          src="https://plausible.io/js/script.js"
+        ></script>
       </Head>
       <div className={`styles.sectionText`}>
         <div className={`container text--left ${styles.sectionText}`}>
@@ -77,15 +87,13 @@ export default function Groot() {
                 <b>Groot</b> is the Integrated Development Environment to build
                 and debug Behavior Trees. It allows you to:
               </p>
-                <ul>
-                  <li>
-                    Create and edit trees, using a drag and drop interface.
-                  </li>
-                  <li>Monitor the state of a tree remotely in real-time.</li>
-                  <li>
-                    Debug and test your behaviors (<b>new in version 2</b>)
-                  </li>
-                </ul>
+              <ul>
+                <li>Create and edit trees, using a drag and drop interface.</li>
+                <li>Monitor the state of a tree remotely in real-time.</li>
+                <li>
+                  Debug and test your behaviors (<b>new in version 2</b>)
+                </li>
+              </ul>
               <h3>Groot 2 is under development (preview now available)</h3>
               <p>
                 We are reimaginging Groot to be easier to use and more scalable,
