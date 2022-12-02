@@ -60,6 +60,7 @@ export default function Groot() {
       (" ");
     }
     mootrack("loadForm", "419144d798774876bcfcd1e1f0b6a2ad");
+    plausible('Signup');
   };
 
   return (
