@@ -16,9 +16,13 @@ export default function Groot() {
 
   useEffect(() => {
     openPopup();
+    (window.plausible =
+      window.plausible ||
+      function () {
+        (window.plausible.q = window.plausible.q || []).push(arguments);
+      })
   }, []);
 
-  
   const renderTooltip = (message, props) => {
     return (
       <Tooltip id="button-tooltip" className={styles.toolTip} {...props}>
@@ -60,6 +64,7 @@ export default function Groot() {
       (" ");
     }
     mootrack("loadForm", "419144d798774876bcfcd1e1f0b6a2ad");
+    plausible('Signup');
   };
 
   return (
@@ -109,7 +114,6 @@ export default function Groot() {
                 <button
                   data-mooform-id="419144d7-9877-4876-bcfc-d1e1f0b6a2ad"
                   className="button button--primary button--lg umami--click--signup-button"
-                  data-analytics='"Signup"'
                   onClick={openPopup}
                 >
                   Keep me up to date
