@@ -2,7 +2,7 @@
 
 Let's take a look at some common mistakes.
 
-![enlightenment](images/enlightenment.jpg)
+![enlightenment](images/enlightenment_small.jpg)
 
 ### Misuse of Sequence
 
