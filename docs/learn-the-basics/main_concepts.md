@@ -12,7 +12,7 @@ These are the main concepts which you need to understand first.
 The user must create his/her own ActionNodes and ConditionNodes (LeafNodes);
 this library helps you to compose them easily into trees. 
 
-Think about the LeafNodes as the building blocks which you need to compose a complex system. It Nodes were **lego bricks**, your trees would be lego sets.
+Think about the LeafNodes as the building blocks which you need to compose a complex system. If Nodes were **lego bricks**, your trees would be lego sets.
 
 ![](images/lego.jpg) 
 
