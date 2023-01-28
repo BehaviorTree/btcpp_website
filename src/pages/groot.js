@@ -326,7 +326,7 @@ export default function Groot() {
         className={`${styles.sectionText} container ${styles.flexCol} gap-5 `}
       >
         <h1>Download Groot 2</h1>
-        <h3>Version: 0.3.0 (beta-3, 2022-12-26)</h3>
+        <h3>Version: 0.4.0 (beta-4, 2023-01-28)</h3>
         <div className={styles.downloadGroup}>
           <div>
             <img
