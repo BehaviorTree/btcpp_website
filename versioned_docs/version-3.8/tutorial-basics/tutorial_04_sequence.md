@@ -28,9 +28,9 @@ Actions. You will find an extensive article
 [here](tutorial-advanced/asynchronous_nodes.md).
 :::
 
-## StatefulAsyncAction 
+## StatefulActionNode 
 
-The __StatefulAsyncAction__ is the preferred way to implement asynchronous Actions.
+The __StatefulActionNode__ is the preferred way to implement asynchronous Actions.
 
 It is particularly useful when your code contains a __request-reply pattern__,
 i.e. when the action sends an asynchronous request to another process,
@@ -43,7 +43,7 @@ computation that takes a long time, you may want to split it into small "chunks"
 or you may want to move that computation to another thread 
 (see [AsyncThreadedAction](tutorial-advanced/asynchronous_nodes.md) tutorial).
 
-A derived class of __StatefulAsyncAction__ must override the following virtual methods,
+A derived class of __StatefulActionNode__ must override the following virtual methods,
 instead of `tick()`:
 
 - __NodeStatus onStart()__: called when the Node was in IDLE state.
@@ -67,12 +67,12 @@ struct Pose2D
 
 namespace chr = std::chrono;
 
-class MoveBaseAction : public BT::StatefulAsyncAction
+class MoveBaseAction : public BT::StatefulActionNode
 {
   public:
     // Any TreeNode with ports must have a constructor with this signature
     MoveBaseAction(const std::string& name, const BT::NodeConfiguration& config)
-      : StatefulAsyncAction(name, config)
+      : StatefulActionNode(name, config)
     {}
 
     // It is mandatory to define this static method.

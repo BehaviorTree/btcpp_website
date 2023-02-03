@@ -57,18 +57,18 @@ a node is RUNNING, usually, its parent returns RUNNING too.
 ![tree in running state](images/RunningTree.svg)
 
 Let's consider a simple "SleepNode". A good template to get started is 
-the __StatefulAsyncAction__.
+the __StatefulActionNode__.
 
 ``` cpp
 
 using namespace std::chrono;
 
 // Example of Asynchronous node that uses StatefulActionNode as base class
-class SleepNode : public BT::StatefulAsyncAction
+class SleepNode : public BT::StatefulActionNode
 {
   public:
     SleepNode(const std::string& name, const BT::NodeConfig& config)
-      : BT::StatefulAsyncAction(name, config)
+      : BT::StatefulActionNode(name, config)
     {}
 
     static BT::PortsList providedPorts()
