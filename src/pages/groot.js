@@ -129,7 +129,7 @@ export default function Groot() {
             <div className="col col--6">
               <img
                 className={styles.grootImg}
-                src={useBaseUrl("img/groot_2.png")}
+                src={useBaseUrl("img/groot_2.webp")}
                 alt="groot 2"
               />
             </div>

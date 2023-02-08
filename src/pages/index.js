@@ -127,10 +127,10 @@ function Home() {
             <div className="col col--5 col--offset-1">
               <Carousel autoPlay showThumbs={false} infiniteLoop={true}>
                 <div>
-                  <img src={useBaseUrl("img/image_agv.jpg")} alt="robots" />
+                  <img src={useBaseUrl("img/image_agv.webp")} alt="robots" />
                 </div>
                 <div>
-                  <img src={useBaseUrl("img/image_quadruped.png")} alt="quadrupeds" />
+                  <img src={useBaseUrl("img/image_quadruped.webp")} alt="quadrupeds" />
                 </div>
                 <div>
                   <img src={useBaseUrl("img/image_drone.jpg")} alt="robots" />
