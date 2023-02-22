@@ -192,7 +192,7 @@ function Home() {
                   <br />
                   If you are using BehaviorTree.CPP in your commercial product
                   and you need support,
-                  <a href="mailto:dfaconti@aurynrobotics"> contact us!</a>
+                  <a href="mailto:dfaconti@aurynrobotics.com"> contact us!</a>
                 </p>
               </div>
             </div>
