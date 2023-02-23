@@ -65,8 +65,9 @@ we can store a boolean in an entry called `door_closed`, the XML can be rewritte
 |-------------|---------|
 | **_onSuccess** | Execute this script, if the Node returned SUCCESS |
 | **_onFailure** | Execute this script, if the Node returned FAILURE  |
-| **_onHalted**  | Sctipt execute if a RUNNING Node was halted |
-| **_while**     | Script executed if Node returns either SUCCESS or FAILURE |
+| **_post**      | Execute this script, if the Node returned either SUCCESS or FAILURE |
+| **_onHalted**  | Script executed if a RUNNING Node was halted |
+
 
 ### Example
 
