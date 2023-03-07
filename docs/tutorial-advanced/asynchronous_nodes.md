@@ -127,7 +127,7 @@ This may return SUCCESS immediately if the sleep time is 0 or will return RUNNIN
 
 A **wrong** way to implement the `SleepNode` would be this one:
 
-```c++
+```cpp
 // This is the synchronous version of the Node. Probably not what we want.
 class BadSleepNode : public BT::ActionNodeBase
 {
@@ -175,7 +175,7 @@ the `halt()`method is invoked.
 For this reason, users are usually discouraged from using `BT::ThreadedAction` as a
 base class. Let's have a look again at the SleepNode.
 
-```c++
+```cpp
 // This will spawn its own thread. But it still has problems when halted
 class BadSleepNode : public BT::ThreadedAction
 {
@@ -204,7 +204,7 @@ class BadSleepNode : public BT::ThreadedAction
 
 A correct version would be:
 
-```c++
+```cpp
 // I will create my own thread here, for no good reason
 class ThreadedSleepNode : public BT::ThreadedAction
 {

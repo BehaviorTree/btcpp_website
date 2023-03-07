@@ -127,7 +127,7 @@ This may return SUCCESS immediately if the sleep time is 0 or will return RUNNIN
 
 A **wrong** way to implement the `SleepNode` would be this one:
 
-```c++
+```cpp
 // This is the synchronous version of the Node. Probably not what we want.
 class BadSleepNode : public BT::ActionNodeBase
 {
