@@ -166,7 +166,7 @@ int main()
   // Here, instead of tree.tickWhileRunning(),
   // we prefer our own loop.
   std::cout << "--- ticking\n";
-  status = tree.tickWhileRunning();
+  status = tree.tickOnce();
   std::cout << "--- status: " << toStr(status) << "\n\n";
 
   while(status == NodeStatus::RUNNING) 
