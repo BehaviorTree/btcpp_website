@@ -5,7 +5,7 @@ sidebar_position: 1
 # Introduction to Scripting
 
 Behavior Tree 4.X introduces a simple but powerful new concept:
-a scripting language with XML.
+a scripting language within XML.
 
 The implemented scripting language has a familiar syntax; it allows the user to quickly
 read from / write to the variables of the blackboard.

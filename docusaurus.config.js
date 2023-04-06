@@ -87,7 +87,7 @@ const config = {
         },
         items: [
           {
-            type: 'doc', label: 'Tutorial', docId: 'intro', position: 'left'
+            type: 'doc', label: 'Docs', docId: 'intro', position: 'left'
           },
           {
             position: 'left',

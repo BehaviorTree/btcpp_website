@@ -25,7 +25,7 @@ The flow of execution should be returned as fast as possible.
 Users should fully understand how Concurrency is achieved in BT.CPP
 and learn best practices about how to develop their own Asynchronous
 Actions. You will find an extensive article 
-[here](tutorial-advanced/asynchronous_nodes.md).
+[here](guides/asynchronous_nodes.md).
 :::
 
 ## StatefulActionNode 
@@ -41,7 +41,7 @@ Based on that reply, it may return SUCCESS or FAILURE.
 If instead of communicating with an external process, you are performing some
 computation that takes a long time, you may want to split it into small "chunks" 
 or you may want to move that computation to another thread 
-(see [AsyncThreadedAction](tutorial-advanced/asynchronous_nodes.md) tutorial).
+(see [AsyncThreadedAction](guides/asynchronous_nodes.md) tutorial).
 
 A derived class of __StatefulActionNode__ must override the following virtual methods,
 instead of `tick()`:

@@ -5,7 +5,7 @@ sidebar_position: 2
 # Pre and Post conditions
 
 Leveraging the power of the scripting language
-introduced in the [previous tutorial](tutorial-advanced/scripting.md),
+introduced in the [previous tutorial](guides/scripting.md),
 BT.CPP 4.x introduces the concept of Pre and Post Conditions,
 i.e scripts that can run either before or after the actual 
 __tick()__ of a Node.

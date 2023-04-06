@@ -160,7 +160,7 @@ static value into an entry using the built-in Actions called `Script`.
 ```
 
 We will talk more about the Action __Script__ in the tutorial
-about the [new scripting language inside BT.CPP](tutorial-advanced/scripting.md)
+about the [new scripting language inside BT.CPP](guides/scripting.md)
 
 :::tip
 If you are migrating from BT.CPP 3.X, __Script__ is a drop-in replacement
