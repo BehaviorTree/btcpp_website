@@ -148,7 +148,7 @@ https://json.nlohmann.me/features/arbitrary_types/
 
 For instance, given a user-defined type:
 
-```c++
+```cpp
 struct Pose2D {
     double x;
     double y;
@@ -158,7 +158,7 @@ struct Pose2D {
 
 The following function should be implemented:
 
-```c++
+```cpp
 void to_json(nlohmann::json& dest, const Pose2D& pose) {
     dest["x"] = pose.x;
     dest["y"] = pose.y;
