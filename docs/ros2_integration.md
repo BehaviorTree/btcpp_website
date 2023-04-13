@@ -27,7 +27,7 @@ the context of **ROS** or **BT.CPP**.
 In particular, the words "Action" and "Node":
 
 - `TreeNode` vs `rclcpp::Node`
-- `BT::Action'  vs `rclcpp_action`.
+- `BT::Action` vs `rclcpp_action`.
 :::
 
 You can use these directly or use them as templates/blueprints to create your
