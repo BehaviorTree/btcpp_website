@@ -119,7 +119,8 @@ public:
   // Usually, this callback should return RUNNING, but you
   // might decide, based on the value of the feedback, to abort
   // the action, and consider the TreeNode completed.
-  // In that case, you should return SUCCESS or FAILURE.
+  // In that case, return SUCCESS or FAILURE.
+  // The Cancel request will be send automatically to the server.
   NodeStatus onFeedback(const std::shared_ptr<const Feedback> feedback)
   {
     std::stringstream ss;
