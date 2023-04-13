@@ -63,10 +63,10 @@ To create a BT Action that invokes this ROS Action:
 
 using namespace BT;
 
-class FinonacciAction: public RosActionNode<Fibonacci>
+class FibonacciAction: public RosActionNode<Fibonacci>
 {
 public:
-  FinonacciAction(const std::string& name,
+  FibonacciAction(const std::string& name,
                   const NodeConfig& conf,
                   const RosNodeParams& params)
     : RosActionNode<Fibonacci>(name, conf, params)
@@ -150,7 +150,7 @@ and other parameters using the `BT::RosNodeParams`:
   RosNodeParams params; 
   params.nh = node;
   params.default_port_value = "fibonacci";
-  factory.registerNodeType<SleepAction>("Sleep", params);
+  factory.registerNodeType<FibonacciAction>("Fibonacci", params);
 ```
 
 ## Asynchronous BT::Action using rclcpp::Client (services)
