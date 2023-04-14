@@ -336,7 +336,7 @@ export default function Groot() {
             />
             <Link
               className="button button--outline button--primary button--lg umami--click--download-windows"
-              to="https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_windows_installer/Groot2-windows-installer.exe"
+              to="https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_windows_installer/Groot2-0.5.0-windows-installer.exe"
             >
               Download Windows installer
             </Link>
