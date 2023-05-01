@@ -128,7 +128,7 @@ factory.registerNodeType<Action_B>( "Action_B" );
 // Create the whole tree. Instances of Action_B are not initialized yet
 auto tree = factory.createTreeFromText(xml_text);
 
-// visitor will initialize the instances of 
+// Apply the visitor to ALL the nodes of the tree 
 auto visitor = [](TreeNode* node)
 {
   if (auto action_B_node = dynamic_cast<Action_B*>(node))
@@ -136,9 +136,6 @@ auto visitor = [](TreeNode* node)
     action_B_node->initialize(69, "interesting_value");
   }
 };
-// Apply the visitor to ALL the nodes of the tree
-tree.applyVisitor(visitor);
-
 ```
 
 
