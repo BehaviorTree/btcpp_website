@@ -74,7 +74,7 @@ function Home() {
                 <br /> not states
               </h3>
               <p>
-                Unlike state machines, behavior trees empathize executing
+                Unlike state machines, behavior trees emphasize executing
                 actions, not transitioning between states.
               </p>
             </div>
