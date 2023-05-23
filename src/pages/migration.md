@@ -98,7 +98,15 @@ New code in **4.X**:
 </Precondition>
 ```
 
-## Preemptable Nodes and Tree::tickRoot()
+## Ticking
+
+The method `Tree::tickRoot()` was removed, and we introduced these two new methods instead:
+
+- `Tree::tickOnce()` works as usual. It should run inside a while-loop.
+- `Tree::tickWhileRunning()` has its own while-loop, and will continue ticking until either 
+SUCCESS or FAILURE is received.
+
+# Asychronous Control Nodes
 
 A serious problem was detected by a user 
 [here](https://github.com/BehaviorTree/BehaviorTree.CPP/issues/395):
@@ -118,31 +126,14 @@ Consider this example:
     <Sequence>
 </ReactiveSequence>   
 ```
+When a `Sequence` (or `Fallback`) has only synchronous children, the entire sequence becomes
+"atomic". 
 
-:::danger
-Once the Sequence "synch_sequence" starts, with BT.CPP 3.X
-it is impossible for **AbortCondition** to stop it.
-:::
+In other words, when "synch_sequence" starts, it is impossible for `AbortCondition` to stop it.
 
-In BT.CPP 4.X we modified our Controls and Decorators to
-prevent this potential issue.
+To address this issue, we added two new nodes, `AsyncSequence` and `AsyncFallback`.
 
-Now, when a Synchronous child is executed, **RUNNING is returned** before moving to the next child.
-In this way, we give the opportunity to the tree to check ReactiveSequences or other Conditions.  
+When `AsyncSequence` is used, **RUNNING** is returned after the execution of each synchronous child,
+before moving to the next sibling.
 
-From a practical point of view, this means that we must call **tick()** more often.
-
-:::tip
-This new behavior should NOT introduce any additional latency, at least not a significant one.
-
-When Controls and Decorator return RUNNING, the method `Tree::sleep()` will **not**
-block and won't introduce any additional delay. This is the reason why you should never use 
-"normal" sleep functions.
-:::
-
-To make this new behavior more explicit, the method `Tree::tickRoot()` was removed,
-and we introduce these two new methods instead:
-
-- `Tree::tickOnce()` works as usual. It should run inside a while-loop.
-- `Tree::tickWhileRunning()` has its own while-loop, and will continue ticking until either 
-SUCCESS or FAILURE is received.
+In this way, we give allow the tree to run the `ReactiveSequence` above.  
