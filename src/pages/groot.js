@@ -289,13 +289,7 @@ export default function Groot() {
                     <tr>
                       <th scope="row">Realtime Monitoring</th>
                       <td>Free</td>
-                      <td>
-                        Commercial
-                        <br />
-                        <span className={`${styles.whitespaceNoWrap}`}>
-                          (Coming soon)
-                        </span>
-                      </td>
+                      <td>Commercial</td>
                     </tr>
                     <tr>
                       <th scope="row">
@@ -311,7 +305,9 @@ export default function Groot() {
                       <td>
                         <Cross />
                       </td>
-                      <td>Coming soon</td>
+                      <td>
+                        <Check />
+                      </td>
                     </tr>
                   </tbody>
                 </Table>
@@ -326,7 +322,7 @@ export default function Groot() {
         className={`${styles.sectionText} container ${styles.flexCol} gap-5 `}
       >
         <h1>Download Groot 2</h1>
-        <h3>Version: 0.5.0 (beta-5, 2023-02-08)</h3>
+        <h3>Version: 0.8.0 (beta-8, 2023-05-31)</h3>
         <div className={styles.downloadGroup}>
           <div>
             <img
@@ -362,7 +358,7 @@ export default function Groot() {
             />
             <Link
               className="button button--outline button--primary button--lg umami--click--download-appimage"
-              to="https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_linux_installer/Groot2-x86_64.AppImage"
+              to="https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_linux_installer/Groot2-v0.8.0-x86_64.AppImage"
             >
               Download AppImage (Linux)
             </Link>
