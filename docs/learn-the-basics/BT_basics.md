@@ -20,12 +20,12 @@ more time to return a valid result.
 
 - If a TreeNode has one or more children, it is its
 responsibility to propagate the tick; each Node type may
-have different rules about if, when and how many times children are ticked.
+have different rules about if, when, and how many times children are ticked.
 
  - The __LeafNodes__, those TreeNodes which don't have any children,
    are the actual commands, i.e. the Nodes where the behavior tree
    interacts with the rest of the system.
-   __Actions__ nodes are the most common type of LeafNodes.
+   __Action__ nodes are the most common type of LeafNodes.
 
 :::tip
 The word __tick__ will be often used as a *verb* (to tick / to be ticked)
@@ -49,7 +49,7 @@ its children one after the other and, if they all Succeed,
 it returns SUCCESS too.
 
 1. The first tick sets the Sequence node to RUNNING (orange).
-2. Sequence tick the first child, "OpenDoor", that eventually returns SUCCESS.
+2. Sequence ticks the first child, "OpenDoor", that eventually returns SUCCESS.
 3. As a result, the second child "Walk" and later "CloseDoor"
 are ticked.
 4. Once the last child is completed, the entire Sequence 
@@ -62,7 +62,7 @@ switches from RUNNING to SUCCESS.
 | Type of TreeNode  | Children Count     | Notes              |
 | -----------       | ------------------ | ------------------ |
 | ControlNode       | 1...N | Usually, ticks a child based on the result of its siblings or/and its own state.        |
-| DecoratorNode     | 1     | Among other things, it may alter the result of the children or tick it multiple times.
+| DecoratorNode     | 1     | Among other things, it may alter the result of its child or tick it multiple times.
 | ConditionNode     | 0     | Should not alter the system. Shall not return RUNNING. |
 | ActionNode        | 0     | This is the Node that "does something"   |
 
@@ -99,13 +99,13 @@ representation, the order of execution is __from left to right__.
 In short:
 
 - If a child returns SUCCESS, tick the next one.
-- If a child returns FAILURE, then no more children are ticked and the Sequence returns FAILURE.
+- If a child returns FAILURE, then no more children are ticked, and the Sequence returns FAILURE.
 - If __all__ the children return SUCCESS, then the Sequence returns SUCCESS too.
 
 :::caution Find the BUG!
 
 If the action __GrabBeer__ fails, the door of the 
-fridge will remain open, since the last action __CloseFridge__ is skipped.
+fridge will remain open since the last action __CloseFridge__ is skipped.
 :::
 
 ### Decorators
@@ -129,7 +129,7 @@ __isDoorOpen__ is, therefore, equivalent to
 The node __Retry__ will repeat ticking the child up to __num_attempts__ times (5 in this case)
 if the child returns FAILURE.
 
-__Apparently__, the branch on the right side means: 
+__Apparently__, the branch on the left side means:
 
     If the door is closed, then try to open it.
     Try up to 5 times, otherwise give up and return FAILURE.
@@ -138,7 +138,7 @@ But...
     
 :::caution Find the BUG!
 If __isDoorOpen__ returns FAILURE, we have the desired behavior.
-But if it returns SUCCESS, the left branch fails and the entire Sequence
+But if it returns SUCCESS, the left branch fails, and the entire Sequence
 is interrupted.
 :::
     

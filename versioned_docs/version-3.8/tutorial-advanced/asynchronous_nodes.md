@@ -11,7 +11,7 @@ When designing reactive Behavior Trees, it is important to understand two main c
 
 ## Concurrency vs Parallelism
 
-If you Google those words, you will read many good articles about this topic.
+If you google these words, you will read many good articles about this topic.
 
 :::info
 **Concurrency** is when two or more tasks can start, run, and complete in overlapping time periods.
@@ -20,7 +20,7 @@ It doesn't necessarily mean they'll ever both be running at the same instant.
 **Parallelism** is when tasks literally run at the same time in different  threads, e.g., on a multicore processor.
 :::
 
-BT.CPP executes all the nodes **Concurrently**, in other words:
+BT.CPP executes all the nodes **concurrently**. In other words:
 
 - The Tree execution engine is **single-threaded**.
 - All the `tick()` methods are executed **sequentially**.
@@ -33,7 +33,7 @@ return as soon as possible the state RUNNING.
 
 This tells the tree executor that the action was started and needs more time to return
 the state SUCCESS or FAILURE.
-We need to tick that Node again, to know if the state changed or not (polling).
+We need to tick that Node again to know if the state changed or not (polling).
 
 An Asynchronous node may delegate this long execution either to another process
 (using inter-process communication) or another thread.
@@ -48,11 +48,11 @@ In general, an Asynchronous Node is one that:
 Frequently, the method **halt()** must be implemented by the developer.
 
 When your Tree executes an Asynchronous Action that returns RUNNING,
-that state is usually **propagated backbard** and the entire Tree is considered
+that state is usually **propagated backward** and the entire Tree is considered
 in the RUNNING state.
 
 In the example below, "ActionE" is asynchronous and RUNNING; when
-a node is RUNNING, usually its parent returns RUNNING too.
+a node is RUNNING, usually, its parent returns RUNNING too.
 
 ![tree in running state](images/RunningTree.svg)
 
@@ -170,7 +170,7 @@ That was a bad idea, for multiple reasons:
 - You probably don't need to.
 - People think that this will magically make the Action "asynchronous", but they 
 forget that it is still **their responsibility** to stop that thread "somehow" and **fast** when 
-the `halt()`method is invoked.
+the `halt()` method is invoked.
 
 For this reason, users are usually discouraged from using `BT::ThreadedAction` as a
 base class. Let's have a look again at the SleepNode.
@@ -220,14 +220,14 @@ class ThreadedSleepNode : public BT::ThreadedAction
 
     NodeStatus tick() override
     {  
-      // This code run in its own thread, therefore the Tree is still running.
+      // This code runs in its own thread, therefore the Tree is still running.
       int msec = 0;
       getInput("msec", msec);
 
       using namespace std::chrono;
       const auto deadline = system_clock::now() + milliseconds(msec);
 
-      // periodically check isHaltRequested() 
+      // Periodically check isHaltRequested() 
       // and sleep for a small amount of time only (1 millisecond)
       while( !isHaltRequested() && system_clock::now() < deadline )
       {
@@ -244,7 +244,7 @@ class ThreadedSleepNode : public BT::ThreadedAction
 As you can see, this looks more complicated than the version we implemented
 first, using `BT::StatefulActionNode`.
 This pattern can still be useful in some case, but you must remember that introducing 
-multi-threading make things more complicated and **should be avoided by default**. 
+multi-threading makes things more complicated and **should be avoided by default**. 
 
 ## Advanced example: client / server communication
 
@@ -257,10 +257,9 @@ ActionLib provides exactly the kind of API that we need to implement correctly a
 1. A non-blocking function to start the Action.
 2. A way to monitor the current state of execution of the Action.
 3. A way to retrieve the result or the error messages.
-4. The ability to preempt / abort an action that is being executed.
+4. The ability to preempt/abort an action that is being executed.
 
 None of these operations is "blocking", therefore we don't need to spawn our own thread.
 
-More generally, we may assume that the developer has their own inter-processing communication, 
+More generally, we may assume that the developer has their own inter-process communication, 
 with a client/server relationship between the BT executor and the actual service provider.
-

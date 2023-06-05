@@ -33,7 +33,7 @@ To understand how the two ControlNodes differ, refer to the following table:
   child of the list.
 
 - "__Tick again__" means that the next time the fallback is ticked, the 
-  same child is ticked again. Previous sibling, which returned FAILURE already,
+  same child is ticked again. Previous siblings, which returned FAILURE already,
   are not ticked again.
 
 ## Fallback
@@ -45,7 +45,7 @@ Check first (and once) if the door is open.
 
 ## ReactiveFallback
 
-This ControlNode is used when you want to interrupt an __asynchronous__
+This ControlNode is used when we want to interrupt an __asynchronous__
 child if one of the previous Conditions changes its state from 
 FAILURE to SUCCESS.
 

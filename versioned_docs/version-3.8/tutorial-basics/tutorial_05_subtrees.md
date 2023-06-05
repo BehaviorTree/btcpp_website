@@ -3,7 +3,7 @@ sidebar_position: 5
 sidebar_label: 05. Using SubTrees
 ---
 
-# Compose behaviors using Subtrees 
+# Compose behaviors using Subtrees
 
 We can build large-scale behavior by inserting smaller and reusable
 behaviors into larger ones.
@@ -12,7 +12,7 @@ In other words, we want to create __hierarchical__ behavior trees and make
 our trees __composable__. 
 
 This can be achieved by defining multiple trees in the XML and using the
-node __SubTree__ to include one three into the other.
+node __SubTree__ to include one tree into the other.
 
 # CrossDoor behavior
 

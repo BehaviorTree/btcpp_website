@@ -28,13 +28,13 @@ In this tutorial, we will create the following tree:
 - A "Blackboard" is a simple __key/value storage__ shared by all the nodes
 of the Tree. 
 - An "entry" of the Blackboard is a __key/value pair__.
-- __Input ports__ can read an entry in the Blackboard, whilst an __Output port__
+- An __Input port__ can read an entry in the Blackboard, whilst an __Output port__
 can write into an entry.
 :::
 
 ## Inputs ports
 
-A valid Input can be either:
+A valid input can be either:
 
 - a __static string__ that the Node will read and parse, or
 - a "pointer" to an entry of the Blackboard, identified by a __key__.
@@ -117,7 +117,7 @@ It is __always__ recommended to call the method `getInput()` inside the
 `tick()`, and __not__ in the constructor of the class.
      
 The C++ code should expect the actual value of the input
-to __change at run-time__, for this reason it should be updated 
+to __change at run-time__, and for this reason, it should be updated 
 periodically. 
 :::
 

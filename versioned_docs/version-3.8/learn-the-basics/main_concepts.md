@@ -53,7 +53,7 @@ NodeStatus HelloTick()
 factory.registerSimpleAction("Hello", std::bind(HelloTick));
 ```
 
-:::tip
+::::tip
 The factory may create multiple instances of the node __Hello__.
 ::::
 
@@ -62,7 +62,7 @@ The factory may create multiple instances of the node __Hello__.
 In the example above, a specific type of TreeNodes which invoke
 `HelloTick` was created using a __function pointer__ (dependency injection).
 
-More generally, to define a custom TreeNode, you should inherit from the 
+Generally, to define a custom TreeNode, you should inherit from the 
 class `TreeNode` or, more specifically, its derived classes:
 
 - `ActionNodeBase`

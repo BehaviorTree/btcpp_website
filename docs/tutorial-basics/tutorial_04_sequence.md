@@ -28,7 +28,7 @@ Actions. You will find an extensive article
 [here](guides/asynchronous_nodes.md).
 :::
 
-## StatefulActionNode 
+## StatefulActionNode
 
 The __StatefulActionNode__ is the preferred way to implement asynchronous Actions.
 
@@ -46,14 +46,14 @@ or you may want to move that computation to another thread
 A derived class of __StatefulActionNode__ must override the following virtual methods,
 instead of `tick()`:
 
-- __NodeStatus onStart()__: called when the Node was in IDLE state.
+- `NodeStatus onStart()`: called when the Node was in IDLE state.
 It may succeed or fail immediately or return RUNNING. In the latter case,
 the next time the tick is received the method `onRunning` will be executed.
 
-- __NodeStatus onRunning()__: called when the Node is in RUNNING state.
+- `NodeStatus onRunning()`: called when the Node is in RUNNING state.
   Return the new status.
 
-- __void onHalted()__: called when this Node was aborted by another Node
+- `void onHalted()`: called when this Node was aborted by another Node
 in the tree.
 
 Let's create a dummy Node called __MoveBaseAction__:
