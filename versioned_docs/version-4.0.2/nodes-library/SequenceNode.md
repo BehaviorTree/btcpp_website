@@ -31,7 +31,7 @@ To understand how the three ControlNodes differ, refer to the following table:
   child of the list.
 
 - "__Tick again__" means that the next time the sequence is ticked, the 
-  same child is ticked again. Previous sibling, which returned SUCCESS already,
+  same child is ticked again. Previous siblings, which returned SUCCESS already,
   are not ticked again.
 
 ## Sequence

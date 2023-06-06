@@ -17,7 +17,7 @@ In terms of system architecture, we should remember that:
 for the execution of the behavior. This will be further called "Task Planner"
 and it will be implemented with BT.CPP
 
-- All other elements of the system should be"service-oriented" components,
+- All other elements of the system should be "service-oriented" components,
 and should delegate any business logic and decision-making to the Task Planner.
 
 :::caution

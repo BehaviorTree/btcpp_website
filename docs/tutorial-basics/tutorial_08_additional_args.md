@@ -36,7 +36,7 @@ If all these conditions are met, using ports or the blackboard is highly discour
 
 Consider the following custom node called **Action_A**.
 
-We want to pass three additional arguments; they can be arbitrarily complex objects,
+We want to pass two additional arguments; they can be arbitrarily complex objects,
 you are not limited to built-in types.
 
 ``` cpp
@@ -47,7 +47,7 @@ class Action_A: public SyncActionNode
 public:
     // additional arguments passed to the constructor
     Action_A(const std::string& name, const NodeConfig& config,
-             int arg_int, std::string arg_str ):
+             int arg_int, std::string arg_str):
         SyncActionNode(name, config),
         _arg1(arg_int),
         _arg2(arg_str) {}
@@ -71,7 +71,7 @@ BT::BehaviorTreeFactory factory;
 factory.registerNodeType<Action_A>("Action_A", 42, "hello world");
 
 // If you prefer to specify the template parameters
-// factory.registerNodeType<Action_A, int , std::string>("Action_A", 42, "hello world");
+// factory.registerNodeType<Action_A, int, std::string>("Action_A", 42, "hello world");
 ```
 
 ## Use an "initialize" method
@@ -90,10 +90,10 @@ public:
         SyncActionNode(name, config) {}
 
     // We want this method to be called ONCE and BEFORE the first tick()
-    void initialize( int arg_int, const std::string& arg_str_ )
+    void initialize(int arg_int, const std::string& arg_str)
     {
         _arg1 = arg_int;
-        _arg2 = arg_str_;
+        _arg2 = arg_str;
     }
 
     // this example doesn't require any port
@@ -114,7 +114,7 @@ The way we register and initialize Action_B is different:
 BT::BehaviorTreeFactory factory;
 
 // Register as usual, but we still need to initialize
-factory.registerNodeType<Action_B>( "Action_B" );
+factory.registerNodeType<Action_B>("Action_B");
 
 // Create the whole tree. Instances of Action_B are not initialized yet
 auto tree = factory.createTreeFromText(xml_text);
@@ -127,12 +127,7 @@ auto visitor = [](TreeNode* node)
     action_B_node->initialize(69, "interesting_value");
   }
 };
+
 // Apply the visitor to ALL the nodes of the tree
 tree.applyVisitor(visitor);
-
 ```
-
-
-
-
-

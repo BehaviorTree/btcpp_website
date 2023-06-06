@@ -46,7 +46,8 @@ namespace BT
         {
             throw RuntimeError("invalid input)");
         }
-        else{
+        else
+        {
             Position2D output;
             output.x     = convertFromString<double>(parts[0]);
             output.y     = convertFromString<double>(parts[1]);
@@ -119,7 +120,7 @@ class PrintTarget: public SyncActionNode
 We can now connect input/output ports as usual, pointing to the same 
 entry of the Blackboard.
 
-The tree in the next example is a Sequence of 4 actions
+The tree in the next example is a Sequence of 4 actions:
 
 - Store a value of `Position2D` in the entry __GoalPosition__,
   using the action `CalculateGoal`.

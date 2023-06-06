@@ -47,7 +47,7 @@ As explained in the [second tutorial](tutorial-basics/tutorial_02_basic_ports.md
 input/output ports can be remapped using the name of an entry in the
 Blackboard, in other words, the __key__ of a __key/value__ pair of the BB.
 
-An BB key is represented using this syntax: `{key_name}`.
+A BB key is represented using this syntax: `{key_name}`.
 
 In the following example:
 
@@ -130,7 +130,7 @@ As we saw in [this tutorial](tutorial-basics/tutorial_06_subtree_ports.md), it i
 a Subtree inside another tree to avoid "copy and pasting" the same tree in
 multiple location and to reduce complexity.
 
-Let's say that we want to incapsulate few action into the behaviorTree "__GraspObject__" 
+Let's say that we want to encapsulate a few actions into the behaviorTree "__GraspObject__" 
 (being optional, attributes [name] are omitted for simplicity).
 
 ``` XML
@@ -154,7 +154,7 @@ Let's say that we want to incapsulate few action into the behaviorTree "__GraspO
  </root>
 ```
 
-We may notice as the entire tree "GraspObject" is executed after "SaySomething".
+We may notice that the entire tree "GraspObject" is executed after "SaySomething".
 
 ## Include external files
 
