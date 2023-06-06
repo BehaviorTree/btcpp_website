@@ -227,8 +227,8 @@ export default function Groot() {
                   <tbody>
                     <tr>
                       <th scope="row">BehaviorTree.CPP compatibility</th>
-                      <td>3.8</td>
-                      <td>4.X</td>
+                      <td>3.8 only</td>
+                      <td>3.8 and 4.2+</td>
                     </tr>
                     <tr>
                       <th scope="row">Open Source</th>
@@ -289,11 +289,16 @@ export default function Groot() {
                     <tr>
                       <th scope="row">Realtime Monitoring</th>
                       <td>Free</td>
-                      <td>Commercial</td>
+                      <td>PRO only</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Offline log visualization</th>
+                      <td>Free</td>
+                      <td>PRO only</td>
                     </tr>
                     <tr>
                       <th scope="row">
-                        Realtime Debugging:
+                        Advanced Realtime Debugging:
                         <br />
                         <ul>
                           <li>Add breakpoints at run-time</li>
