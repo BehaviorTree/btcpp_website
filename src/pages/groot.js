@@ -327,7 +327,7 @@ export default function Groot() {
         className={`${styles.sectionText} container ${styles.flexCol} gap-5 `}
       >
         <h1>Download Groot 2</h1>
-        <h3>Version: 0.8.1 (beta-8, 2023-06-06)</h3>
+        <h3>Version: 0.8.2 (beta-8, 2023-06-08)</h3>
         <div className={styles.downloadGroup}>
           <div>
             <img
@@ -363,7 +363,7 @@ export default function Groot() {
             />
             <Link
               className="button button--outline button--primary button--lg umami--click--download-appimage"
-              to="https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_linux_installer/Groot2-v0.8.1-x86_64.AppImage"
+              to="https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_linux_installer/Groot2-v0.8.2-x86_64.AppImage"
             >
               Download AppImage (Linux)
             </Link>
