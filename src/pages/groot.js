@@ -337,7 +337,7 @@ export default function Groot() {
             />
             <Link
               className="button button--outline button--primary button--lg umami--click--download-windows"
-              to="https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_windows_installer/Groot2-0.5.0-windows-installer.exe"
+              to="https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_windows_installer/Groot2-0.8.2-windows-installer.exe"
             >
               Download Windows installer
             </Link>
@@ -350,7 +350,7 @@ export default function Groot() {
             />
             <Link
               className="button button--outline button--primary button--lg umami--click--download-linux"
-              to="https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_linux_installer/Groot2-linux-installer.run"
+              to="https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_linux_installer/Groot2-0.8.2-linux-installer.run"
             >
               Download Linux installer
             </Link>
