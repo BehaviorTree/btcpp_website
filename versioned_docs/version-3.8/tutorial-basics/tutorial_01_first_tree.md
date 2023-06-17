@@ -153,12 +153,14 @@ int main()
 
   // Registering a SimpleActionNode using a function pointer.
   // Here we prefer to use a lambda,but you can use std::bind too
-  factory.registerSimpleCondition("CheckBattery", [&](){ return CheckBattery(); });
+  factory.registerSimpleCondition("CheckBattery", std::bind(CheckBattery));
 
   // You can also create SimpleActionNodes using methods of a class.
   GripperInterface gripper;
-  factory.registerSimpleAction("OpenGripper", [&](){ return gripper.open(); } );
-  factory.registerSimpleAction("CloseGripper", [&](){ return gripper.close(); }
+  factory.registerSimpleAction("OpenGripper",
+                               std::bind(&GripperInterface::open, &gripper));
+  factory.registerSimpleAction("CloseGripper",
+                               std::bind(&GripperInterface::close, &gripper));
 
   // Trees are created at deployment-time (i.e. at run-time, but only 
   // once at the beginning). 
