@@ -54,10 +54,9 @@ As you can see:
 Alternatively, we can use __dependency injection__ to create a TreeNode given 
 a function pointer (i.e. "functor"). 
 
-The only requirement of the functor is to have either one of these signatures:
+The functor must have this signature:
 
 ``` cpp
-BT::NodeStatus myFunction()
 BT::NodeStatus myFunction(BT::TreeNode& self) 
 ```
 
@@ -152,13 +151,13 @@ int main()
   factory.registerNodeType<ApproachObject>("ApproachObject");
 
   // Registering a SimpleActionNode using a function pointer.
-  // Here we prefer to use a lambda,but you can use std::bind too
-  factory.registerSimpleCondition("CheckBattery", [&](){ return CheckBattery(); });
+  // You can use C++11 lambdas or std::bind
+  factory.registerSimpleCondition("CheckBattery", [&](TreeNode&) { return CheckBattery(); });
 
-  // You can also create SimpleActionNodes using methods of a class.
+  //You can also create SimpleActionNodes using methods of a class
   GripperInterface gripper;
-  factory.registerSimpleAction("OpenGripper", [&](){ return gripper.open(); } );
-  factory.registerSimpleAction("CloseGripper", [&](){ return gripper.close(); } );
+  factory.registerSimpleAction("OpenGripper", [&](TreeNode&){ return gripper.open(); } );
+  factory.registerSimpleAction("CloseGripper", [&](TreeNode&){ return gripper.close(); } );
 
   // Trees are created at deployment-time (i.e. at run-time, but only 
   // once at the beginning). 
