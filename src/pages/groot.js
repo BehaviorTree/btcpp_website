@@ -165,10 +165,6 @@ export default function Groot() {
                       It introduces advanced tools to support the entire
                       development cycle, from conception to validation.
                     </p>
-                    <p>
-                      <b>Under development:</b> you can download the free
-                      editor.
-                    </p>
                   </div>
                   <div className={styles.grootCard}>
                     <h2>
@@ -183,9 +179,8 @@ export default function Groot() {
                       <b>Groot</b> is the original open source editor for{" "}
                       <b>BT.CPP</b>.<br />
                       It is not under active development anymore, but it is
-                      still a great option for users who are using{" "}
-                      <b>BehaviorTree.CPP 3.8</b> and need real-time
-                      visualization.
+                      still a good option for those users who are using{" "}
+                      <b>BehaviorTree.CPP 3.8</b>.
                     </p>
                     <div className={styles.buttonGroup}>
                       <Link
