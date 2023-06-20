@@ -87,19 +87,17 @@ export default function Groot() {
         <div className={`container text--left ${styles.sectionText}`}>
           <div className="row">
             <div className="col col--6">
-              <h1>Groot</h1>
+              <h1>Groot 2</h1>
               <p>
-                <b>Groot</b> is the Integrated Development Environment to build
+                <b>Groot 2</b> is the Integrated Development Environment to build
                 and debug Behavior Trees. It allows you to:
               </p>
               <ul>
                 <li>Create and edit trees, using a drag and drop interface.</li>
                 <li>Monitor the state of a tree remotely in real-time.</li>
-                <li>
-                  Debug and test your behaviors (<b>new in version 2</b>)
-                </li>
+                <li>Debug and test your behaviors.</li>
+                <li>Visualize, analyze and replay logs</li>
               </ul>
-              <h3>Groot 2 is under development (preview now available)</h3>
               <p>
                 We are reimaginging Groot to be easier to use and more scalable,
                 focusing in particular on the needs of industrial and
@@ -327,7 +325,7 @@ export default function Groot() {
         className={`${styles.sectionText} container ${styles.flexCol} gap-5 `}
       >
         <h1>Download Groot 2</h1>
-        <h3>Version: 0.8.2 (beta-8, 2023-06-08)</h3>
+        <h3>Version: 0.9.0 (Release Candidate, 2023-06-20)</h3>
         <div className={styles.downloadGroup}>
           <div>
             <img
@@ -337,7 +335,7 @@ export default function Groot() {
             />
             <Link
               className="button button--outline button--primary button--lg umami--click--download-windows"
-              to="https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_windows_installer/Groot2-0.8.2-windows-installer.exe"
+              to="https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_windows_installer/Groot2-0.9.0-windows-installer.exe"
             >
               Download Windows installer
             </Link>
@@ -350,7 +348,7 @@ export default function Groot() {
             />
             <Link
               className="button button--outline button--primary button--lg umami--click--download-linux"
-              to="https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_linux_installer/Groot2-0.8.2-linux-installer.run"
+              to="https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_linux_installer/Groot2-0.9.0-linux-installer.run"
             >
               Download Linux installer
             </Link>
@@ -363,7 +361,7 @@ export default function Groot() {
             />
             <Link
               className="button button--outline button--primary button--lg umami--click--download-appimage"
-              to="https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_linux_installer/Groot2-v0.8.2-x86_64.AppImage"
+              to="https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_linux_installer/Groot2-v0.9.0-x86_64.AppImage"
             >
               Download AppImage (Linux)
             </Link>
