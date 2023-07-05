@@ -173,7 +173,7 @@ export default function Groot() {
                         alt="pro"
                         width="40"
                       />{" "}
-                      Groot 1.0
+                      Groot
                     </h2>
                     <p>
                       <b>Groot</b> is the original open source editor for{" "}
@@ -207,13 +207,13 @@ export default function Groot() {
                         scope="col"
                         className={`text--center ${styles.whitespaceNoWrap}`}
                       >
-                        Groot 1.0
+                        Groot
                       </th>
                       <th
                         scope="col"
                         className={`text--center ${styles.whitespaceNoWrap}`}
                       >
-                        Groot 2.x
+                        Groot 2
                       </th>
                     </tr>
                   </thead>
