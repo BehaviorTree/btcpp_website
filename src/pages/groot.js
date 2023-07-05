@@ -320,7 +320,7 @@ export default function Groot() {
         className={`${styles.sectionText} container ${styles.flexCol} gap-5 `}
       >
         <h1>Download Groot 2</h1>
-        <h3>Version: 0.9.0 (Release Candidate, 2023-06-20)</h3>
+        <h3>Version: 1.0.0 (Released 2023-07-04)</h3>
         <div className={styles.downloadGroup}>
           <div>
             <img
@@ -330,7 +330,7 @@ export default function Groot() {
             />
             <Link
               className="button button--outline button--primary button--lg umami--click--download-windows"
-              to="https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_windows_installer/Groot2-0.9.0-windows-installer.exe"
+              to="https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_windows_installer/Groot2-1.0.0-windows-installer.exe"
             >
               Download Windows installer
             </Link>
@@ -343,7 +343,7 @@ export default function Groot() {
             />
             <Link
               className="button button--outline button--primary button--lg umami--click--download-linux"
-              to="https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_linux_installer/Groot2-0.9.0-linux-installer.run"
+              to="https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_linux_installer/Groot2-1.0.0-linux-installer.run"
             >
               Download Linux installer
             </Link>
@@ -356,7 +356,7 @@ export default function Groot() {
             />
             <Link
               className="button button--outline button--primary button--lg umami--click--download-appimage"
-              to="https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_linux_installer/Groot2-v0.9.0-x86_64.AppImage"
+              to="https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_linux_installer/Groot2-v1.0.0-x86_64.AppImage"
             >
               Download AppImage (Linux)
             </Link>
