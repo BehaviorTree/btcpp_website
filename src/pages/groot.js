@@ -329,7 +329,7 @@ export default function Groot() {
               alt="windows logo"
             />
             <Link
-              className="button button--outline button--primary button--lg umami--click--download-windows"
+              onclick="fathom.trackGoal('I8XXZTK4', 0);"
               to="https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_windows_installer/Groot2-1.0.1-windows-installer.exe"
             >
               Download Windows installer
@@ -342,7 +342,7 @@ export default function Groot() {
               alt="linux logo"
             />
             <Link
-              className="button button--outline button--primary button--lg umami--click--download-linux"
+              onclick="fathom.trackGoal('VGT2ANC4', 0);"
               to="https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_linux_installer/Groot2-1.0.1-linux-installer.run"
             >
               Download Linux installer
@@ -355,7 +355,7 @@ export default function Groot() {
               alt="appimage logo"
             />
             <Link
-              className="button button--outline button--primary button--lg umami--click--download-appimage"
+              onclick="fathom.trackGoal('DIQDUTJ2', 0);"
               to="https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_linux_installer/Groot2-v1.0.1-x86_64.AppImage"
             >
               Download AppImage (Linux)
