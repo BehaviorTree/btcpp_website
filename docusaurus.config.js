@@ -163,7 +163,7 @@ const config = {
       },
     }),
 
-  scripts: [{src: 'https://plausible.io/js/script.js', defer: true, 'data-domain': 'behaviortree.dev'}],
+  scripts: [{src: 'https://cdn.usefathom.com/script.js', defer: true, 'data-site': 'SIFIKCAM'}],
 
 };
 
