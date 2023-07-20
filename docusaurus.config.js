@@ -135,8 +135,8 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'Discourse',
-                href: 'https://discourse.behaviortree.dev/',
+                label: 'Forum',
+                href: 'https://github.com/BehaviorTree/BehaviorTree.CPP/discussions',
               },
             ],
           },
