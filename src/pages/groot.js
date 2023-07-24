@@ -6,6 +6,12 @@ import styles from "./groot.module.css";
 import Table from "react-bootstrap/Table";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import Head from "@docusaurus/Head";
+import clsx from "clsx";
+
+import EditorVideo from "@site/static/img/groot2_editor.mp4";
+import MonitorVideo from "@site/static/img/groot2_monitor.mp4";
+import LogVideo from "@site/static/img/groot2_log.mp4";
+
 function Check(props) {
   return <img src={useBaseUrl("img/check.png")} width="15" alt="yes" />;
 }
@@ -83,234 +89,96 @@ export default function Groot() {
           src="https://plausible.io/js/script.js"
         ></script>
       </Head>
-      <div className={`styles.sectionText`}>
-        <div className={`container text--left ${styles.sectionText}`}>
-          <div className="row">
-            <div className="col col--6">
-              <h1>Groot 2</h1>
-              <p>
-                <b>Groot 2</b> is the Integrated Development Environment to build
-                and debug Behavior Trees. It allows you to:
-              </p>
-              <ul>
-                <li>Create and edit trees, using a drag and drop interface.</li>
-                <li>Monitor the state of a tree remotely in real-time.</li>
-                <li>Debug and test your behaviors.</li>
-                <li>Visualize, analyze and replay logs</li>
-              </ul>
-              <p>
-                We are reimaginging Groot to be easier to use and more scalable,
-                focusing in particular on the needs of industrial and
-                professional users.
-                <br />
-                If you use BT.CPP and Groot professionally,{" "}
-                <a href="mailto:dfaconti@aurynrobotics.com">contact us</a> and
-                we will be happy to help.
-              </p>
-
-              <div className={styles.buttonGroup}>
-                {/* <Link
+      <div className={clsx("hero hero--dark", styles.heroBanner)}>
+        <div className="container ">
+          <div className="row align-items-center">
+            <div className="col col--5">
+          <h1 className="hero__title ">Groot2</h1>
+          <p className="hero__subtitle">
+            The IDE to create and debug Behavior Trees.
+          </p>
+          <div className={styles.buttonGroup}>
+            {/* <Link
                   className="button button--primary button--lg umami--click--signup-button"
                         to="https://airtable.com/shrTx7NgRIa0cKlK8">
                         Keep me up to date
                 </Link> */}
-                <button
-                  data-mooform-id="419144d7-9877-4876-bcfc-d1e1f0b6a2ad"
-                  className="button button--primary button--lg umami--click--signup-button"
-                  onClick={openPopup}
-                >
-                  Keep me up to date
-                </button>
-              </div>
+            <button
+              data-mooform-id="419144d7-9877-4876-bcfc-d1e1f0b6a2ad"
+              className="button button--primary button--lg umami--click--signup-button"
+              onClick={openPopup}
+            >
+              Keep me up to date
+            </button>
+          </div>
+        </div>
+        <div className="col col--7">
+              <img src={useBaseUrl("img/groot2.png")} />
+            </div>
+        </div>
+        </div>
+      </div>
+
+      <div className={`styles.sectionText`}>
+        <div className={`container text--left ${styles.sectionText}`}>
+          <div className="row">
+            <div className="col col--7">
+            <video src={EditorVideo} muted loop autoPlay width="100%"></video>
+            </div>
+            <div className="col col--5">
+              <h1>BT Editor</h1>
+              <ul>
+                <li>Create and edit trees, using a drag and drop interface.</li>
+                <li>Manage large projects and multiple files.</li>
+                <li>Compatible with both BT.CPP 3 and 4</li>
+                <li>Split view to visualize multiple trees at once.</li>
+                <li>Preview the XML in real-time.</li>
+                <li>Node Search capability (PRO)</li>
+              </ul>
               <br />
             </div>
-            <div className="col col--6">
-              <img
-                className={styles.grootImg}
-                src={useBaseUrl("img/groot_2.webp")}
-                alt="groot 2"
-              />
+
+          </div>
+        </div>
+      </div>
+
+      <div className={`styles.sectionText`}>
+        <div className={`container text--left ${styles.sectionText}`}>
+          <div className="row">
+            <div className="col col--5">
+              <h1>Real-time Monitor</h1>
+              <ul>
+                <li>Connect to a running BT.CPP executor and visualize its state in real-time.</li>
+                <li>Record all transitions into a log file, to analyze them later.</li>
+                <li>Visualize the content of the blackboard (PRO)</li>
+                <li>Add interactive breakpoints and fault injection (PRO)</li>
+                <li>Substitute any Nodes with dummy ones, at run-time (PRO). </li>
+              </ul>
+              <br />
+            </div>
+            <div className="col col--7">
+            <video src={MonitorVideo} muted loop autoPlay width="100%"></video>
             </div>
           </div>
         </div>
       </div>
-      {/* groot versions & cards */}
-      <div className={styles.sectionText}></div>
-      <div
-        className={`${styles.sectionText} ${styles.comparisionSection} ${styles.flexCol}`}
-      >
-        <div className="container">
-          <h2 className="text--center">
-            Which version of Groot is the right for you?
-          </h2>
-          <div className="row">
-            <div className="col col--6">
-              <div className={`text--left ${styles.sectionText}`}>
-                <div className={`row ${styles.grootCardWrapper}`}>
-                  <div className={styles.grootCard}>
-                    <h2>
-                      <img
-                        src={useBaseUrl("img/pro_logo_icon.svg")}
-                        alt="pro"
-                        width="40"
-                      />{" "}
-                      Groot 2.X
-                    </h2>
 
-                    <p>
-                      <b>Groot 2</b> is the professional successor of Groot,
-                      focusing on improved user experience, debuggability and
-                      scalability.
-                      <br />
-                      It introduces advanced tools to support the entire
-                      development cycle, from conception to validation.
-                    </p>
-                  </div>
-                  <div className={styles.grootCard}>
-                    <h2>
-                      <img
-                        src={useBaseUrl("img/open_source_icon.svg")}
-                        alt="pro"
-                        width="40"
-                      />{" "}
-                      Groot
-                    </h2>
-                    <p>
-                      <b>Groot</b> is the original open source editor for{" "}
-                      <b>BT.CPP</b>.<br />
-                      It is not under active development anymore, but it is
-                      still a good option for those users who are using{" "}
-                      <b>BehaviorTree.CPP 3.8</b>.
-                    </p>
-                    <div className={styles.buttonGroup}>
-                      <Link
-                        className="button button--primary"
-                        to="https://github.com/BehaviorTree/Groot"
-                      >
-                        Groot on Github
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
+      <div className={`styles.sectionText`}>
+        <div className={`container text--left ${styles.sectionText}`}>
+          <div className="row">
+            <div className="col col--7">
+            <video src={LogVideo} muted loop autoPlay width="100%"></video>
             </div>
-            <div className="col col--6">
-              {/* groot features table */}
-              <div
-                className={`${styles.sectionText} ${styles.grootFeatureTableWrapper}`}
-              >
-                <Table className={styles.grootFeatureTable}>
-                  <thead>
-                    <tr>
-                      <th scope="col"></th>
-                      <th
-                        scope="col"
-                        className={`text--center ${styles.whitespaceNoWrap}`}
-                      >
-                        Groot
-                      </th>
-                      <th
-                        scope="col"
-                        className={`text--center ${styles.whitespaceNoWrap}`}
-                      >
-                        Groot 2
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row">BehaviorTree.CPP compatibility</th>
-                      <td>3.8 only</td>
-                      <td>3.8 and 4.2+</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Open Source</th>
-                      <td>
-                        <Check />
-                      </td>
-                      <td>
-                        <Cross />
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Actively developed</th>
-                      <td>
-                        <Cross />
-                      </td>
-                      <td>
-                        <Check />
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Commercial support</th>
-                      <td>
-                        <Cross />
-                      </td>
-                      <td>
-                        <Check />
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Tree Editor</th>
-                      <td>Free</td>
-                      <td>Free</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">
-                        Multi-file projects
-                        <br />
-                      </th>
-                      <td>
-                        <Cross />
-                      </td>
-                      <td>
-                        <Check />
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">
-                        Support for BT.CPP 4 pre/post conditions
-                        <br />
-                      </th>
-                      <td>
-                        <Cross />
-                      </td>
-                      <td>
-                        <Check />
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Realtime Monitoring</th>
-                      <td>Free</td>
-                      <td>PRO only</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Offline log visualization</th>
-                      <td>Free</td>
-                      <td>PRO only</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">
-                        Advanced Realtime Debugging:
-                        <br />
-                        <ul>
-                          <li>Add breakpoints at run-time</li>
-                          <li>Visualize the content of the Blackboard</li>
-                          <li>Nodes mocking and automated tests</li>
-                          <li>Add fault injection</li>
-                        </ul>{" "}
-                      </th>
-                      <td>
-                        <Cross />
-                      </td>
-                      <td>
-                        <Check />
-                      </td>
-                    </tr>
-                  </tbody>
-                </Table>
-              </div>
+            <div className="col col--5">
+              <h1>Log Visualization</h1>
+              <ul>
+                <li>Open logs and replay the execution of the tree at different speeds.</li>
+                <li>Visualize how long a Node has been in the RUNNING state.</li>
+                <li>View and export statistics about the number of times Nodes returned a status.</li>
+              </ul>
+              <br />
             </div>
+
           </div>
         </div>
       </div>
