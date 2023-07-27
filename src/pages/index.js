@@ -12,6 +12,9 @@ import Head from "@docusaurus/Head";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 
+// import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 function Home() {
   const context = useDocusaurusContext();
   const { siteConfig = {} } = context;
