@@ -68,14 +68,14 @@ export default function Groot() {
     },
   ];
   console.log(obj);
-  useEffect(() => {
-    openPopup();
-    window.plausible =
-      window.plausible ||
-      function () {
-        (window.plausible.q = window.plausible.q || []).push(arguments);
-      };
-  }, []);
+  // useEffect(() => {
+  //   openPopup();
+  //   window.plausible =
+  //     window.plausible ||
+  //     function () {
+  //       (window.plausible.q = window.plausible.q || []).push(arguments);
+  //     };
+  // }, []);
 
   const renderTooltip = (message, props) => {
     return (
