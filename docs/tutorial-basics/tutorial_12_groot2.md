@@ -39,19 +39,24 @@ These models are expressed in XML. In this case, they would be:
 Nevertheless, **you should not create these
 XML descriptions by hand**.
 
-BT.CPP has a specific function that, will
-generate this XML for you, after the
-Node types were registered into the factory.
+BT.CPP has a specific function that will
+generate this XML for you.
 
 ```cpp
   BT::BehaviorTreeFactory factory;
+  //
   // register here your user-defined Nodes
-  // ...
+  // 
   std::string xml_models = BT::writeTreeNodesModelXML(factory);
 
   // this xml_models should be saved to file and 
   // loaded in Groot2
 ```
+
+To import these models into the UI, either:
+
+- Save the XML into a file (called for instance `models.xml`) and click on the button **Import Models** in Groot2.
+- or manually add the XML section directly to your `.xml` or `.btproj` file.
 
 ## Adding real-time visualization to Groot
 
