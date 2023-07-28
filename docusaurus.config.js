@@ -91,20 +91,8 @@ const config = {
           },
           {
             position: 'left',
-            label: 'Tools',
-            items: [
-              {
-                to: '/groot', 
-                label: 'Groot'
-              },
-              {
-                to: '/moveit_studio', 
-                label: 'MoveIt Studio'
-              }
-            ]
-          },
-          {
-            to: '/migration', label: 'Migration from 3.X', position: 'left'
+            label: 'Groot2',
+            to: '/groot', 
           },
           {
             type: 'docsVersionDropdown',

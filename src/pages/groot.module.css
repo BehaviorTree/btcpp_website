@@ -3,18 +3,19 @@ h1 {
   padding: 0.5rem 0;
 }
 [id="text"] {
-  font-family: "Inter", sans-serif;
+  color: #3b3b3b;
   font-size: 18px;
+  padding: 5px 0px;
 }
+
 [id="text_head"] {
-  font-weight: 700;
+  font-weight: 600;
 }
 
 h1[id="pricingHead"] {
-  font-family: "Inter", "Inter Placeholder", sans-serif;
   font-size: 36px;
   font-weight: 700;
-  letter-spacing: -2.1px;
+  color: #3b3b3b;
   text-align: center;
 }
 
@@ -43,6 +44,8 @@ h1[id="pricingHead"] {
 }
 
 [id="card_header"] {
+  display: flex;
+  justify-content: center;
   font-size: 23px;
   font-weight: 600;
   line-height: 1.5em;
@@ -50,6 +53,7 @@ h1[id="pricingHead"] {
 }
 [id="price_row"] {
   display: flex;
+  justify-content: center;
 }
 [id="durance"] {
   margin-top: 30px;
@@ -61,15 +65,13 @@ h1[id="pricingHead"] {
 }
 [id="price"] {
   margin-top: 20px;
-  font-family: "Inter", "Inter Placeholder", sans-serif;
   font-size: 46px;
   font-weight: 600;
-  letter-spacing: -3px;
   line-height: 1em;
   color: rgb(21, 193, 79);
 }
 [id="point_stack"] {
-  margin-top: 20px;
+  margin-top: 22px;
   text-align: left;
 }
 [id="point"] {
@@ -79,7 +81,10 @@ h1[id="pricingHead"] {
   color: rgb(73, 73, 73);
 }
 [id="btn"] {
-  background-color: #222;
+  /* background-color: #222; */
+  /* text-align: center; */
+  /* justify-content: center; */
+  /* margin-left: 20%; */
   margin-top: 10px;
   position: absolute;
   bottom: 2rem;
@@ -90,10 +95,32 @@ h1[id="pricingHead"] {
     0 13.646761411524492px 13.646761411524492px -3.125px #0000001b,
     0 30px 30px -3.75px #0000000d;
 }
-:hover[id="btn"] {
+/* :hover[id="btn"] {
   color: #222;
   background-color: #dfdcdc;
   transition: 1s;
+} */
+
+[id="card_download"] {
+  height: 200px;
+  width: 320px;
+
+  position: relative;
+  border-radius: 15px;
+  padding: 20px;
+  border: 2px solid #f2f2f2;
+  background: #fafafa;
+  box-shadow: 0 10px 15px rgb(0 0 0 / 5%);
+}
+:hover[id="card_download"] {
+  transform: scale(1.1);
+  transition: 0.5s;
+}
+[id="hero__title"]{
+  font-size: 80px;
+  font-weight: 400;
+  text-align: center;
+  color: #0dbb5b;
 }
 
 h2 {
@@ -105,17 +132,9 @@ h3 {
   font-size: 24px;
 }
 
-@media screen and (max-width: 966px) {
-  .heroBanner {
-    padding: 2rem;
-  }
-  [id="card"] {
-    margin-top: 25px;
-  }
-}
 
 .sectionText {
-  padding: 0.5rem 30px;
+  padding: 0.5rem 0px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -128,6 +147,7 @@ h3 {
 }
 
 .sectionText h1 {
+  padding-top: 2.0rem;
   font-size: 42px;
 }
 
@@ -136,7 +156,7 @@ h3 {
 }
 
 .sectionText li {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .sectionSeparator {
@@ -221,7 +241,8 @@ td {
 .buttonGroup {
   display: flex;
   width: 100%;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 20px;
 }
 
 .downloadGroup {
@@ -269,6 +290,37 @@ td {
 }
 .whitespaceNoWrap {
   white-space: nowrap;
+}
+[id="t1"]{
+  display: none;
+}
+[id="t3"]{
+  display: none;
+}
+
+@media screen and (max-width: 996px) {
+  [id="t2"]{
+    display: none;
+  }
+  [id="t1"]{
+    display: block;
+  }
+  [id="t4"]{
+    display: none;
+  }
+  [id="t3"]{
+    display: block;
+  }
+  .heroBanner {
+    padding: 2rem;
+  }
+  
+  .buttonGroup{
+    margin-bottom: 25px;
+  }
+  [id="card"] {
+    margin-top: 25px;
+  }
 }
 
 @media (max-width: 767px) {

@@ -7,7 +7,7 @@ import Layout from "@theme/Layout";
 import clsx from "clsx";
 
 import styles from "./index.module.css";
-import EditorVideo from "@site/static/img/editor.mp4";
+import EditorVideo from "@site/static/img/groot2_editor.mp4";
 import Head from "@docusaurus/Head";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
@@ -156,7 +156,7 @@ function Home() {
             <div className="col col--6 col--offset-1">
               <h2>Visual Editing and Monitoring</h2>
               <p>
-                <b>Groot</b> is our "IDE for Behavior Trees".
+                <b>Groot2</b> is our "IDE for Behavior Trees".
                 <br />
                 It allows users to visualize, create and edit Behavior Trees,
                 using a simple drag and drop interface. <br />
@@ -166,7 +166,7 @@ function Home() {
                 className="button button--outline button--primary button--lg"
                 to={useBaseUrl("/groot")}
               >
-                About Groot
+                About Groot2
               </Link>
             </div>
           </div>

@@ -1,7 +1,8 @@
 ---
-title: Migration to BT.CPP 4.x
+title: Migration from BT.CPP 3.x
 description: How to migrate your code from version 3.X
 hide_table_of_contents: false
+sidebar_position: 7
 ---
 
 # Migrating from version 3.X to 4.X
