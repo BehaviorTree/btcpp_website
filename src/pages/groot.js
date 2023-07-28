@@ -22,7 +22,7 @@ export default function Groot() {
 
   const handleClickBasic = () => {
     console.log('free')
-    scrollToSection('section1')
+    scrollToSection('sectionDownload')
   }
   const handleClickPro = () => {
     console.log('Pro')
@@ -68,6 +68,14 @@ export default function Groot() {
     },
   ];
   console.log(obj);
+  useEffect(() => {
+    openPopup();
+    window.plausible =
+      window.plausible ||
+      function () {
+        (window.plausible.q = window.plausible.q || []).push(arguments);
+      };
+  }, []);
 
   const renderTooltip = (message, props) => {
     return (
@@ -121,6 +129,7 @@ export default function Groot() {
   return (
     <Layout title='Groot' description='Groot Editor'>
       {/* groot intro */}
+
       <div className={clsx("hero hero--dark", styles.heroBanner)}>
         <div className='container '>
           <div className='row align-items-center'>
@@ -132,16 +141,16 @@ export default function Groot() {
                 The most feature complete IDE <br/>to create and debug Behavior Trees.
               </p>
               <div className={styles.buttonGroup}>
-                <button
+                {/* <button
                   data-mooform-id='419144d7-9877-4876-bcfc-d1e1f0b6a2ad'
                   className='button button--primary button--lg'
                   onClick={openPopup}>
                   Our newsletter
-                </button>
+                </button> */}
                 <button
                   onClick={() => scrollToSection("sectionDownload")}
                   className='button button--primary button--lg'>
-                  Download now
+                  Download
                 </button>
               </div>
             </div>
@@ -276,8 +285,9 @@ export default function Groot() {
                   <div style={{ display: "flex", justifyContent: "center" }}>
                     <button
                       id='btn'
+                      data-mooform-id='419144d7-9877-4876-bcfc-d1e1f0b6a2ad'
                       className='button button--primary button--md'
-                      onClick={openPopup}>
+                      onClick={item.onclick}>
                       {item.btn}
                     </button>
                   </div>
