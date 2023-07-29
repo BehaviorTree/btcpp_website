@@ -233,9 +233,10 @@ export default function Groot() {
           <div className='col col--6' id="t3">
               <h1>Log Visualization</h1>
               <ul>
-                <li>Open logs and replay the execution of the tree at different speeds. </li>
-                <li>Visualize how long the Node was in the RUNNING state or returned a new status.</li>
-                <li>View and export statistics about the status reported by your Nodes.</li>
+                <li>Open logs and replay the execution of the tree at different speeds.</li>
+                <li>Visualize how long a Node was in the RUNNING state and how many times it 
+                  returned a new status.</li>
+                <li>Filter transitions by name or time range.</li>
               </ul>
               <br />
             </div>
@@ -245,9 +246,10 @@ export default function Groot() {
             <div className='col col--6' id="t4">
               <h1>Log Visualization</h1>
               <ul>
-                <li>Open logs and replay the execution of the tree at different speeds. </li>
-                <li>Visualize how long the Node was in the RUNNING state or returned a new status.</li>
-                <li>View and export statistics about the status reported by your Nodes.</li>
+                <li>Open logs and replay the execution of the tree at different speeds.</li>
+                <li>Visualize how long a Node was in the RUNNING state and how many times it 
+                  returned a new status.</li>
+                <li>Filter transitions by name or time range.</li>
               </ul>
               <br />
             </div>
@@ -301,14 +303,13 @@ export default function Groot() {
               <h1 id='pricingHead'>(*) But wait, there is more!</h1>
               <ul>
               <li id='text'>
-                  <b>Discounts:</b> planning to buy multiple licenses? 
-                  Tell us more about your plans and we can suggest a tailored
-                  solution for your needs.
+                  <b>Discounts:</b> are you considering buying multiple licenses? 
+                  We can offer you a discount and a solution tailored for your company.
                 </li>
                 <li id='text'>
-                <b>Free for academia:</b> if you are a
-                  student or researcher, you can receive a complementary 1 year
-                  license. <a href="https://airtable.com/appqTlC23AiSoB4Fd/shrsC33d8feHZmKXs" target="_blank">Fill this form</a>
+                <b>Free for academia:</b> if you are a student or researcher,
+                  you can receive a complementary 1 year license. 
+                  <a href="https://airtable.com/appqTlC23AiSoB4Fd/shrsC33d8feHZmKXs" target="_blank">Fill this form</a>
                   &ensp;and tell us more about your project.
                 </li>
 
