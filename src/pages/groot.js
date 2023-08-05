@@ -44,7 +44,7 @@ export default function Groot() {
     {
       name: "PRO (floating license)",
       price: "€790",
-      durance: " / year",
+      durance: " / year (*)",
       points: [
         "Search Nodes in large trees",
         "Unlimited Number of Nodes in Monitor and Log Visualizer",
@@ -138,7 +138,7 @@ export default function Groot() {
                 Groot2
               </h1>
               <p className='hero__subtitle'>
-                The most feature complete IDE <br/>to create and debug Behavior Trees.
+                The most advanced IDE<br/>to create and debug Behavior Trees.
               </p>
               <div className={styles.buttonGroup}>
                 {/* <button
