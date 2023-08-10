@@ -36,7 +36,6 @@ export default function Groot() {
       points: [
         "Full Behavior Tree Editor",
         "Monitor and Log Visualizer limited to 20 Nodes",
-        "Not for commercial use",
       ],
       btn: "Download",
       onclick:() => handleClickBasic()
