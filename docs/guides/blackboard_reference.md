@@ -41,17 +41,17 @@ For the sake of simplicity, we will consider further an onject that is expensive
 
  The recommended port types, in this case is:
 
- ```cpp
+```cpp
 PortsList AcquirePointCloud::providedPorts()
 {
     return { OutputPort<std::shared_ptr<Pointcloud>>("cloud") };
 }
 
-PortsList AcquirePointCloud::providedPorts()
+PortsList SegmentObject::providedPorts()
 {
     return { InputPort<std::string>("obj_name"),
              InputPort<std::shared_ptr<Pointcloud>>("cloud"),
-             OutputPort<Pose3d>("obj_pose") };
+             OutputPort<Pose3D>("obj_pose") };
 }
 ```
 
