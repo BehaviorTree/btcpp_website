@@ -68,19 +68,21 @@ then there is no guarantee that a copy of the object being shared isn't accessed
 
 To prevent this issue, we provide a different API that includes a locking mechanism.
 
-```cpp
-// ----- NOT thread-safe -------
 
+This is **NOT** thread-safe:
+
+```cpp
 std::shared_ptr<Pointcloud> cloud_ptr;
 getInput("cloud", cloud_ptr);
 // modify the pointcloud referenced by cloud_ptr here
+```
 
-// ----- thread-safe alternative -------
+The thread-safe alternative:
 
-// inside this scope, the object in the blackboard is protected by a mutex
-if(auto any_locked = getLockedPortContent("cloud")
+```cpp
+// inside this scope, the mutex protecting the instance of "pointcloud" remains locked
+if(auto any_locked = getLockedPortContent("cloud"))
 {
-  // cast Any to std::shared_ptr<Pointcloud>
   auto cloud_ptr  =  any_locked.get()->cast<std::shared_ptr<Pointcloud>>();
   // modify the pointcloud referenced by cloud_ptr here
 }
