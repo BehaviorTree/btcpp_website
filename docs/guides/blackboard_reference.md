@@ -20,7 +20,7 @@ For instance, a Node where it is recommended to use reference semantic is the
 
 ## Blackboard entries as Share pointers
 
-For the sake of simplicity, we will consider further an onject that is expensive to copy,
+For the sake of simplicity, we will consider an object that is expensive to copy,
  called **Pointcloud**.
 
  Assuming that we have a simple BT like this one:
