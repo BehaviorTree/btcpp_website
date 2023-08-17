@@ -188,7 +188,7 @@ function Home() {
                   </a>
                   <br />
                   You can ask questions and reach other users in our
-                  <a href="https://discourse.behaviortree.dev/">
+                  <a href="https://github.com/BehaviorTree/BehaviorTree.CPP/discussions/">
                     {" "}
                     community forum.
                   </a>
