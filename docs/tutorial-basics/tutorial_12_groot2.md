@@ -187,8 +187,8 @@ BT::JsonExporter::get().addConverter<Pose2D>();
 
 ### Version 4.3.6 or later
 
-The implementation of the "to_json" function has can have any name or namespace, 
-but it must conform to the signature `void(nlohmann::json&, const T&)`.
+The implementation of the "to_json" function can have any name or namespace, 
+but it must conform to the function signature `void(nlohmann::json&, const T&)`.
 
 For instance:
 
