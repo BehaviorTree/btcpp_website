@@ -161,12 +161,44 @@ struct Pose2D {
 }
 ```
 
-The following function should be implemented:
+You will need to include **behaviortree_cpp/json_export.h** and follow the 
+following instructions, based on your BT.CPP version.
+
+
+### Version 4.3.5 or earlier
+
+Implement this function, being carefull about using the namespace `nlohmann`:
 
 ```cpp
-void to_json(nlohmann::json& dest, const Pose2D& pose) {
+namespace nlohmann {
+  void to_json(nlohmann::json& dest, const Pose2D& pose) {
     dest["x"] = pose.x;
     dest["y"] = pose.y;
     dest["theta"] = pose.theta;
+  }
 }
+```
+
+Then, registered the function adding this to you **main**:
+
+```cpp
+BT::JsonExporter::get().addConverter<Pose2D>();
+```
+
+### Version 4.3.6 or later
+
+The implementation of the "to_json" function has no limitations in terms of name and namespace, 
+as long it can be casted to `std::function<void(nlohmann::json&, const Pose2D&)>`, for instance:
+
+```cpp
+void PoseToJson(nlohmann::json& dest, const Pose2D& pose) {
+  dest["x"] = pose.x;
+  dest["y"] = pose.y;
+  dest["theta"] = pose.theta;
+}
+```
+
+And registered the function adding this to you **main**:
+```cpp
+BT::RegisterJsonDefinition<Pose2D>(PoseToJson);
 ```
