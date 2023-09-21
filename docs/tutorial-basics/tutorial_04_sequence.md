@@ -191,13 +191,7 @@ Expected output:
 ``` 
 --- ticking
 [ Battery: OK ]
---- status: RUNNING
-
---- ticking
 Robot says: mission started...
---- status: RUNNING
-
---- ticking
 [ MoveBase: SEND REQUEST ]. goal: x=1.0 y=2.0 theta=3.0
 --- status: RUNNING
 
@@ -242,10 +236,6 @@ Expected output:
 --- ticking
 [ Battery: OK ]
 Robot says: mission started...
---- status: RUNNING
-
---- ticking
-[ Battery: OK ]
 [ MoveBase: SEND REQUEST ]. goal: x=1.0 y=2.0 theta=3.0
 --- status: RUNNING
 
