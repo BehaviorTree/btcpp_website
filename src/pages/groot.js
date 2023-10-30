@@ -301,14 +301,18 @@ export default function Groot() {
             <div className='col col--8 '>
               <h1 id='pricingHead'>(*) But wait, there is more!</h1>
               <ul>
-              <li id='text'>
+                <li id='text'>
+                  <b>Free Trial:</b> enjoy all the features of th PRO versions
+                  for one month, activating your trial in "Preferences".
+                </li>
+                <li id='text'>
                   <b>Discounts:</b> are you considering buying multiple licenses? 
                   We can offer you a discount and a solution tailored for your company.
                 </li>
                 <li id='text'>
                 <b>Free for academia:</b> if you are a student or researcher,
                   you can receive a complementary 1 year license. 
-                  <a href="https://airtable.com/appqTlC23AiSoB4Fd/shrsC33d8feHZmKXs" target="_blank">Fill this form</a>
+                  <a href="https://airtable.com/appqTlC23AiSoB4Fd/shrsC33d8feHZmKXs" target="_blank"> Fill this form</a>
                   &ensp;and tell us more about your project.
                 </li>
 
