@@ -24,10 +24,16 @@ export default function Groot() {
     console.log('free')
     scrollToSection('sectionDownload')
   }
-  const handleClickPro = () => {
-    console.log('Pro')
+  const handleClickContact = () => {
+    console.log('Contact')
     window.location.href = 'mailto:license@aurynrobotics.com'
   }
+
+  const handleClickCheckout = () => {
+    console.log('Checkout')
+    window.location.href = "javascript:void(0)"
+  }
+
   const obj = [
     {
       name: "Basic",
@@ -50,8 +56,8 @@ export default function Groot() {
         "Interactive real-time debugger",
         "Technical support",
       ],
-      btn: "Contact",
-      onclick: () => handleClickPro()
+      btn: "Checkout",
+      onclick: () => handleClickCheckout()
     },
     {
       name: "PRO (source code)",
@@ -63,7 +69,7 @@ export default function Groot() {
         "Site license with unlimited number of seats.",
       ],
       btn: "Contact",
-      onclick:() => handleClickPro()
+      onclick:() => handleClickContact()
     },
   ];
   console.log(obj);
@@ -286,8 +292,10 @@ export default function Groot() {
                   <div style={{ display: "flex", justifyContent: "center" }}>
                     <button
                       id='btn'
-                      data-mooform-id='419144d7-9877-4876-bcfc-d1e1f0b6a2ad'
+                      data-cb-type = "checkout"
+                      data-cb-item-0 = "Groot2-License-EUR-Yearly"
                       className='button button--primary button--md'
+                      data-cb-item-0-quantity = "1"
                       onClick={item.onclick}>
                       {item.btn}
                     </button>
