@@ -11,7 +11,7 @@ import clsx from "clsx";
 import EditorVideo from "@site/static/img/groot2_editor.mp4";
 import MonitorVideo from "@site/static/img/groot2_monitor.mp4";
 import LogVideo from "@site/static/img/groot2_log.mp4";
-import ContactFormModal from "../components/ContactFormModal";
+import ContactUSFormModal from "../components/ContactFormModal";
 
 function Check(props) {
   return <img src={useBaseUrl("img/check.png")} width='15' alt='yes' />;
@@ -23,7 +23,7 @@ function Cross(props) {
 export default function Groot() {
 
   const [chargebeeInitialized, setChargebeeInitialized] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [openContactUsModal, setOpenContactUsModal] = useState(false);
 
   useEffect(() => {
     if (!chargebeeInitialized) {
@@ -55,11 +55,17 @@ export default function Groot() {
     console.log('free')
     scrollToSection('sectionDownload')
   }
+
   const handleClickPro = () => {
     console.log('Pro')
-    setOpen(true)
-    // window.location.href = 'mailto:license@aurynrobotics.com'
   };
+  
+  const handleClickContact = () => {
+    console.log('contact')
+    setOpenContactUsModal(true)
+    // window.location.href = 'mailto:license@aurynrobotics.com'
+  }
+
   const obj = [
     {
       name: "Basic",
@@ -95,7 +101,7 @@ export default function Groot() {
         "Site license with unlimited number of seats.",
       ],
       btn: "Contact us",
-      onclick:() => handleClickPro()
+      onclick:() => handleClickContact()
     },
   ];
   console.log(obj);
@@ -150,23 +156,15 @@ export default function Groot() {
     }
   };
 
-
-  useEffect(() => {
-    if(open){
-     document.body.style.overflow = "hidden"
-    }else{
-      document.body.style.overflow = "auto"
-    }
-  },[open])
-
+  const handleCloseUsModal = () => setOpenContactUsModal(false)
 
   return (
     <>
       <Layout title='Groot' description='Groot Editor'>
         {/* groot intro */}
-        {
-          open && <ContactFormModal handleClose={()=>setOpen(false)}/>
-        }
+      {openContactUsModal && (
+         <ContactUSFormModal handleClose={handleCloseUsModal}/>
+      )}
       <div className={clsx("hero hero--dark", styles.heroBanner)}>
         <div className='container '>
           <div className='row align-items-center'>
@@ -182,6 +180,11 @@ export default function Groot() {
                   onClick={() => scrollToSection("sectionDownload")}
                   className='button button--primary button--lg'>
                   Download
+                </button>
+                <button
+                  onClick={() => handleClickContact()}
+                  className='button button--primary button--lg'>
+                  Contact us
                 </button>
               </div>
             </div>

@@ -17,19 +17,10 @@
   width: 30%;
   padding: 30px;
   border-radius: 10px;
+  position: relative;
 }
 
 .close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
   cursor: pointer;
 }
 
@@ -63,6 +54,8 @@
 
 .error{
   color: red;
+  font-size: 12px;
+  margin-top: 4px;
 }
 
 form {
@@ -118,6 +111,12 @@ form div button:hover {
 }
 .required{
   color: red;
+}
+
+.success{
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 @media only screen and (max-width: 768px) {
