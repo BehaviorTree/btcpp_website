@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
 import useBaseUrl from "@docusaurus/useBaseUrl";
@@ -11,6 +11,7 @@ import clsx from "clsx";
 import EditorVideo from "@site/static/img/groot2_editor.mp4";
 import MonitorVideo from "@site/static/img/groot2_monitor.mp4";
 import LogVideo from "@site/static/img/groot2_log.mp4";
+import ContactFormModal from "../components/ContactFormModal";
 
 function Check(props) {
   return <img src={useBaseUrl("img/check.png")} width='15' alt='yes' />;
@@ -18,22 +19,47 @@ function Check(props) {
 function Cross(props) {
   return <img src={useBaseUrl("img/cross.png")} width='15' alt='no' />;
 }
+
 export default function Groot() {
+
+  const [chargebeeInitialized, setChargebeeInitialized] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (!chargebeeInitialized) {
+      const chargeBeeScript = document.getElementById("chargebeeScript");
+
+      if (!chargeBeeScript) {
+        const el = document.createElement("script");
+        el.onload = () => {
+          Chargebee?.init({
+            site: "aurynrobotics",
+          });
+          Chargebee?.registerAgain();
+          setChargebeeInitialized(true);
+        };
+        el.setAttribute("src", "https://js.chargebee.com/v2/chargebee.js");
+        el.setAttribute("id", "chargebeeScript");
+        document.body?.appendChild(el);
+      } else {
+        Chargebee.init({
+          site: "aurynrobotics",
+        });
+        Chargebee?.registerAgain();
+        setChargebeeInitialized(true);
+      }
+    }
+  }, [chargebeeInitialized]);
 
   const handleClickBasic = () => {
     console.log('free')
     scrollToSection('sectionDownload')
   }
-  const handleClickContact = () => {
-    console.log('Contact')
-    window.location.href = 'mailto:license@aurynrobotics.com'
-  }
-
-  const handleClickCheckout = () => {
-    console.log('Checkout')
-    window.location.href = "javascript:void(0)"
-  }
-
+  const handleClickPro = () => {
+    console.log('Pro')
+    setOpen(true)
+    // window.location.href = 'mailto:license@aurynrobotics.com'
+  };
   const obj = [
     {
       name: "Basic",
@@ -56,31 +82,23 @@ export default function Groot() {
         "Interactive real-time debugger",
         "Technical support",
       ],
-      btn: "Checkout",
-      onclick: () => handleClickCheckout()
+      btn: "Buy License",
+      onclick: () => handleClickPro()
     },
     {
       name: "PRO (source code)",
-      price: "Contact us",
+      price: "Inquiry",
       durance: "",
       points: [
         "All the features in PRO",
         "Access to the source code",
         "Site license with unlimited number of seats.",
       ],
-      btn: "Contact",
-      onclick:() => handleClickContact()
+      btn: "Contact us",
+      onclick:() => handleClickPro()
     },
   ];
   console.log(obj);
-  // useEffect(() => {
-  //   openPopup();
-  //   window.plausible =
-  //     window.plausible ||
-  //     function () {
-  //       (window.plausible.q = window.plausible.q || []).push(arguments);
-  //     };
-  // }, []);
 
   const renderTooltip = (message, props) => {
     return (
@@ -131,10 +149,24 @@ export default function Groot() {
       section.scrollIntoView({ behavior: "smooth" });
     }
   };
-  return (
-    <Layout title='Groot' description='Groot Editor'>
-      {/* groot intro */}
 
+
+  useEffect(() => {
+    if(open){
+     document.body.style.overflow = "hidden"
+    }else{
+      document.body.style.overflow = "auto"
+    }
+  },[open])
+
+
+  return (
+    <>
+      <Layout title='Groot' description='Groot Editor'>
+        {/* groot intro */}
+        {
+          open && <ContactFormModal handleClose={()=>setOpen(false)}/>
+        }
       <div className={clsx("hero hero--dark", styles.heroBanner)}>
         <div className='container '>
           <div className='row align-items-center'>
@@ -146,12 +178,6 @@ export default function Groot() {
                 The most advanced IDE<br/>to create and debug Behavior Trees.
               </p>
               <div className={styles.buttonGroup}>
-                {/* <button
-                  data-mooform-id='419144d7-9877-4876-bcfc-d1e1f0b6a2ad'
-                  className='button button--primary button--lg'
-                  onClick={openPopup}>
-                  Our newsletter
-                </button> */}
                 <button
                   onClick={() => scrollToSection("sectionDownload")}
                   className='button button--primary button--lg'>
@@ -263,47 +289,64 @@ export default function Groot() {
       </div>
 
       <div className={`${styles.sectionSeparator} container`}>Pricing</div>
-
       <div className={`styles.sectionText`}>
         <div className={`container `}>
           <div className={`row`} id='row_price'>
-            {obj?.map((item) => (
-              <div
-                className='col col--4 '
-                id='card_col'
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                }}>
-                <div id='card'>
-                  <div id='card_header'>{item.name}</div>
-                  <div id='price_row'>
-                    <div id='price'>{item.price}</div>
-                    <div id='durance'>{item.durance}</div>
-                  </div>
-
-                  <ul id='point_stack' as='ul'>
-                    {item.points.map((p) => (
-                      <li id='point' as='li'>
-                        {p}
-                      </li>
-                    ))}
-                  </ul>
-                  <div style={{ display: "flex", justifyContent: "center" }}>
-                    <button
-                      id='btn'
-                      data-cb-type = "checkout"
-                      data-cb-item-0 = "Groot2-License-EUR-Yearly"
-                      className='button button--primary button--md'
-                      data-cb-item-0-quantity = "1"
-                      onClick={item.onclick}>
-                      {item.btn}
-                    </button>
+              {obj?.map((item, index) => (
+                <div
+                  className='col col--4 '
+                  id='card_col'
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                  }}>
+                  <div id="card">
+                    <div id="card_header">{item.name}</div>
+                    <div id="price_row">
+                      <div id="price">{item.price}</div>
+                      <div id="durance">{item.durance}</div>
+                    </div>
+                    <ul id="point_stack" as="ul">
+                      {item.points.map((p) => (
+                        <li id="point" as="li">
+                          {p}
+                        </li>
+                      ))}
+                    </ul>
+                    <div style={{ display: "flex", justifyContent: "center" }}>
+                      {index == 1 ? (
+                        <a
+                          id="btn"
+                          className="button button--primary button--md"
+                          href="javascript:void(0)"
+                          data-cb-type="checkout"
+                          data-cb-item-0="Floating-license-2024-EUR-Yearly"
+                          data-cb-item-0-quantity="1"
+                        >
+                          {item.btn}
+                        </a>
+                      ) : index == 2 ? (
+                        <button
+                          id="btn"
+                          className="button button--primary button--md"
+                          onClick={item.onclick}
+                        >
+                          {item?.btn}
+                        </button>
+                      ) : (
+                        <button
+                          id="btn"
+                          className="button button--primary button--md"
+                          onClick={item.onclick}
+                        >
+                          {item?.btn}
+                        </button>
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
           <div className='row'>
             <div className='col col--2 '></div>
             <div className='col col--8 '>
@@ -314,8 +357,8 @@ export default function Groot() {
                   for one month, activating your trial in "Preferences".
                 </li>
                 <li id='text'>
-                  <b>Discounts:</b> are you considering buying multiple licenses? 
-                  We can offer you a discount and a solution tailored for your company.
+                  <b>Discounts:</b> a price discount is automatically applied
+                  when purchasing multiple licenses (3+ or 5+).
                 </li>
                 <li id='text'>
                 <b>Free for academia:</b> if you are a student or researcher,
@@ -386,5 +429,6 @@ export default function Groot() {
         </div>
       </div>
     </Layout>
+  </>
   );
 }

@@ -35,7 +35,6 @@ function Home() {
           src="https://cdn.stat-track.com/statics/moosend-tracking.min.js"
           data-website-id="419144d798774876bcfcd1e1f0b6a2ad"
         ></script>
-        <script src="https://js.chargebee.com/v2/chargebee.js" data-cb-site="aurynrobotics" ></script>
       </Head>
       <div className={clsx("hero hero--light", styles.heroBanner)}>
         <div className="container ">
