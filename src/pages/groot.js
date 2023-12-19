@@ -80,13 +80,13 @@ export default function Groot() {
     },
     {
       name: "PRO (floating license)",
-      price: "€790",
-      durance: " / year (*)",
+      price: "€65",
+      durance: " / month",
+      sub_durance: "Paid yearly (€780 / year)",
       points: [
         "Search Nodes in large trees",
         "Unlimited Number of Nodes in Monitor and Log Visualizer",
-        "Interactive real-time debugger",
-        "Technical support",
+        "Interactive real-time debugger"
       ],
       btn: "Buy License",
       onclick: () => handleClickPro()
@@ -98,7 +98,7 @@ export default function Groot() {
       points: [
         "All the features in PRO",
         "Access to the source code",
-        "Site license with unlimited number of seats.",
+        "Site license with unlimited number of seats",
       ],
       btn: "Contact us",
       onclick:() => handleClickContact()
@@ -309,6 +309,7 @@ export default function Groot() {
                       <div id="price">{item.price}</div>
                       <div id="durance">{item.durance}</div>
                     </div>
+                    <div id="sub_durance">{item.sub_durance}</div>
                     <ul id="point_stack" as="ul">
                       {item.points.map((p) => (
                         <li id="point" as="li">
@@ -353,7 +354,7 @@ export default function Groot() {
           <div className='row'>
             <div className='col col--2 '></div>
             <div className='col col--8 '>
-              <h1 id='pricingHead'>(*) But wait, there is more!</h1>
+              <h1 id='pricingHead'>But wait, there is more!</h1>
               <ul>
                 <li id='text'>
                   <b>Free Trial:</b> enjoy all the features of th PRO versions
@@ -390,7 +391,7 @@ export default function Groot() {
 
       <div
         className={`${styles.sectionText} container ${styles.flexCol} gap-5 `}>
-        <h3>Latest release: 1.5.0 (2023-12-16)</h3>
+        <h3>Latest release: 1.4.0 (2023-11-29)</h3>
         <div className={styles.downloadGroup}>
           <div id='card_download' style={{ textAlign: "center" }}>
             <img
@@ -400,7 +401,7 @@ export default function Groot() {
             />
             <Link
               onclick="fathom.trackGoal('I8XXZTK4', 0);"
-              to='https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_windows_installer/Groot2-v1.5.0-windows-installer.exe'>
+              to='https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_windows_installer/Groot2-1.4.0-windows-installer.exe'>
               Windows installer
             </Link>
           </div>
@@ -412,7 +413,7 @@ export default function Groot() {
             />
             <Link
               onclick="fathom.trackGoal('VGT2ANC4', 0);"
-              to='https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_linux_installer/Groot2-v1.5.0-linux-installer.run'>
+              to='https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_linux_installer/Groot2-1.4.0-linux-installer.run'>
               Linux installer
             </Link>
           </div>
@@ -425,7 +426,7 @@ export default function Groot() {
             <Link
               // style={{marginLeft: '20px'}}
               onclick="fathom.trackGoal('DIQDUTJ2', 0);"
-              to='https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_linux_installer/Groot2-v1.5.0-x86_64.AppImage'>
+              to='https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_linux_installer/Groot2-v1.4.0-x86_64.AppImage'>
               AppImage (Linux)
             </Link>
           </div>

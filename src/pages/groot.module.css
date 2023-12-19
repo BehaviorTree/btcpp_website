@@ -63,6 +63,17 @@ h1[id="pricingHead"] {
   line-height: 1.5em;
   color: rgb(73, 73, 73);
 }
+
+[id="sub_durance"] {
+  margin-top: 5px;
+  margin-left: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5em;
+  text-align: center;
+  color: rgb(73, 73, 73);
+}
+
 [id="price"] {
   margin-top: 20px;
   font-size: 46px;
