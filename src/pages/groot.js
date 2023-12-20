@@ -82,7 +82,7 @@ export default function Groot() {
       name: "PRO (floating license)",
       price: "€65",
       durance: " / month",
-      sub_durance: "Paid yearly (€780 / year)",
+      sub_durance: "Billed annually (€780 / year)",
       points: [
         "Search Nodes in large trees",
         "Unlimited Number of Nodes in Monitor and Log Visualizer",
