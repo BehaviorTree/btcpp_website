@@ -80,25 +80,24 @@ export default function Groot() {
     },
     {
       name: "PRO (floating license)",
-      price: "€65",
-      durance: " / month",
-      sub_durance: "Billed annually (€780 / year)",
+      price: "€690",
+      durance: " / year",
       points: [
         "Search Nodes in large trees",
         "Unlimited Number of Nodes in Monitor and Log Visualizer",
         "Interactive real-time debugger"
       ],
-      btn: "Buy License",
-      onclick: () => handleClickPro()
+      btn: "Contact us",
+      onclick:() => handleClickContact()
     },
     {
-      name: "PRO (source code)",
-      price: "Inquiry",
-      durance: "",
+      name: "Training",
+      price: "€1,800",
+      durance: " / month",
       points: [
-        "All the features in PRO",
-        "Access to the source code",
-        "Site license with unlimited number of seats",
+        "Includes 1 PRO license (1 year)",
+        "Up to 12 hours per month",
+        "Learn how to use BT.CPP effectively or improve your current implementation",
       ],
       btn: "Contact us",
       onclick:() => handleClickContact()
@@ -360,13 +359,13 @@ export default function Groot() {
                   <b>Free Trial:</b> enjoy all the features of th PRO versions
                   for one month, activating your trial in "Preferences".
                 </li>
-                <li id='text'>
+                {/* <li id='text'>
                   <b>Discounts:</b> a price discount is automatically applied
                   when purchasing multiple licenses (3+ or 5+).
-                </li>
+                </li> */}
                 <li id='text'>
-                <b>Free for academia:</b> if you are a student or researcher,
-                  you can receive a complementary 1 year license. 
+                <b>Free for individual researchers:</b> if you are a student or researcher,
+                  you can receive a complementary 1 year license (node locked). 
                   <a href="https://airtable.com/appqTlC23AiSoB4Fd/shrsC33d8feHZmKXs" target="_blank"> Fill this form</a>
                   &ensp;and tell us more about your project.
                 </li>
