@@ -75,7 +75,7 @@ class CrossDoor
 public:
     void registerNodes(BT::BehaviorTreeFactory& factory);
 
-    // SUCCESS if _door_open == true
+    // SUCCESS if _door_open != true
     BT::NodeStatus isDoorClosed();
 
     // SUCCESS if _door_open == true
