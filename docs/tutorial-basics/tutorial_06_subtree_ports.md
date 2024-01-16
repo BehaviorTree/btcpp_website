@@ -28,7 +28,7 @@ Let's consider this Behavior Tree.
 
     <BehaviorTree ID="MainTree">
         <Sequence>
-            <Script script=" move_goal='1;2;3' " />
+            <Script code=" move_goal='1;2;3' " />
             // highlight-start
             <SubTree ID="MoveRobot" target="{move_goal}" 
                                     result="{move_result}" />
@@ -41,10 +41,10 @@ Let's consider this Behavior Tree.
         <Fallback>
             <Sequence>
                 <MoveBase  goal="{target}"/>
-                <Script script=" result:='goal reached' " />
+                <Script code=" result:='goal reached' " />
             </Sequence>
             <ForceFailure>
-                <Script script=" result:='error' " />
+                <Script code=" result:='error' " />
             </ForceFailure>
         </Fallback>
     </BehaviorTree>
