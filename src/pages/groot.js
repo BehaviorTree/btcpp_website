@@ -87,8 +87,8 @@ export default function Groot() {
         "Unlimited Number of Nodes in Monitor and Log Visualizer",
         "Interactive real-time debugger"
       ],
-      btn: "Contact us",
-      onclick:() => handleClickContact()
+      btn: "Buy now",
+      onclick:() => handleClickPro()
     },
     {
       name: "Training",
@@ -323,7 +323,7 @@ export default function Groot() {
                           className="button button--primary button--md"
                           href="javascript:void(0)"
                           data-cb-type="checkout"
-                          data-cb-item-0="Floating-license-2024-EUR-Yearly"
+                          data-cb-item-0="Floating-License-fixed-EUR-Yearly"
                           data-cb-item-0-quantity="1"
                         >
                           {item.btn}
