@@ -17,7 +17,7 @@ node __SubTree__ to include one tree into the other.
 # CrossDoor behavior
 
 This example is inspired by a popular 
-[article about behavior trees](http://www.gamasutra.com/blogs/ChrisSimpson/20140717/221339/Behavior_trees_for_AI_How_they_work.php).
+[article about behavior trees](https://www.gamedeveloper.com/programming/behavior-trees-for-ai-how-they-work).
 
 It is also the first practical example that uses `Decorators` and `Fallback`.
 
