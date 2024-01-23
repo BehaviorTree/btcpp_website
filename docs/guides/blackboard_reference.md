@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# Zero-copy access to the blackboard, using pointers
+# Zero-copy access to the blackboard
 
 If you followed the tutorials, you should already know that the Blackboard uses **value semantic**, i.e. 
 the methods `getInput` and `setOutput` copy the value from/to the blackboard.
