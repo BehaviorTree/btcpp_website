@@ -68,15 +68,6 @@ then there is no guarantee that a copy of the object being shared isn't accessed
 
 To prevent this issue, we provide a different API that includes a locking mechanism.
 
-This is **NOT** thread-safe:
-
-```cpp
-std::shared_ptr<Pointcloud> cloud_ptr;
-getInput("cloud", cloud_ptr);
-// modify the pointcloud referenced by cloud_ptr here
-```
-
-The thread-safe alternative:
 
 ```cpp
 // inside this scope (as long as any_locked exists), a mutex protecting 
