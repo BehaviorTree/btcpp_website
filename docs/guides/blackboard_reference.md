@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# Access Blackboard objects by Reference
+# Zero-copy access to the blackboard, using pointers
 
 If you followed the tutorials, you should already know that the Blackboard uses **value semantic**, i.e. 
 the methods `getInput` and `setOutput` copy the value from/to the blackboard.
@@ -18,7 +18,7 @@ For instance, a Node where it is recommended to use reference semantic is the
 `LoopNode` decorator, that modifies "in-place" a vector of objects.
 
 
-## Blackboard entries as Share pointers
+## Method 1: Blackboard entries as Share pointers
 
 For the sake of simplicity, we will consider an object that is expensive to copy,
  called **Pointcloud**.
@@ -59,15 +59,14 @@ The methods `getInput` and `setOutput` can be used as usual and still have value
 But since the object being copied is a `shared_ptr` we are actually accessing the
 pointcloud instance by reference.
 
-## Thread safety
+## Method 2: thread-safe castPtr (recommended since version 4.5.1)
 
-The most notable issue, when using this approach, is that it is **NOT thread safe**.
+The most notable issue, when using the `shared_ptr` approach, is that it is **NOT thread safe**.
 
 IF multithreading is used, inside a Node (remember that BT.CPP is single-threaded by default),
 then there is no guarantee that a copy of the object being shared isn't accessed during writing.
 
 To prevent this issue, we provide a different API that includes a locking mechanism.
-
 
 This is **NOT** thread-safe:
 
@@ -80,11 +79,19 @@ getInput("cloud", cloud_ptr);
 The thread-safe alternative:
 
 ```cpp
-// inside this scope, the mutex protecting the instance of "pointcloud" remains locked
+// inside this scope (as long as any_locked exists), a mutex protecting 
+// the instance of "cloud" remains locked
 if(auto any_locked = getLockedPortContent("cloud"))
 {
-  auto cloud_ptr  =  any_locked.get()->cast<std::shared_ptr<Pointcloud>>();
-  // modify the pointcloud referenced by cloud_ptr here
+  if(any_locked->empty())
+  {
+    // the entry in the blackboard hasn't been initialized yet.
+  }
+  else if(auto cloud_ptr = any_locked->cast<std::shared_ptr<Pointcloud>>())
+  {
+    // Succesful cast to the original value.
+    // Modify the pointcloud, referenced by cloud_ptr, here
+  }
 }
 ```
 
