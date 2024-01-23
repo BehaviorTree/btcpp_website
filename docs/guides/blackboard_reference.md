@@ -87,10 +87,10 @@ if(auto any_locked = getLockedPortContent("cloud"))
   {
     // the entry in the blackboard hasn't been initialized yet.
   }
-  else if(auto cloud_ptr = any_locked->cast<std::shared_ptr<Pointcloud>>())
+  else if(Pointcloud* cloud_ptr = any_locked->castPtr<Pointcloud>())
   {
-    // Succesful cast to the original value.
-    // Modify the pointcloud, referenced by cloud_ptr, here
+    // Succesful cast to Pointcloud* (original type).
+    // Modify the pointcloud instance, using cloud_ptr
   }
 }
 ```
