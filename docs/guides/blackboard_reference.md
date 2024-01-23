@@ -63,20 +63,39 @@ pointcloud instance by reference.
 
 The most notable issue, when using the `shared_ptr` approach, is that it is **NOT thread safe**.
 
-IF multithreading is used, inside a Node (remember that BT.CPP is single-threaded by default),
-then there is no guarantee that a copy of the object being shared isn't accessed during writing.
+If a custom asynchronous Node has its own thread, then the actual object might be accessed by other
+threads at the same time.
 
 To prevent this issue, we provide a different API that includes a locking mechanism.
 
+First, when creating our ports we can use a plain `Pointcloud`, no need to wrap it inside a `std::shared_ptr`:
 
 ```cpp
-// inside this scope (as long as any_locked exists), a mutex protecting 
-// the instance of "cloud" remains locked
+PortsList AcquirePointCloud::providedPorts()
+{
+    return { OutputPort<Pointcloud>("cloud") };
+}
+
+PortsList SegmentObject::providedPorts()
+{
+    return { InputPort<std::string>("obj_name"),
+             InputPort<Pointcloud>("cloud"),
+             OutputPort<Pose3D>("obj_pose") };
+}
+```
+
+To access the instance of Pointcloud by pointer/reference: 
+
+```cpp
+// inside the scope below, as long as "any_locked" exists, a mutex protecting 
+// the instance of "cloud" will remain locked
 if(auto any_locked = getLockedPortContent("cloud"))
 {
   if(any_locked->empty())
   {
     // the entry in the blackboard hasn't been initialized yet.
+    // You can initialize it doing:
+    any_locked.assign(my_initial_pointcloud);
   }
   else if(Pointcloud* cloud_ptr = any_locked->castPtr<Pointcloud>())
   {
