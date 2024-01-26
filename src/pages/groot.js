@@ -412,7 +412,7 @@ export default function Groot() {
             />
             <Link
               onclick="fathom.trackGoal('VGT2ANC4', 0);"
-              to='https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_linux_installer/Groot2-V1.5.2-linux-installer.run'>
+              to='https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_linux_installer/Groot2-v1.5.2-linux-installer.run'>
               Linux installer
             </Link>
           </div>
@@ -426,7 +426,7 @@ export default function Groot() {
               // style={{marginLeft: '20px'}}
               onclick="fathom.trackGoal('DIQDUTJ2', 0);"
               
-              to='https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_linux_installer/Groot2-V1.5.2-x86_64.AppImage'>
+              to='https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_linux_installer/Groot2-v1.5.2-x86_64.AppImage'>
               AppImage (Linux)
             </Link>
           </div>
