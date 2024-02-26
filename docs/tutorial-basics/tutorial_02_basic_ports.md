@@ -47,7 +47,7 @@ To pass this string, we will use an input port called __message__.
 Consider these alternative XML syntaxes:
 
 ``` xml
-<SaySomething name="fist"   message="hello world" />
+<SaySomething name="first"   message="hello world" />
 <SaySomething name="second" message="{greetings}" />
 ```
 
