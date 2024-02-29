@@ -1,11 +1,11 @@
 ---
 title: Migration from BT.CPP 3.x
-description: How to migrate your code from version 3.X
+description: How to migrate your code from version 3.8
 hide_table_of_contents: false
 sidebar_position: 7
 ---
 
-# Migrating from version 3.X to 4.X
+# Migrating from version 3.8 to 4.X
 
 You will find that most of the changes in version 4.X
 are incremental and back compatible with your previous code.
@@ -15,14 +15,14 @@ that you should be aware of, when migrating.
 
 :::note
 In the repository you can find a Python script called **convert_v3_to_v4.py**
-that may save you some time (thanks to use https://github.com/SubaruArai)!
+that may save you some time (thanks to user https://github.com/SubaruArai)!
 
-Try it, but make sure that you double check the result first!
+Try it, but make sure that you double-check the result first!
 :::
 
 ## Class renaming 
 
-The name of the following classes / XML tags changed.
+The names of the following classes / XML tags changed.
 
 | Name in 3.8+ | Name in 4.x | Where |
 |-------------|---------|---------|
@@ -31,7 +31,7 @@ The name of the following classes / XML tags changed.
 | AsyncActionNode | ThreadedAction | C++ |
 | Optional | Expected | C++ |
 
-If you want to quickly fix the compilation of your C++ code, **even if refactoring is encorauged**, do:
+If you want to quickly fix the compilation of your C++ code (**even if refactoring is encouraged**) add:
 
 ```cpp
 namespace BT 
@@ -41,10 +41,6 @@ namespace BT
   using Optional = Expected;
 }
 ```
-
-:::info
-These changes can be disabled while compiling BT.CPP with the CMake option __USE_V3_COMPATIBLE_NAMES__.
-:::
 
 ## XML  
 
@@ -60,26 +56,25 @@ Now:
 <root BTCPP_format="4">
 ```
 
-This will allow us to be compatible
-with both versions 3 and 4 (in future releases, not yet).
+This will allow us to be compatible with both versions 3 and 4... eventually!
 
 ## SubTree and SubTreePlus
-
-The deafault **SubTree** in 3.X has been deprecated and
-**SubtreePlus** is the new default, being easier to use and 
-more consistent.
+ 
+The default **SubTree** in 3.X has been deprecated in favor of **SubtreePlus**.
+Being this the new default, we simply call it "SubTree".
 
 | Name in 3.8+ | Name in 4.x |
 |-------------|---------|
 | `<SubTree>` | Deprecated |
 | `<SubTreePlus>` | `<SubTree>` |
 
-## SetBlackboard and BlackboardPrecondition
+## SetBlackboard and BlackboardCheck
 
-The new [scripting language](/docs/guides/scripting)
-is much simpler and more powerful.
+The new [scripting language](/docs/guides/scripting) is much simpler and more powerful.
 
-Old code in **3.8+**:
+Check also the introduction to [Pre and Post Conditions](/docs/guides/pre_post_conditions).
+
+Old code in **3.8**:
 
 ``` xml
 <SetBlackboard output_key="port_A" value="42" />
@@ -94,18 +89,72 @@ New code in **4.X**:
 
 ``` xml
 <Script code="port_A:=42; port_B:=69" />
-<Precondition if="port_A==port_B" else="FAILURE">
-    <MyAction/>
-</Precondition>
+<MyAction _failureIf="port_A!=port_B"/>
 ```
 
-## Ticking
+## Ticking in a While Loop
 
-The method `Tree::tickRoot()` was removed, and we introduced these two new methods instead:
+A typical execution used to look like this:
 
-- `Tree::tickOnce()` works as usual. It should run inside a while-loop.
-- `Tree::tickWhileRunning()` has its own while-loop, and will continue ticking until either 
-SUCCESS or FAILURE is received.
+```cpp
+// simplified code, frequently found in BT.CPP 3.8
+while(status != NodeStatus::SUCCESS || status == NodeStatus::FAILURE) 
+{
+  status tree.tickRoot();
+  std::this_thread::sleep_for(sleep_ms);
+}
+```
+
+The "polling" model of Behavior Trees is sometimes criticized. The sleep is necessary to
+avoid "busy loops", but may introduce some latency.
+
+
+To improve the reactiveness of behavior trees, we introduced the method 
+```cpp
+Tree::sleep(std::chrono::milliseconds timeout)
+```
+
+This particular implementation of **sleep** can be interrupted if **any** node in the tree invokes the method `TreeNode::emitWakeUpSignal`. 
+This allows the loop to re-tick the tree **immediately**.
+
+The method `Tree::tickRoot()` has been removed from the public API and the new recommended approach is:
+
+```cpp
+// Use Tree::sleep and wait for either SUCCESS or FAILURE
+while(!BT::isStatusCompleted(status)) 
+{
+  status = tree.tickOnce();
+  tree.sleep(sleep_ms);
+}
+//---- or, even better ------
+status = tree.tickWhileRunning(sleep_ms); 
+```
+
+`Tree::tickWhileRunning` is the new default and it has its own internal loop; 
+the first argument is a timeout of the sleep inside the loop.
+
+Alternatively, you may use these methods:
+
+- `Tree::tickExactlyOnce()`: equivalent to the old behavior in 3.8+
+- `Tree::tickOnce()` is roughly equivalent to `tickWhileRunning(0ms)`. It may potentially tick more than once.
+
+
+# ControlNodes and Decorators must support NodeStatus:SKIPPED
+
+The purpose of this new status is to be returned when a [PreCondition](/docs/guides/pre_post_conditions) is not met.
+
+When a Node returns **SKIPPED**, it is notifying to its parent (ControlNode or Decorator) that it hasn't been executed.
+
+:::note
+When you implement your own custom **Leaf Node**, you shall not return **SKIPPED**.
+This status is reserved for PreConditions.
+
+On the other hand, **ControlNodes and Decorators** must be modified to support this
+new status. 
+:::
+
+The usual rule of thumb is that, if a child Node returns **SKIPPED**, 
+it means that it was not executed, and the ControlNode should move to the next one.
 
 # Asychronous Control Nodes
 
@@ -113,7 +162,7 @@ A serious problem was detected by a user
 [here](https://github.com/BehaviorTree/BehaviorTree.CPP/issues/395):
 
 > If a **ControlNode** or **DecoratorNode** has synchronous children only,
-it is impossible to interrupt it.
+it is impossible to interrupt them.
 
 Consider this example:
 
@@ -127,14 +176,13 @@ Consider this example:
     <Sequence>
 </ReactiveSequence>   
 ```
-When a `Sequence` (or `Fallback`) has only synchronous children, the entire sequence becomes
-"atomic". 
+When a `Sequence` (or `Fallback`) has only synchronous children, the entire sequence becomes "atomic". 
 
 In other words, when "synch_sequence" starts, it is impossible for `AbortCondition` to stop it.
 
 To address this issue, we added two new nodes, `AsyncSequence` and `AsyncFallback`.
 
-When `AsyncSequence` is used, **RUNNING** is returned after the execution of each synchronous child,
-before moving to the next sibling.
+When `AsyncSequence` is used, **RUNNING** is returned after the execution of **each** synchronous child, before moving to the next sibling.
 
-In this way, we give allow the tree to run the `ReactiveSequence` above.  
+In the example above, to complete the entire tree successfully we need 3 ticks.
+
