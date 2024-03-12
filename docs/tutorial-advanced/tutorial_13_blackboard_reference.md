@@ -1,5 +1,6 @@
 ---
-sidebar_position: 4
+sidebar_position: 13
+sidebar_label: 13. Access a port by reference
 ---
 
 # Zero-copy access to the blackboard

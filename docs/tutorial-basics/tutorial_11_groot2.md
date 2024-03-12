@@ -1,6 +1,6 @@
 ---
-sidebar_position: 12
-sidebar_label: 12. Connect to Groot2
+sidebar_position: 11
+sidebar_label: 11. Connect to Groot2
 ---
 
 **Groot2** is the official IDE to Edit, Monitor and interact with

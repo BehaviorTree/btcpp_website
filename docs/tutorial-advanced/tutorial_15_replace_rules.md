@@ -1,6 +1,6 @@
 ---
-sidebar_position: 11
-sidebar_label: 11. Substitution Rules
+sidebar_position: 15
+sidebar_label: 15. Mocking and Nodes Replacement
 ---
 
 # Mock testing in BT.CPP
