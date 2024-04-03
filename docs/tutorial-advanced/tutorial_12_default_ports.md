@@ -41,7 +41,7 @@ BT::InputPort<Point2D>("pointA", Point2D{1, 2}, "...");
 
 If the template specialization `convertFromString<Point2D>()` is implemented, we can use that too.
 
-In other words, the following syntaxes should be equivalent, if our **converFromString** expects
+In other words, the following syntaxes should be equivalent, if our **convertFromString** expects
 two comma-separated values:
 
 ```cpp
