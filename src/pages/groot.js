@@ -362,13 +362,13 @@ export default function Groot() {
                 {/* <li id='text'>
                   <b>Discounts:</b> a price discount is automatically applied
                   when purchasing multiple licenses (3+ or 5+).
-                </li> */}
+                </li> 
                 <li id='text'>
                 <b>Free for individual researchers:</b> if you are a student or researcher,
                   you can receive a complementary 1 year license (node locked). 
                   <a href="https://airtable.com/appqTlC23AiSoB4Fd/shrsC33d8feHZmKXs" target="_blank"> Fill this form</a>
                   &ensp;and tell us more about your project.
-                </li>
+                </li> */}
 
                 <li id='text'>
                   <b>Source code escrow:</b> if Auryn
