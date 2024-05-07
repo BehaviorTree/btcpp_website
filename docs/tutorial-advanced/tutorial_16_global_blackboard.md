@@ -15,27 +15,28 @@ isolate each subtree as they were independent functions / routines, in a program
 Still, there are cases where it could be desirable to have a truly "global" blackboard, that can be 
 accessed from every Subtree directly, without remapping.
 
-This may make sense for:
+This makes sense for:
 
 - Singletons and global objects that can't be shared as described in [Tutorial 8](tutorial-basics/tutorial_08_additional_args.md)
 - Global states of the robot. 
 - Data that is written / read outside the Behavior Tree, i.e. in the main loop executing the tick.
 
-Additionally, since the blackboard is a generic key/value storage, where the value can have **any** type,
-it is a perfect data structure to implement what is known in the literature as "World Model",
-i.e. data that represents the state of the world, and that the Nodes in the tree may need to access.
+Additionally, since the blackboard is a generic key/value storage, where the value can contain **any** type,
+it is a perfect data structure to implement what is known in the literature as **"World Model"**,
+i.e. a place where the states of the environment, the robot and the tasks can be shared with the Behavior Trees.
 
+## Blackboards hierarchy
 
 Consider a simple Tree with two subtrees, like this:
 
 ![tree_hierarchy.png](images/tree_hierarchy.png)
 
-Each one of the 3 Subtree has its own blackboard; the parent.child relationship between these
-blackboards is exactly the same as the BehaviorTrees, i.e. BB1 is the parent of BB2 and BB3.
+Each one of the 3 Subtree has its own blackboard; the parent / child relationship between these
+blackboards is exactly the same as the tree, i.e. BB1 is the parent of BB2 and BB3.
 
 The lifecycle of these individual blackboards is coupled with their respective Subtree.
 
-We will can introduce easily an external "global blackboard" like this:
+We can implement an external "global blackboard" like this:
 
 ```cpp
 auto global_bb = BT::Blackboard::create();
@@ -43,7 +44,7 @@ auto maintree_bb = BT::Blackboard::create(global_bb);
 auto tree = factory.createTree("MainTree", maintree_bb);
 ```
 
-This will create the following hierarchy, among blackboards:
+This will create the following blackboards hierarchy:
 
 ![bb_hierarchy.png](images/bb_hierarchy.png)
 
@@ -54,22 +55,21 @@ Furthermore, it can be easily accessed using `set` and `get` methods.
 
 ## How to access the top-level blackboard from the tree
 
-We call a blackboard the "top-level" one, when it is the root or the hierarchy.
+By "top-level blackboard", we mean the one at the root or the hierarchy.
 
-In the previous tutorials, that would be the one inside "MainTree", but when the code above 
-is used, `global_bb` will become the top-level one.
+In the code above, `global_bb` becomes the top-level blackboard.
 
 Since version **4.6** of BT.CPP, a new syntax was introduced to access the top-level
-blackboard **without remapping**.
+blackboard **without remapping**, by adding the prefix `@` to the name of the entry. 
 
-Simply, add the prefix "@" to the name of the entry. For instance:
+For instance:
 
 
 ```xml
 <PrintNumber val="{@value}" />
 ```
 
-This code will always search the entry `value` in the top-level blackboard, instead of the local one.
+The port **val** will search the entry `value` in the top-level blackboard, instead of the local one.
 
 ## Full example
 
@@ -100,17 +100,17 @@ public:
   PrintNumber(const std::string& name, const BT::NodeConfig& config)
     : BT::SyncActionNode(name, config)
   {}
+  
+  static BT::PortsList providedPorts()
+  {
+    return { BT::InputPort<int>("val") };
+  }
 
   NodeStatus tick() override
   {
     const int val = getInput<int>("val").value();
     std::cout << "[" << name() << "] val: " << val << std::endl;
     return NodeStatus::SUCCESS;
-  }
-
-  static BT::PortsList providedPorts()
-  {
-    return { BT::InputPort<int>("val") };
   }
 };
 
@@ -160,6 +160,6 @@ Output:
 
 Notes:
 
-- The prefix "@" works both when used in an InputPort or in the scripting language.
+- The prefix "@" works both when used in an Input / Output Port or in the scripting language.
 - No remapping is needed in the Subtrees.
 - When accessing the blackboard directly in the main loop, no prefix "@" is needed.
