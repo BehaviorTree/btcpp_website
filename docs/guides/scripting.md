@@ -128,6 +128,40 @@ Example:
 val_B = (val_A > 1) ? 42 : 24
 ```
 
+## Boolean Values
+Boolean values can be one of `true` or `false`
+and are saved to the blackboard as `1` and `0` respectively.
+
+Setting booleans:
+```
+val_A = true
+val_B := !false
+```
+The logical `!` works with boolean literals. 
+`!false` is the equivalent of `true`. 
+`val_A` and `val_B` above are equivalent. 
+
+Using booleans:
+```
+<Precondition if="val_A" else="FAILURE">
+<Precondition if="val_A == true" else="FAILURE">
+<Precondition if="val_A == 1" else="FAILURE">
+```
+All of the scripts used in precondition nodes above are valid. 
+
+When evaluating the boolean value, it can be:
+ - checked directly, 
+ - compared with the literals `true` and `false`
+ - compared with `1` and `0`.
+
+
+### Considerations when using boolean values: 
+ - The BT.cpp v3 style `SetBlackboard` node stores input to the blackboard as a std::string, 
+   therefore any boolean or numerical values stored from `SetBlackboard` 
+   are **incompatible** with values set using the scripting language.
+ - Capitalization of the words "true" and "false" in any manner will not work.
+
+
 ## C++ example
 
 Demonstration of the scripting language, including how to use enums to 
