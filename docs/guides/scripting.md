@@ -155,11 +155,7 @@ When evaluating the boolean value, it can be:
  - compared with `1` and `0`.
 
 
-### Considerations when using boolean values: 
- - The BT.cpp v3 style `SetBlackboard` node stores input to the blackboard as a std::string, 
-   therefore any boolean or numerical values stored from `SetBlackboard` 
-   are **incompatible** with values set using the scripting language.
- - Capitalization of the words "true" and "false" in any manner will not work.
+Note that capitalization of the words "true" and "false" in any manner will not work.
 
 
 ## C++ example
