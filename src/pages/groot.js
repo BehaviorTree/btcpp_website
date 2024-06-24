@@ -390,7 +390,7 @@ export default function Groot() {
 
       <div
         className={`${styles.sectionText} container ${styles.flexCol} gap-5 `}>
-        <h3>Latest release: 1.5.2 (2024-01-24)</h3>
+        <h3>Latest release: 1.6.0 (2024-06-24)</h3>
         <div className={styles.downloadGroup}>
           <div id='card_download' style={{ textAlign: "center" }}>
             <img
@@ -400,7 +400,7 @@ export default function Groot() {
             />
             <Link
               onclick="fathom.trackGoal('I8XXZTK4', 0);"
-              to='https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_windows_installer/Groot2-v1.5.2-windows-installer.exe'>
+              to='https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_windows_installer/Groot2-v1.6.0-windows-installer.exe'>
               Windows installer
             </Link>
           </div>
@@ -412,7 +412,7 @@ export default function Groot() {
             />
             <Link
               onclick="fathom.trackGoal('VGT2ANC4', 0);"
-              to='https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_linux_installer/Groot2-v1.5.2-linux-installer.run'>
+              to='https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_linux_installer/Groot2-v1.6.0-linux-installer.run'>
               Linux installer
             </Link>
           </div>
@@ -426,7 +426,7 @@ export default function Groot() {
               // style={{marginLeft: '20px'}}
               onclick="fathom.trackGoal('DIQDUTJ2', 0);"
               
-              to='https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_linux_installer/Groot2-v1.5.2-x86_64.AppImage'>
+              to='https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_linux_installer/Groot2-v1.6.0-x86_64.AppImage'>
               AppImage (Linux)
             </Link>
           </div>
