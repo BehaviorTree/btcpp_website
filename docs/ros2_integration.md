@@ -48,18 +48,17 @@ should not worry about creating a separate thread.
 `TreeNode::halt()` and build reactive behaviors.
 
 Let's consider, for instance, the "Fibonacci" action client described in the
-[official C++ tutorial](https://docs.ros.org/en/humble/Tutorials/Intermediate/Writing-an-Action-Server-Client/Cpp.html#writing-an-action-client):
-
-```cpp
-// let's define these, for brevity
-using Fibonacci = action_tutorials_interfaces::action::Fibonacci;
-using GoalHandleFibonacci = rclcpp_action::ServerGoalHandle<Fibonacci>;
-```
+[official C++ tutorial](https://docs.ros.org/en/humble/Tutorials/Intermediate/Writing-an-Action-Server-Client/Cpp.html#writing-an-action-client).
 
 To create a BT Action that invokes this ROS Action:
 
 ```cpp
 #include <behaviortree_ros2/bt_action_node.hpp>
+#include "action_tutorials_interfaces/action/fibonacci.hpp"
+
+// let's define these, for brevity
+using Fibonacci = action_tutorials_interfaces::action::Fibonacci;
+using GoalHandleFibonacci = rclcpp_action::ServerGoalHandle<Fibonacci>;
 
 using namespace BT;
 
@@ -99,7 +98,7 @@ public:
     for (auto number : wr.result->sequence) {
       ss << number << " ";
     }
-    RCLCPP_INFO(node_->get_logger(), ss.str().c_str());
+    RCLCPP_INFO(logger(), ss.str().c_str());
     return NodeStatus::SUCCESS;
   }
 
@@ -110,7 +109,7 @@ public:
   // If not overridden, it will return FAILURE by default.
   virtual NodeStatus onFailure(ActionNodeErrorCode error) override
   {
-    RCLCPP_ERROR(node_->get_logger(), "Error: %d", error);
+    RCLCPP_ERROR(logger(), "Error: %d", error);
     return NodeStatus::FAILURE;
   }
 
@@ -128,7 +127,7 @@ public:
     for (auto number : feedback->partial_sequence) {
       ss << number << " ";
     }
-    RCLCPP_INFO(node_->get_logger(), ss.str().c_str());
+    RCLCPP_INFO(logger(), ss.str().c_str());
     return NodeStatus::RUNNING;
   }
 };
@@ -163,6 +162,7 @@ The example below is based on the
 
 ```cpp
 #include <behaviortree_ros2/bt_service_node.hpp>
+#include "example_interfaces/srv/add_two_ints.hpp"
 
 using AddTwoInts = example_interfaces::srv::AddTwoInts;
 using namespace BT;
@@ -203,7 +203,7 @@ class AddTwoIntsNode: public RosServiceNode<AddTwoInts>
   // It must return SUCCESS or FAILURE
   NodeStatus onResponseReceived(const Response::SharedPtr& response) override
   {
-    RCLCPP_INFO(node_->get_logger(), "Sum: %ld", response->sum);
+    RCLCPP_INFO(logger(), "Sum: %ld", response->sum);
     return NodeStatus::SUCCESS;
   }
 
@@ -214,7 +214,7 @@ class AddTwoIntsNode: public RosServiceNode<AddTwoInts>
   // If not overridden, it will return FAILURE by default.
   virtual NodeStatus onFailure(ServiceNodeErrorCode error) override
   {
-    RCLCPP_ERROR(node_->get_logger(), "Error: %d", error);
+    RCLCPP_ERROR(logger(), "Error: %d", error);
     return NodeStatus::FAILURE;
   }
 };
