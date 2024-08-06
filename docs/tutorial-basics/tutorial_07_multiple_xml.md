@@ -47,7 +47,7 @@ Let's consider a file **main_tree.xml** that should include the other 2 files:
             // highlight-end
         </Sequence>
     </BehaviorTree>
-<root>
+</root>
 ```
 
 To load multiple files manually:
@@ -120,7 +120,7 @@ to include into the XML itself, you can modify **main_tree.xml** as shown below:
             <SubTree ID="SubTreeB" />
         </Sequence>
     </BehaviorTree>
-<root>
+</root>
 ```
 
 As you may notice, we included two relative paths in **main_tree.xml**
