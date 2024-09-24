@@ -121,10 +121,10 @@ this node could be either:
 ![Simple Decorator: Enter Room](images/DecoratorEnterRoom.svg)
 
 The node __Inverter__ is a Decorator that inverts 
-the result returned by its child; An Inverter followed by the node called
-__isDoorOpen__ is, therefore, equivalent to 
+the result returned by its child; an Inverter followed by the node called
+__isDoorClosed__ is, therefore, equivalent to 
 
-    "Is the door closed?".
+    "Is the door open?".
 
 The node __Retry__ will repeat ticking the child up to __num_attempts__ times (5 in this case)
 if the child returns FAILURE.

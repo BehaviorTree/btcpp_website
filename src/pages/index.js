@@ -41,7 +41,7 @@ function Home() {
           <div className="row align-items-center">
             <div className="col col--6">
               <div className={clsx(styles.heroText)}>
-                <h1 className="hero__title ">BehaviorTree.CPP 4.5</h1>
+                <h1 className="hero__title ">BehaviorTree.CPP 4.6</h1>
                 <p className="hero__subtitle">
                   The C++ library to build Behavior Trees.
                   <br />
