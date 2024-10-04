@@ -25,6 +25,10 @@ Further, we will create this simple tree:
 The default (and recommended) way to create a TreeNode is by inheritance.
 
 ``` cpp
+// FILE: dummy_nodes.h
+#include <behaviortree_cpp/action_node.h>
+#include <behaviortree_cpp/basic_types.h>
+
 // Example of custom SyncActionNode (synchronous action)
 // without ports.
 class ApproachObject : public BT::SyncActionNode
@@ -63,8 +67,7 @@ BT::NodeStatus myFunction(BT::TreeNode& self)
 For example:
 
 ``` cpp
-using namespace BT;
-
+// CONTINUED: dummy_nodes.h
 // Simple function that return a NodeStatus
 BT::NodeStatus CheckBattery()
 {
@@ -78,14 +81,14 @@ class GripperInterface
 public:
   GripperInterface(): _open(true) {}
     
-  NodeStatus open() 
+  BT::NodeStatus open() 
   {
 	_open = true;
 	std::cout << "GripperInterface::open" << std::endl;
 	return NodeStatus::SUCCESS;
   }
 
-  NodeStatus close() 
+  BT::NodeStatus close() 
   {
     std::cout << "GripperInterface::close" << std::endl;
 	_open = false;
@@ -136,28 +139,28 @@ The attribute "name" represents the name of the instance; **it is optional**.
 
 
 ``` cpp
-#include "behaviortree_cpp/bt_factory.h"
+#include <behaviortree_cpp/bt_factory.h>
+#include <behaviortree_cpp/tree_node.h>
 
 // file that contains the custom nodes definitions
 #include "dummy_nodes.h"
-using namespace DummyNodes;
 
 int main()
 {
-    // We use the BehaviorTreeFactory to register our custom nodes
-  BehaviorTreeFactory factory;
+  // We use the BehaviorTreeFactory to register our custom nodes
+  BT::BehaviorTreeFactory factory;
 
   // The recommended way to create a Node is through inheritance.
   factory.registerNodeType<ApproachObject>("ApproachObject");
 
   // Registering a SimpleActionNode using a function pointer.
   // You can use C++11 lambdas or std::bind
-  factory.registerSimpleCondition("CheckBattery", [&](TreeNode&) { return CheckBattery(); });
+  factory.registerSimpleCondition("CheckBattery", [&](BT::TreeNode&) { return CheckBattery(); });
 
-  //You can also create SimpleActionNodes using methods of a class
+  // You can also create SimpleActionNodes using methods of a class
   GripperInterface gripper;
-  factory.registerSimpleAction("OpenGripper", [&](TreeNode&){ return gripper.open(); } );
-  factory.registerSimpleAction("CloseGripper", [&](TreeNode&){ return gripper.close(); } );
+  factory.registerSimpleAction("OpenGripper", [&](BT::TreeNode&){ return gripper.open(); } );
+  factory.registerSimpleAction("CloseGripper", [&](BT::TreeNode&){ return gripper.close(); } );
 
   // Trees are created at deployment-time (i.e. at run-time, but only 
   // once at the beginning). 
