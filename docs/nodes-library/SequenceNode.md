@@ -54,8 +54,9 @@ Let's take a look at another example:
 `ApproachEnemy` is an __asynchronous__ action that returns RUNNING until
 it is, eventually, completed.
 
-The condition `isEnemyVisible` will be called many times and, 
-if it becomes false (i,e, "FAILURE"), `ApproachEnemy` is halted. 
+The __synchronous__ condition `isEnemyVisible` will be called many times and
+returns true or false quickly. If it becomes false (i,e, "FAILURE"), `ApproachEnemy`
+is halted.
 
 
 ## SequenceWithMemory
@@ -72,6 +73,3 @@ On the other hand, __isBatteryOK__ must be checked at every tick,
 for this reason its parent must be a `ReactiveSequence`.
 
 ![SequenceWithMemory](images/SequenceStar.svg)
-
-
- 
