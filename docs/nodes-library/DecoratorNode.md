@@ -29,6 +29,7 @@ Otherwise, it returns always FAILURE.
 Tick the child up to N times (within one of its tick), where N is passed as [Input Port](tutorial-basics/tutorial_02_basic_ports.md) `num_cycles`,
 as long as the child returns SUCCESS.
 Return SUCCESS after the N repetitions in the case that the child always returned SUCCESS.
+If `num_cycles` is -1, repeat indefinitely.
 
 Interrupt the loop if the child returns FAILURE and, in that case, return FAILURE too.
 
