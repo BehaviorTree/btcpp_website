@@ -38,12 +38,12 @@ We will use this XML:
     <Sequence>
       <Script code=" msg:='hello world' " />
       <Script code=" A:=THE_ANSWER; B:=3.14; color:=RED " />
-        <Precondition if="A>B && color != BLUE" else="FAILURE">
-          <Sequence>
-            <SaySomething message="{A}"/>
-            <SaySomething message="{B}"/>
-            <SaySomething message="{msg}"/>
-            <SaySomething message="{color}"/>
+      <Precondition if="A>B && color != BLUE" else="FAILURE">
+        <Sequence>
+          <SaySomething message="{A}"/>
+          <SaySomething message="{B}"/>
+          <SaySomething message="{msg}"/>
+          <SaySomething message="{color}"/>
         </Sequence>
       </Precondition>
     </Sequence>
