@@ -72,4 +72,4 @@ If the action __GoTo(B)__ fails, __GoTo(A)__ will not be ticked again.
 On the other hand, __isBatteryOK__ must be checked at every tick, 
 for this reason its parent must be a `ReactiveSequence`.
 
-![SequenceWithMemory](images/SequenceStar.svg)
+![SequenceWithMemory](images/SequenceWithMemory.svg)
