@@ -5,6 +5,8 @@ A decorator is a node that must have a single child.
 It is up to the Decorator to decide if, when and how many times the child should be
 ticked.
 
+> Some nodes are not listed yet. See [decorators](https://github.com/BehaviorTree/BehaviorTree.CPP/tree/master/include/behaviortree_cpp/decorators) on Github for complete definitions.
+
 ## Inverter
 
 Tick the child once and return SUCCESS if the child failed or FAILURE if

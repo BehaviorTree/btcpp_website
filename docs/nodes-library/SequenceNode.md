@@ -34,6 +34,8 @@ To understand how the three ControlNodes differ, refer to the following table:
   same child is ticked again. Previous siblings, which returned SUCCESS already,
   are not ticked again.
 
+> Some nodes are not listed yet. See [controls](https://github.com/BehaviorTree/BehaviorTree.CPP/tree/master/include/behaviortree_cpp/controls) on Github for complete definitions.
+
 ## Sequence
 
 This tree represents the behavior of a sniper in a computer game.
