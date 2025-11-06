@@ -88,7 +88,7 @@ For the time being, it is important to know that:
 - The number, name and kind of ports of a Node must be known at _compilation-time_ (C++); 
   connections between ports are done at _deployment-time_ (XML).  
 
-- You can store as value any C++ type (we use a __type erasure_ technique
+- You can store as value any C++ type (we use a _type erasure_ technique
 similar to [std::any](https://www.fluentcpp.com/2021/02/05/how-stdany-works/)).
 
 
