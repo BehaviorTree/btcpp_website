@@ -12,8 +12,12 @@ const config = {
   url: 'https://www.behaviortree.dev/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.svg',
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'throw',
+    },
+  },
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -33,9 +37,7 @@ const config = {
     },
   },
   
-  plugins: [
-    require.resolve("@easyops-cn/docusaurus-search-local"),
-  ],
+  plugins: [],
 
   presets: [
     [
@@ -60,6 +62,7 @@ const config = {
         },
         blog: {
           showReadingTime: true,
+          onUntruncatedBlogPosts: 'ignore',
           // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/BehaviorTree/btcpp_website/tree/master',

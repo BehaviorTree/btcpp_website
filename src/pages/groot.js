@@ -52,16 +52,13 @@ export default function Groot() {
   }, [chargebeeInitialized]);
 
   const handleClickBasic = () => {
-    console.log('free')
     scrollToSection('sectionDownload')
   }
 
   const handleClickPro = () => {
-    console.log('Pro')
   };
-  
+
   const handleClickContact = () => {
-    console.log('contact')
     setOpenContactUsModal(true)
     // window.location.href = 'mailto:license@aurynrobotics.com'
   }
@@ -103,7 +100,6 @@ export default function Groot() {
       onclick:() => handleClickContact()
     },
   ];
-  console.log(obj);
 
   const renderTooltip = (message, props) => {
     return (

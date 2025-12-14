@@ -6,7 +6,7 @@ If you find any typo reading the documentation, please submit a Pull Request or 
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org/) version 18.0 or higher
+- [Node.js](https://nodejs.org/) version 20.0 or higher
 
 ## Installation
 

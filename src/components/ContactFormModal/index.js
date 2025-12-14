@@ -86,12 +86,11 @@ const ContactFormModal = ({ handleClose }) => {
       )
       .then(
         (response) => {
-          console.log("SUCCESS!", response.status, response.text);
           setSubmitted(true);
           setLoading(false);
         },
         (err) => {
-          console.log("FAILED...", err);
+          // Email send failed
         }
       )
       .finally(() => {
