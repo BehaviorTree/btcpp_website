@@ -108,15 +108,15 @@ val_D := (val_A && val_B) || !val_C
 | Operators | Description |
 |----------|---------|
 | true/false |  Booleans. Castable to 1 and 0 respectively   |
-| &&       |  Logic and |
-| \|\|     |  Logic or |
-| !        |  Negation |
-| ==       |  Equality |
-| !=       |  Inequality |
-| <        |  Less |
-| <=       |  Less equal |
-| >        |  Greater |
-| >=       |  Greater equal |
+| `&&`       |  Logic and |
+| `\|\|`     |  Logic or |
+| `!`        |  Negation |
+| `==`       |  Equality |
+| `!=`       |  Inequality |
+| `<`        |  Less |
+| `<=`       |  Less equal |
+| `>`        |  Greater |
+| `>=`       |  Greater equal |
 
 
 ### Ternary operator **if-then-else**

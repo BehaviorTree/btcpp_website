@@ -41,7 +41,7 @@ function Home() {
           <div className="row align-items-center">
             <div className="col col--6">
               <div className={clsx(styles.heroText)}>
-                <h1 className="hero__title ">BehaviorTree.CPP 4.6</h1>
+                <h1 className="hero__title ">BehaviorTree.CPP 4.8</h1>
                 <p className="hero__subtitle">
                   The C++ library to build Behavior Trees.
                   <br />
@@ -50,7 +50,7 @@ function Home() {
                 <div>
                   <Link
                     className="button button--outline button--primary button--lg"
-                    to={useBaseUrl("docs/Intro")}
+                    to={useBaseUrl("docs/intro")}
                   >
                     Tutorials
                   </Link>

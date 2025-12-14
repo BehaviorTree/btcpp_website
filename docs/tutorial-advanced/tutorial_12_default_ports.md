@@ -58,7 +58,7 @@ Alternatively, we can define the default blackboard entry that the port should p
 BT::InputPort<Point2D>("pointC", "{point}", "...");
 ```
 
-If the name of the port and the blackboard entry are the **same**, you can use "{=}"
+If the name of the port and the blackboard entry are the **same**, you can use `"{=}"`
 
 ```cpp
 BT::InputPort<Point2D>("pointD", "{=}", "...");
@@ -69,7 +69,7 @@ BT::InputPort<Point2D>("pointD", "{pointD}", "...");
 ## Default OutputPorts
 
 Output ports are more limited and can only point to a blackboard entry.
-You can still use "{=}" when the two names are the same.
+You can still use `"{=}"` when the two names are the same.
 
 ```cpp
   static PortsList providedPorts()
