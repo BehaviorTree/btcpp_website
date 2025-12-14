@@ -34,6 +34,8 @@ To understand how the three ControlNodes differ, refer to the following table:
   same child is ticked again. Previous siblings, which returned SUCCESS already,
   are not ticked again.
 
+> Some nodes are not listed yet. See [controls](https://github.com/BehaviorTree/BehaviorTree.CPP/tree/master/include/behaviortree_cpp/controls) on Github for complete definitions.
+
 ## Sequence
 
 This tree represents the behavior of a sniper in a computer game.
@@ -45,7 +47,7 @@ This tree represents the behavior of a sniper in a computer game.
 
 This node is particularly useful to continuously check Conditions; but 
 the user should also be careful when using asynchronous children, to be
-sure that they are not ticked more often that expected.
+sure that they are not ticked more often than expected.
 
 Let's take a look at another example:
 
@@ -72,4 +74,4 @@ If the action __GoTo(B)__ fails, __GoTo(A)__ will not be ticked again.
 On the other hand, __isBatteryOK__ must be checked at every tick, 
 for this reason its parent must be a `ReactiveSequence`.
 
-![SequenceWithMemory](images/SequenceStar.svg)
+![SequenceWithMemory](images/SequenceWithMemory.svg)
