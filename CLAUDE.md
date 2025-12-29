@@ -29,11 +29,15 @@ npm run clear      # Clear Docusaurus cache
 - `blog/` - Release announcements
 
 ### Custom Pages (React)
-- `src/pages/index.js` - Homepage with hero section and feature carousel
+- `src/pages/index.js` - Modern landing page with:
+  - Hero section (animated blobs, image carousel)
+  - Trust bar (Nav2, MoveIt2, etc.)
+  - Bento grid features section
+  - Groot2 promotional section
+  - CTA section with contact modal
 - `src/pages/groot.js` - Groot2 IDE page with pricing/licensing (uses Chargebee)
 - `src/pages/moveit_studio.js` - MoveIt Studio integration page
 - `src/components/ContactFormModal/` - Email contact form (EmailJS)
-- `src/components/HomepageFeatures/` - Homepage feature cards
 
 ### Configuration
 - `docusaurus.config.js` - Main config (versions, navbar, footer, Prism languages)
@@ -45,3 +49,6 @@ npm run clear      # Clear Docusaurus cache
 - Bootstrap 5 + React Bootstrap for UI components
 - Fathom Analytics for tracking
 - Dark mode disabled (light mode only)
+- Local search via `@easyops-cn/docusaurus-search-local` (configured in `themes` array)
+- Landing page uses Outfit font; docs use Open Sans
+- CSS variables for design system defined in `src/css/custom.css`

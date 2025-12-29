@@ -4,23 +4,56 @@
  * work well for content-centric websites.
  */
 
- @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 
-/* You can override the default Infima variables here. */
+/* Design System Variables */
 :root {
-  --ifm-font-family-base: 'Open Sans';
-  --ifm-color-primary: #0dbb5b;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  /* Fonts - Keep Open Sans for documentation */
+  --ifm-font-family-base: 'Open Sans', sans-serif;
+  /* Landing page uses Outfit via module CSS */
+  --font-display: 'Outfit', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Green palette */
+  --green-50: #f0fdf4;
+  --green-100: #dcfce7;
+  --green-200: #bbf7d0;
+  --green-400: #4ade80;
+  --green-500: #22c55e;
+  --green-600: #16a34a;
+  --green-700: #15803d;
+
+  /* Neutral palette */
+  --cream: #fdfcfa;
+  --warm-white: #fffef9;
+  --sand: #f5f3ef;
+  --text-dark: #1c1917;
+  --text-mid: #44403c;
+  --text-light: #78716c;
+
+  /* Docusaurus overrides */
+  --ifm-color-primary: #16a34a;
+  --ifm-color-primary-dark: #15803d;
+  --ifm-color-primary-darker: #166534;
+  --ifm-color-primary-darkest: #14532d;
+  --ifm-color-primary-light: #22c55e;
+  --ifm-color-primary-lighter: #4ade80;
+  --ifm-color-primary-lightest: #86efac;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgb(180, 251, 169);
 
+  /* Radii */
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 32px;
+  --radius-xl: 48px;
+
   --doc-sidebar-width: 350px !important;
   --ifm--sidebar-font-size: 14px;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 article {
@@ -29,35 +62,17 @@ article {
   margin-right: auto;
 }
 
-.theme-doc-sidebar-menu{
+.theme-doc-sidebar-menu {
   font-size: 18px;
 }
 
-@media (min-width: 992px) and (max-width: 1199.98px) {
-  .heroBanner_src-pages-index-module h1 {
-    font-size: 30px !important;
-    font-weight: bold;
-  }
+/* Navbar dark style override for landing page consistency */
+.navbar--dark {
+  background: var(--text-dark);
 }
+
 @media (max-width: 580px) {
   .navbar__title {
     font-size: 14px;
-  }
-  .heroBanner_src-pages-index-module h1 {
-    font-size: 32px !important;
-    font-weight: bold;
-  }
-  .heroBanner_src-pages-index-module p {
-    font-size: 20px !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .heroBanner_src-pages-index-module h1 {
-    font-size: 28px !important;
-    font-weight: bold;
-  }
-  .heroBanner_src-pages-index-module p {
-    font-size: 18px !important;
   }
 }
