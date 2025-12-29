@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
 import useBaseUrl from "@docusaurus/useBaseUrl";
@@ -73,7 +73,7 @@ export default function Groot() {
         "Monitor and Log Visualizer limited to 20 Nodes",
       ],
       btn: "Download",
-      onclick:() => handleClickBasic()
+      onclick: () => handleClickBasic()
     },
     {
       name: "PRO (floating license)",
@@ -85,7 +85,7 @@ export default function Groot() {
         "Interactive real-time debugger"
       ],
       btn: "Buy now",
-      onclick:() => handleClickPro()
+      onclick: () => handleClickPro()
     },
     {
       name: "Training",
@@ -97,7 +97,7 @@ export default function Groot() {
         "Learn how to use BT.CPP effectively or improve your current implementation",
       ],
       btn: "Contact us",
-      onclick:() => handleClickContact()
+      onclick: () => handleClickContact()
     },
   ];
 
@@ -157,139 +157,139 @@ export default function Groot() {
     <>
       <Layout title='Groot' description='Groot Editor'>
         {/* groot intro */}
-      {openContactUsModal && (
-         <ContactUSFormModal handleClose={handleCloseUsModal}/>
-      )}
-      <div className={clsx("hero hero--dark", styles.heroBanner)}>
-        <div className='container '>
-          <div className='row align-items-center'>
-            <div className='col col--6' style={{ textAlign: "center" }}>
-              <h1 className='hero__title ' id='hero__title'>
-                Groot2
-              </h1>
-              <p className='hero__subtitle'>
-                The most advanced IDE<br/>to create and debug Behavior Trees.
-              </p>
-              <div className={styles.buttonGroup}>
-                <button
-                  onClick={() => scrollToSection("sectionDownload")}
-                  className='button button--primary button--lg'>
-                  Download
-                </button>
-                <button
-                  onClick={() => handleClickContact()}
-                  className='button button--primary button--lg'>
-                  Contact us
-                </button>
+        {openContactUsModal && (
+          <ContactUSFormModal handleClose={handleCloseUsModal} />
+        )}
+        <div className={clsx("hero hero--dark", styles.heroBanner)}>
+          <div className='container '>
+            <div className='row align-items-center'>
+              <div className='col col--6' style={{ textAlign: "center" }}>
+                <h1 className='hero__title ' id='hero__title'>
+                  Groot2
+                </h1>
+                <p className='hero__subtitle'>
+                  The most advanced IDE<br />to create and debug Behavior Trees.
+                </p>
+                <div className={styles.buttonGroup}>
+                  <button
+                    onClick={() => scrollToSection("sectionDownload")}
+                    className='button button--primary button--lg'>
+                    Download
+                  </button>
+                  <button
+                    onClick={() => handleClickContact()}
+                    className='button button--primary button--lg'>
+                    Contact us
+                  </button>
+                </div>
+              </div>
+              <div className='col col--6'>
+                <img src={useBaseUrl("img/groot2.png")} />
               </div>
             </div>
-            <div className='col col--6'>
-              <img src={useBaseUrl("img/groot2.png")} />
+          </div>
+        </div>
+
+        <div className={`styles.sectionText`}>
+          <div className={`container text--left ${styles.sectionText}`}>
+            <div className='row'>
+              <div className='col col--5' id="t1">
+                <h1>BT Editor</h1>
+                <ul>
+                  <li>Create and edit trees, using a simple drag and drop interface.</li>
+                  <li>Manage large projects using multiple files.</li>
+                  <li>Compatible with both BT.CPP 3 and 4.</li>
+                  <li>Split view to visualize two trees at once.</li>
+                  <li>Preview the XML in real-time.</li>
+                  <li><b>PRO:</b> search Nodes in large trees.</li>
+                </ul>
+                <br />
+              </div>
+              <div className='col col--6'>
+                <video src={EditorVideo} muted loop autoPlay width='100%'></video>
+              </div>
+              <div className='col col--6' id="t2">
+                <h1>BT Editor</h1>
+                <ul>
+                  <li>Create and edit trees, using a simple drag and drop interface.</li>
+                  <li>Manage large projects using multiple files.</li>
+                  <li>Compatible with both BT.CPP 3 and 4.</li>
+                  <li>Split view to visualize two trees at once.</li>
+                  <li>Preview the XML in real-time.</li>
+                  <li><b>PRO:</b> search Nodes in large trees.</li>
+                </ul>
+                <br />
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div className={`styles.sectionText`}>
-        <div className={`container text--left ${styles.sectionText}`}>
-          <div className='row'>
-            <div className='col col--5' id="t1">
-              <h1>BT Editor</h1>
-              <ul>
-                <li>Create and edit trees, using a simple drag and drop interface.</li>
-                <li>Manage large projects using multiple files.</li>
-                <li>Compatible with both BT.CPP 3 and 4.</li>
-                <li>Split view to visualize two trees at once.</li>
-                <li>Preview the XML in real-time.</li>
-                <li><b>PRO:</b> search Nodes in large trees.</li>
-              </ul>
-              <br />
-            </div>
-            <div className='col col--6'>
-              <video src={EditorVideo} muted loop autoPlay width='100%'></video>
-            </div>
-            <div className='col col--6' id="t2">
-              <h1>BT Editor</h1>
-              <ul>
-                <li>Create and edit trees, using a simple drag and drop interface.</li>
-                <li>Manage large projects using multiple files.</li>
-                <li>Compatible with both BT.CPP 3 and 4.</li>
-                <li>Split view to visualize two trees at once.</li>
-                <li>Preview the XML in real-time.</li>
-                <li><b>PRO:</b> search Nodes in large trees.</li>
-              </ul>
-              <br />
+        <div className={`styles.sectionText`}>
+          <div className={`container text--left ${styles.sectionText}`}>
+            <div className='row'>
+              <div className='col col--6'>
+                <h1>Real-time Monitor</h1>
+                <ul>
+                  <li>
+                    Connect to a running BT.CPP executor and visualize the state
+                    of the tree in real-time.
+                  </li>
+                  <li>
+                    Record all transitions into a log file, that you can analyze later.
+                  </li>
+                  <li><b>PRO:</b> Visualize the content of the blackboard.</li>
+                  <li><b>PRO:</b> Add interactive breakpoints and fault injection.</li>
+                  <li><b>PRO:</b> Substitute any Nodes with dummy ones, at run-time.
+                  </li>
+                </ul>
+                <br />
+              </div>
+              <div className='col col--6'>
+                <video
+                  src={MonitorVideo}
+                  muted
+                  loop
+                  autoPlay
+                  width='100%'></video>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div className={`styles.sectionText`}>
-        <div className={`container text--left ${styles.sectionText}`}>
-          <div className='row'>
-            <div className='col col--6'>
-              <h1>Real-time Monitor</h1>
-              <ul>
-                <li>
-                  Connect to a running BT.CPP executor and visualize the state
-                  of the tree in real-time.
-                </li>
-                <li>
-                  Record all transitions into a log file, that you can analyze later.
-                </li>
-                <li><b>PRO:</b> Visualize the content of the blackboard.</li>
-                <li><b>PRO:</b> Add interactive breakpoints and fault injection.</li>
-                <li><b>PRO:</b> Substitute any Nodes with dummy ones, at run-time.
-                </li>
-              </ul>
-              <br />
-            </div>
-            <div className='col col--6'>
-              <video
-                src={MonitorVideo}
-                muted
-                loop
-                autoPlay
-                width='100%'></video>
+        <div className={`styles.sectionText`}>
+          <div className={`container text--left ${styles.sectionText}`}>
+            <div className='row'>
+              <div className='col col--6' id="t3">
+                <h1>Log Visualization</h1>
+                <ul>
+                  <li>Open logs and replay the execution of the tree at different speeds.</li>
+                  <li>Visualize how long a Node was in the RUNNING state and how many times it
+                    returned a new status.</li>
+                  <li>Filter transitions by name or time range.</li>
+                </ul>
+                <br />
+              </div>
+              <div className='col col--6'>
+                <video src={LogVideo} muted loop autoPlay width='100%'></video>
+              </div>
+              <div className='col col--6' id="t4">
+                <h1>Log Visualization</h1>
+                <ul>
+                  <li>Open logs and replay the execution of the tree at different speeds.</li>
+                  <li>Visualize how long a Node was in the RUNNING state and how many times it
+                    returned a new status.</li>
+                  <li>Filter transitions by name or time range.</li>
+                </ul>
+                <br />
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div className={`styles.sectionText`}>
-        <div className={`container text--left ${styles.sectionText}`}>
-          <div className='row'>
-          <div className='col col--6' id="t3">
-              <h1>Log Visualization</h1>
-              <ul>
-                <li>Open logs and replay the execution of the tree at different speeds.</li>
-                <li>Visualize how long a Node was in the RUNNING state and how many times it 
-                  returned a new status.</li>
-                <li>Filter transitions by name or time range.</li>
-              </ul>
-              <br />
-            </div>
-            <div className='col col--6'>
-              <video src={LogVideo} muted loop autoPlay width='100%'></video>
-            </div>
-            <div className='col col--6' id="t4">
-              <h1>Log Visualization</h1>
-              <ul>
-                <li>Open logs and replay the execution of the tree at different speeds.</li>
-                <li>Visualize how long a Node was in the RUNNING state and how many times it 
-                  returned a new status.</li>
-                <li>Filter transitions by name or time range.</li>
-              </ul>
-              <br />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className={`${styles.sectionSeparator} container`}>Pricing</div>
-      <div className={`styles.sectionText`}>
-        <div className={`container `}>
-          <div className={`row`} id='row_price'>
+        <div className={`${styles.sectionSeparator} container`}>Pricing</div>
+        <div className={`styles.sectionText`}>
+          <div className={`container `}>
+            <div className={`row`} id='row_price'>
               {obj?.map((item, index) => (
                 <div
                   className='col col--4 '
@@ -346,16 +346,16 @@ export default function Groot() {
                 </div>
               ))}
             </div>
-          <div className='row'>
-            <div className='col col--2 '></div>
-            <div className='col col--8 '>
-              <h1 id='pricingHead'>But wait, there is more!</h1>
-              <ul>
-                <li id='text'>
-                  <b>Free Trial:</b> enjoy all the features of th PRO versions
-                  for one month, activating your trial in "Preferences".
-                </li>
-                {/* <li id='text'>
+            <div className='row'>
+              <div className='col col--2 '></div>
+              <div className='col col--8 '>
+                <h1 id='pricingHead'>But wait, there is more!</h1>
+                <ul>
+                  <li id='text'>
+                    <b>Free Trial:</b> enjoy all the features of the PRO version
+                    for one month, activating your trial in "Preferences".
+                  </li>
+                  {/* <li id='text'>
                   <b>Discounts:</b> a price discount is automatically applied
                   when purchasing multiple licenses (3+ or 5+).
                 </li> 
@@ -366,70 +366,70 @@ export default function Groot() {
                   &ensp;and tell us more about your project.
                 </li> */}
 
-                <li id='text'>
-                  <b>Source code escrow:</b> if Auryn
-                  Robotics, the company behind Groot2, becomes unable to distribute and/or
-                  sell the software, the source code will be released as open source,
-                  under the Apache License, Version 2.0.
-                </li>
-              </ul>
-              <br />
+                  <li id='text'>
+                    <b>Source code escrow:</b> if Auryn
+                    Robotics, the company behind Groot2, becomes unable to distribute and/or
+                    sell the software, the source code will be released as open source,
+                    under the Apache License, Version 2.0.
+                  </li>
+                </ul>
+                <br />
+              </div>
+              <div className='col col--2 '></div>
             </div>
-            <div className='col col--2 '></div>
           </div>
         </div>
-      </div>
-      {/* groot download  */}
-      <div id='sectionDownload' className={`${styles.sectionSeparator} container`}>
-        Download
-      </div>
+        {/* groot download  */}
+        <div id='sectionDownload' className={`${styles.sectionSeparator} container`}>
+          Download
+        </div>
 
-      <div
-        className={`${styles.sectionText} container ${styles.flexCol} gap-5 `}>
-        <h3>Latest release: 1.7.0 (2025-12-14)</h3>
-        <div className={styles.downloadGroup}>
-          <div id='card_download' style={{ textAlign: "center" }}>
-            <img
-              className={styles.downloadLogo}
-              src={useBaseUrl("img/windows.png")}
-              alt='windows logo'
-            />
-            <Link
-              onclick="fathom.trackGoal('I8XXZTK4', 0);"
-              to='https://pub-32cef6782a9e411e82222dee82af193e.r2.dev/Groot2-v1.7.0-windows-installer.exe'>
-              Windows installer
-            </Link>
-          </div>
-          <div id='card_download' style={{ textAlign: "center" }}>
-            <img
-              className={styles.downloadLogo}
-              src={useBaseUrl("img/linux.png")}
-              alt='linux logo'
-            />
-            <Link
-              onclick="fathom.trackGoal('VGT2ANC4', 0);"
-              to='https://pub-32cef6782a9e411e82222dee82af193e.r2.dev/Groot2-v1.7.0-linux-installer.run'>
-              Linux installer
-            </Link>
-          </div>
-          <div id='card_download' style={{ textAlign: "center" }}>
-            <img
-              className={styles.downloadLogo}
-              src={useBaseUrl("img/appimage.png")}
-              alt='appimage logo'
-            />
-            <Link
-              // style={{marginLeft: '20px'}}
-              onclick="fathom.trackGoal('DIQDUTJ2', 0);"
-              
-              to='https://pub-32cef6782a9e411e82222dee82af193e.r2.dev/Groot2-v1.7.0-x86_64.AppImage'>
-              AppImage (Linux)
-            </Link>
+        <div
+          className={`${styles.sectionText} container ${styles.flexCol} gap-5 `}>
+          <h3>Latest release: 1.7.0 (2025-12-14)</h3>
+          <div className={styles.downloadGroup}>
+            <div id='card_download' style={{ textAlign: "center" }}>
+              <img
+                className={styles.downloadLogo}
+                src={useBaseUrl("img/windows.png")}
+                alt='windows logo'
+              />
+              <Link
+                onclick="fathom.trackGoal('I8XXZTK4', 0);"
+                to='https://pub-32cef6782a9e411e82222dee82af193e.r2.dev/Groot2-v1.7.0-windows-installer.exe'>
+                Windows installer
+              </Link>
+            </div>
+            <div id='card_download' style={{ textAlign: "center" }}>
+              <img
+                className={styles.downloadLogo}
+                src={useBaseUrl("img/linux.png")}
+                alt='linux logo'
+              />
+              <Link
+                onclick="fathom.trackGoal('VGT2ANC4', 0);"
+                to='https://pub-32cef6782a9e411e82222dee82af193e.r2.dev/Groot2-v1.7.0-linux-installer.run'>
+                Linux installer
+              </Link>
+            </div>
+            <div id='card_download' style={{ textAlign: "center" }}>
+              <img
+                className={styles.downloadLogo}
+                src={useBaseUrl("img/appimage.png")}
+                alt='appimage logo'
+              />
+              <Link
+                // style={{marginLeft: '20px'}}
+                onclick="fathom.trackGoal('DIQDUTJ2', 0);"
+
+                to='https://pub-32cef6782a9e411e82222dee82af193e.r2.dev/Groot2-v1.7.0-x86_64.AppImage'>
+                AppImage (Linux)
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
-    </Layout>
-  </>
+      </Layout>
+    </>
   );
 }
 

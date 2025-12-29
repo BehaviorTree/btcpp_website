@@ -156,7 +156,7 @@ new status.
 The usual rule of thumb is that, if a child Node returns **SKIPPED**, 
 it means that it was not executed, and the ControlNode should move to the next one.
 
-# Asychronous Control Nodes
+# Asynchronous Control Nodes
 
 A serious problem was detected by a user 
 [here](https://github.com/BehaviorTree/BehaviorTree.CPP/issues/395):
