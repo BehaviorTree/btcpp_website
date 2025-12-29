@@ -39,6 +39,19 @@ const config = {
   
   plugins: [],
 
+  themes: [
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      {
+        hashed: true,
+        language: ["en"],
+        indexBlog: true,
+        indexDocs: true,
+        docsRouteBasePath: "/docs",
+      },
+    ],
+  ],
+
   presets: [
     [
       'classic',
