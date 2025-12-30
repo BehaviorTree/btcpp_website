@@ -18,8 +18,7 @@ const features = [
     icon: "🌳",
     title: "More scalable than State Machines",
     description:
-      "Behavior Trees enable complex behaviors with less code and more modularity, making them easier to maintain and extend that Finite State Machines.",
-    large: true,
+      "Behavior Trees enable complex behaviors with less code and more modularity, making them easier to maintain and extend.",
   },
   {
     id: "async",
@@ -54,8 +53,7 @@ const features = [
     icon: "🤖",
     title: "ROS2 Integration",
     description:
-      "Official wrappers for ROS2. Powers the Nav2 navigation stack trusted by hundreds of robots and engineering teams worldwide.",
-    large: true,
+      "Official wrappers for ROS2. Powers the Nav2 navigation stack.",
   },
 ];
 
@@ -85,15 +83,9 @@ const trustLogos = [
   "MoveIt",
 ];
 
-function BentoCard({ id, icon, title, description, large }) {
-  const cardClass = clsx(
-    styles.bentoCard,
-    styles[`bentoCard${id.charAt(0).toUpperCase() + id.slice(1)}`],
-    { [styles.bentoCardLarge]: large }
-  );
-
+function BentoCard({ icon, title, description }) {
   return (
-    <div className={cardClass}>
+    <div className={styles.bentoCard}>
       <div className={styles.bentoHeader}>
         <div className={styles.bentoIcon}>{icon}</div>
         <h3>{title}</h3>
@@ -159,7 +151,7 @@ function Home() {
           <div className={styles.heroContent}>
             <h1 className={styles.heroTitle}>
               The Industry Standard for{" "}
-              <span className={styles.heroTitleHighlight}>Robot Intelligence</span>
+              <span className={styles.heroTitleHighlight}>Robot Behaviors</span>
             </h1>
             <p className={styles.heroSub}>
               BehaviorTree.CPP is the most popular, production-ready framework
@@ -274,6 +266,12 @@ function Home() {
                   <GrootFeature key={idx} {...feature} />
                 ))}
               </div>
+              <Link
+                className={clsx(styles.btn, styles.btnPrimary)}
+                to={useBaseUrl("/groot")}
+              >
+                Learn More About Groot2
+              </Link>
             </div>
 
             <div className={styles.grootVisual}>
@@ -281,15 +279,6 @@ function Home() {
                 <video src={EditorVideo} muted autoPlay loop playsInline />
               </div>
             </div>
-          </div>
-
-          <div className={styles.grootCta}>
-            <Link
-              className={clsx(styles.btn, styles.btnPrimary)}
-              to={useBaseUrl("/groot")}
-            >
-              Learn More About Groot2
-            </Link>
           </div>
         </div>
       </section>
