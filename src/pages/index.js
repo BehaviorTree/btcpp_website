@@ -1,30 +1,134 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "@docusaurus/Link";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import useBaseUrl from "@docusaurus/useBaseUrl";
-
 import Layout from "@theme/Layout";
-import clsx from "clsx";
-
-import styles from "./index.module.css";
-import EditorVideo from "@site/static/img/groot2_editor.mp4";
 import Head from "@docusaurus/Head";
+import clsx from "clsx";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import styles from "./index.module.css";
+import EditorVideo from "@site/static/img/groot2_editor.mp4";
+import ContactFormModal from "../components/ContactFormModal";
 
+// Feature data for bento grid
+const features = [
+  {
+    id: "scalable",
+    icon: "🌳",
+    title: "More scalable than State Machines",
+    description:
+      "Behavior Trees enable complex behaviors with less code and more modularity, making them easier to maintain and extend.",
+  },
+  {
+    id: "async",
+    icon: "⚡",
+    title: "Async Actions",
+    description:
+      "Non-blocking actions and reactive behaviors as first-class citizens.",
+  },
+  {
+    id: "plugin",
+    icon: "🧩",
+    title: "Modular Architecture",
+    description:
+      "Load custom nodes at runtime, build reusable building blocks.",
+  },
+  {
+    id: "xml",
+    icon: "📝",
+    title: "XML-Defined Trees",
+    description:
+      "Separation of concerns between logic and implementation.",
+  },
+  {
+    id: "logging",
+    icon: "🔍",
+    title: "Built-in Logging",
+    description:
+      "Record, replay, and analyze state transitions for easier debugging.",
+  },
+  {
+    id: "ros2",
+    icon: "🤖",
+    title: "ROS2 Integration",
+    description:
+      "Official wrappers for ROS2. Powers the Nav2 navigation stack.",
+  },
+];
+
+// Groot2 features
+const grootFeatures = [
+  {
+    title: "Visual Editor",
+    description: "Drag-and-drop interface for rapid prototyping",
+  },
+  {
+    title: "Real-time Monitoring",
+    description: "Watch your tree execute live on your robot",
+  },
+  {
+    title: "Log Replay & Analysis",
+    description: "Debug past runs with full state reconstruction",
+  },
+  {
+    title: "Breakpoints & Fault Injection",
+    description: "Pause execution and simulate failures",
+  },
+];
+
+// Trust bar logos
+const trustLogos = [
+  "Nav2",
+  "MoveIt",
+];
+
+function BentoCard({ icon, title, description }) {
+  return (
+    <div className={styles.bentoCard}>
+      <div className={styles.bentoHeader}>
+        <div className={styles.bentoIcon}>{icon}</div>
+        <h3>{title}</h3>
+      </div>
+      <p>{description}</p>
+    </div>
+  );
+}
+
+function GrootFeature({ title, description }) {
+  return (
+    <div className={styles.grootFeature}>
+      <div className={styles.grootFeatureIcon}>✓</div>
+      <div className={styles.grootFeatureText}>
+        <strong>{title}</strong>
+        <span>{description}</span>
+      </div>
+    </div>
+  );
+}
 
 function Home() {
-  const context = useDocusaurusContext();
-  const { siteConfig = {} } = context;
+  const [openContactModal, setOpenContactModal] = useState(false);
 
   return (
     <Layout
       permalink={"/"}
       description={"The leading C++ BehaviorTree Library."}
     >
+      {openContactModal && (
+        <ContactFormModal handleClose={() => setOpenContactModal(false)} />
+      )}
       <Head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+          rel="stylesheet"
+        />
         <script
           async
           defer
@@ -36,178 +140,149 @@ function Home() {
           data-website-id="419144d798774876bcfcd1e1f0b6a2ad"
         ></script>
       </Head>
-      <div className={clsx("hero hero--light", styles.heroBanner)}>
-        <div className="container ">
-          <div className="row align-items-center">
-            <div className="col col--6">
-              <div className={clsx(styles.heroText)}>
-                <h1 className="hero__title ">BehaviorTree.CPP 4.8</h1>
-                <p className="hero__subtitle">
-                  The C++ library to build Behavior Trees.
-                  <br />
-                  Batteries included.
-                </p>
-                <div>
-                  <Link
-                    className="button button--outline button--primary button--lg"
-                    to={useBaseUrl("docs/intro")}
-                  >
-                    Tutorials
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <div className="col col--5">
-              <img
-                className={clsx(styles.heroSvg)}
-                alt="behavior tree animation"
-                src={useBaseUrl("img/animated.svg")}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <div className={styles.features}>
-        <div className="container">
-          <div className="row">
-            <div className={clsx("col col--4", styles.feature)}>
-              <h3>
-                Think in terms of Actions,
-                <br /> not states
-              </h3>
-              <p>
-                Unlike state machines, behavior trees emphasize executing
-                actions, not transitioning between states.
-              </p>
-            </div>
-            <div className={clsx("col col--4", styles.feature)}>
-              <h3>
-                Build extensible and <br /> hierarchical behaviors
-              </h3>
-              <p>
-                Behavior Trees are <b>composable</b>. You can build complex
-                behaviors reusing simpler ones.
-              </p>
-            </div>
-            <div className={clsx("col col--4", styles.feature)}>
-              <h3>
-                The power of C++,
-                <br />
-                the flexibility of scripting
-              </h3>
-              <p>
-                Implement your Actions in C++ and assemble them into trees using
-                a scripting language based on XML.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* Hero Section */}
+      <section className={styles.hero}>
+        <div className={clsx(styles.blob, styles.blob1)}></div>
+        <div className={clsx(styles.blob, styles.blob2)}></div>
+        <div className={clsx(styles.blob, styles.blob3)}></div>
 
-      <div className={styles.sectionText}>
-        <div className="container padding-vert--xl text--left {styles.sectionText}">
-          <div className="row">
-            <div className="col col--6">
-              <h2>
-                Perfect for robotics
-                <br />
-                and automation
-              </h2>
-              <p>
-                <b>BehaviorTree.CPP</b> is increasingly used to implement{" "}
-                <b>Task Planning</b> in a large variety of robotics systems,
-                including:
-              </p>
-              <ul>
-                <li>Automated Ground Vehicles</li>
-                <li>Robotic Manipulators</li>
-                <li>Humanoid and Quadruped robots</li>
-                <li>Semi-autonomous drones</li>
-                <li>Social Robots</li>
-              </ul>
-            </div>
-            <div className="col col--5 col--offset-1">
-              <Carousel autoPlay showThumbs={false} infiniteLoop={true}>
-                <div>
-                  <img src={useBaseUrl("img/image_agv.webp")} alt="robots" />
-                </div>
-                <div>
-                  <img src={useBaseUrl("img/image_quadruped.webp")} alt="quadrupeds" />
-                </div>
-                <div>
-                  <img src={useBaseUrl("img/image_drone.jpg")} alt="robots" />
-                </div>
-                <div>
-                  <img src={useBaseUrl("img/image_arm.jpg")} alt="robots" />
-                </div>
-              </Carousel>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className={styles.sectionText}>
-        <div className="container padding-vert--xl text--left">
-          <div className="row">
-            <div className="col col--5">
-              <video src={EditorVideo} muted autoPlay width="100%"></video>
-            </div>
-            <div className="col col--6 col--offset-1">
-              <h2>Visual Editing and Monitoring</h2>
-              <p>
-                <b>Groot2</b> is our "IDE for Behavior Trees".
-                <br />
-                It allows users to visualize, create and edit Behavior Trees,
-                using a simple drag and drop interface. <br />
-                Trees can be monitored in real-time
-              </p>
+        <div className={styles.heroInner}>
+          <div className={styles.heroContent}>
+            <h1 className={styles.heroTitle}>
+              The Industry Standard for{" "}
+              <span className={styles.heroTitleHighlight}>Robot Behaviors</span>
+            </h1>
+            <p className={styles.heroSub}>
+              BehaviorTree.CPP is the most popular, production-ready framework
+              for building reactive, modular, and debuggable robot behaviors.
+            </p>
+            <div className={styles.heroCtas}>
               <Link
-                className="button button--outline button--primary button--lg"
+                className={clsx(styles.btn, styles.btnPrimary)}
+                to={useBaseUrl("docs/intro")}
+              >
+                Documentation
+              </Link>
+              <Link
+                className={clsx(styles.btn, styles.btnSecondary)}
                 to={useBaseUrl("/groot")}
               >
-                About Groot2
+                Try Groot2
               </Link>
+              <button
+                className={clsx(styles.btn, styles.btnSecondary)}
+                onClick={() => setOpenContactModal(true)}
+              >
+                Contact Us
+              </button>
             </div>
-          </div>
-        </div>
-      </div>
-
-      <div className={styles.supportFrame}>
-        <div className="container">
-          <div className="row">
-            <div className={styles.sectionText}>
-              <div className="col col--9">
-                <h1>Software and Technical Support</h1>
-                <p>
-                  <b>BehaviorTree.CPP</b> is Open Source software and can be
-                  download for free on
-                  <a href="https://github.com/BehaviorTree/BehaviorTree.CPP">
-                    {" "}
-                    Github.
-                  </a>
-                  <br />
-                  You can ask questions and reach other users in our
-                  <a href="https://github.com/BehaviorTree/BehaviorTree.CPP/discussions/">
-                    {" "}
-                    community forum.
-                  </a>
-                  <br />
-                  If you are using BehaviorTree.CPP in your commercial product
-                  and you need support,
-                  <a href="mailto:dfaconti@aurynrobotics.com"> contact us!</a>
-                </p>
+            <div className={styles.heroStats}>
+              <div className={styles.stat}>
+                <div className={styles.statValue}>MIT</div>
+                <div className={styles.statLabel}>Open-Source License</div>
+              </div>
+              <div className={styles.stat}>
+                <div className={styles.statValue}>3.7k+</div>
+                <div className={styles.statLabel}>GitHub Stars</div>
+              </div>
+              <div className={styles.stat}>
+                <div className={styles.statValue}>100+</div>
+                <div className={styles.statLabel}>Companies</div>
               </div>
             </div>
-            <div className="col col--3 ">
-              <img
-                alt="behavior tree animation"
-                src={useBaseUrl("img/support.svg")}
-              />
+          </div>
+
+          <div className={styles.heroCarousel}>
+            <Carousel
+              autoPlay
+              showThumbs={false}
+              infiniteLoop={true}
+              showStatus={false}
+              interval={4000}
+            >
+              <div>
+                <img src={useBaseUrl("img/image_agv.webp")} alt="Automated Ground Vehicles" />
+              </div>
+              <div>
+                <img src={useBaseUrl("img/image_quadruped.webp")} alt="Quadruped Robots" />
+              </div>
+              <div>
+                <img src={useBaseUrl("img/image_drone.jpg")} alt="Autonomous Drones" />
+              </div>
+              <div>
+                <img src={useBaseUrl("img/image_arm.jpg")} alt="Robotic Arms" />
+              </div>
+            </Carousel>
+          </div>
+        </div>
+      </section>
+
+      {/* Trust Bar */}
+      <section className={styles.trustBar}>
+        <p className={styles.trustBarTitle}>
+          Used by some of the most popular robotics frameworks:
+        </p>
+        <div className={styles.trustLogos}>
+          {trustLogos.map((logo, idx) => (
+            <span key={idx} className={styles.trustLogo}>
+              {logo}
+            </span>
+          ))}
+        </div>
+      </section>
+
+      {/* Features Section - Bento Grid */}
+      <section className={styles.featuresSection} id="features">
+        <div className={styles.featuresHeader}>
+          <h2 className={styles.featuresTitle}>Why BehaviorTree.CPP?</h2>
+          <p className={styles.featuresSubtitle}>
+            Built for real-world robotics, not just demos
+          </p>
+        </div>
+
+        <div className={styles.bentoGrid}>
+          {features.map((feature) => (
+            <BentoCard key={feature.id} {...feature} />
+          ))}
+        </div>
+      </section>
+
+      {/* Groot2 Section */}
+      <section className={styles.grootSection} id="groot">
+        <div className={styles.grootBlob}></div>
+        <div className={styles.grootContent}>
+          <div className={styles.grootHeader}>
+            <h2>
+              Boost your productivity with{" "}
+              <span className={styles.grootTextHighlight}>Groot2</span>
+            </h2>
+          </div>
+
+          <div className={styles.grootBody}>
+            <div className={styles.grootText}>
+              <div className={styles.grootFeatures}>
+                {grootFeatures.map((feature, idx) => (
+                  <GrootFeature key={idx} {...feature} />
+                ))}
+              </div>
+              <Link
+                className={clsx(styles.btn, styles.btnPrimary)}
+                to={useBaseUrl("/groot")}
+              >
+                Learn More About Groot2
+              </Link>
+            </div>
+
+            <div className={styles.grootVisual}>
+              <div className={styles.grootPreview}>
+                <video src={EditorVideo} muted autoPlay loop playsInline />
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
+
     </Layout>
   );
 }

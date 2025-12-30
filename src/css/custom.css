@@ -6,6 +6,29 @@
 
  @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
+/* Global font sizes for docs and site content */
+h1 {
+  font-size: 42px;
+  padding: 0.5rem 0;
+}
+
+h2 {
+  font-size: 36px;
+  padding: 0.5rem 0;
+}
+
+h3 {
+  font-size: 26px;
+}
+
+p {
+  font-size: 21px;
+}
+
+li {
+  font-size: 21px;
+}
+
 /* You can override the default Infima variables here. */
 :root {
   --ifm-font-family-base: 'Open Sans';
@@ -20,11 +43,21 @@
   --docusaurus-highlighted-code-line-bg: rgb(180, 251, 169);
 
   --doc-sidebar-width: 350px !important;
-  --ifm--sidebar-font-size: 14px;
+  --ifm--sidebar-font-size: 18px;
+
+}
+
+/* Header font sizes */
+.navbar__title {
+  font-size: 1.4rem;
+}
+
+.navbar__link {
+  font-size: 1.3rem;
 }
 
 article {
-  max-width: 900px;
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
 }

@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BehaviorTree.CPP – The Industry Standard for Robot Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green-50: #f0fdf4;
+      --green-100: #dcfce7;
+      --green-200: #bbf7d0;
+      --green-400: #4ade80;
+      --green-500: #22c55e;
+      --green-600: #16a34a;
+      --green-700: #15803d;
+      --cream: #fdfcfa;
+      --warm-white: #fffef9;
+      --sand: #f5f3ef;
+      --text-dark: #1c1917;
+      --text-mid: #44403c;
+      --text-light: #78716c;
+      --font-display: 'Outfit', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --radius-sm: 12px;
+      --radius-md: 20px;
+      --radius-lg: 32px;
+      --radius-xl: 48px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-display);
+      background: var(--cream);
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Grain texture overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      opacity: 0.03;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* Navigation - Matching original behaviortree.dev with dark background */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 0.75rem 2rem;
+      background: var(--text-dark);
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: white;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+    }
+
+    .logo-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+    }
+
+    .nav-version {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 0.4rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.85);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .nav-version:hover {
+      background: var(--green-600);
+      color: white;
+    }
+
+    .nav-version svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    .github-link {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .github-link:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+    }
+
+    .github-link svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, var(--warm-white) 0%, var(--cream) 100%);
+    }
+
+    /* Floating organic shapes */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.6;
+      animation: float 20s ease-in-out infinite;
+    }
+
+    .blob-1 {
+      width: 600px;
+      height: 600px;
+      background: var(--green-200);
+      top: -200px;
+      right: -100px;
+      animation-delay: 0s;
+    }
+
+    .blob-2 {
+      width: 400px;
+      height: 400px;
+      background: var(--green-100);
+      bottom: -100px;
+      left: -100px;
+      animation-delay: -5s;
+    }
+
+    .blob-3 {
+      width: 300px;
+      height: 300px;
+      background: var(--green-200);
+      top: 40%;
+      left: 10%;
+      animation-delay: -10s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(30px, -30px) scale(1.05); }
+      50% { transform: translate(-20px, 20px) scale(0.95); }
+      75% { transform: translate(20px, 10px) scale(1.02); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--green-100);
+      padding: 0.6rem 1.25rem;
+      border-radius: 100px;
+      font-size: 0.9rem;
+      color: var(--green-700);
+      font-weight: 600;
+      margin-bottom: 2rem;
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .hero-badge span {
+      width: 8px;
+      height: 8px;
+      background: var(--green-500);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.2); opacity: 0.7; }
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 7vw, 5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.03em;
+      animation: fadeInUp 0.8s ease-out 0.1s both;
+    }
+
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, var(--green-500) 0%, var(--green-400) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 1.25rem;
+      color: var(--text-mid);
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+      animation: fadeInUp 0.8s ease-out 0.2s both;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.8s ease-out 0.3s both;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--green-600);
+      color: white;
+      box-shadow: 0 4px 20px rgba(22, 163, 74, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: var(--green-700);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(22, 163, 74, 0.4);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--text-dark);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .btn-secondary:hover {
+      background: var(--green-50);
+      transform: translateY(-2px);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      justify-content: center;
+      margin-top: 4rem;
+      animation: fadeInUp 0.8s ease-out 0.4s both;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--green-600);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin-top: 0.25rem;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Trust Bar - Dark style like footer */
+    .trust-bar {
+      padding: 3rem 2rem;
+      text-align: center;
+      background: var(--text-dark);
+    }
+
+    .trust-bar p {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.85rem;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-weight: 600;
+    }
+
+    .trust-logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .trust-logo {
+      color: rgba(255, 255, 255, 0.7);
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .trust-logo:hover {
+      color: var(--green-400);
+    }
+
+    /* Features Section - Bento Grid */
+    .features-section {
+      padding: 6rem 2rem;
+      background: var(--cream);
+    }
+
+    .features-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .features-header h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+
+    .features-header p {
+      color: var(--text-mid);
+      font-size: 1.15rem;
+    }
+
+    /* Bento Box Grid - Matching the sketch */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: auto auto;
+      gap: 1.25rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .bento-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .bento-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, var(--green-500) 0%, var(--green-400) 100%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: 0;
+    }
+
+    .bento-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .bento-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
+    }
+
+    .bento-card:hover::before {
+      opacity: 1;
+    }
+
+    .bento-card:hover .bento-icon {
+      background: white;
+      transform: scale(1.1) rotate(-5deg);
+    }
+
+    .bento-card:hover h3,
+    .bento-card:hover p {
+      color: white;
+    }
+
+    /* Card positions matching the sketch */
+    .bento-card.async {
+      grid-column: 1 / 3;
+      grid-row: 1;
+      background: linear-gradient(135deg, var(--green-50) 0%, var(--green-100) 100%);
+    }
+
+    .bento-card.plugin {
+      grid-column: 3;
+      grid-row: 1;
+    }
+
+    .bento-card.blackboard {
+      grid-column: 4;
+      grid-row: 1;
+    }
+
+    .bento-card.xml {
+      grid-column: 1;
+      grid-row: 2;
+    }
+
+    .bento-card.logging {
+      grid-column: 2;
+      grid-row: 2;
+    }
+
+    .bento-card.ros2 {
+      grid-column: 3 / 5;
+      grid-row: 2;
+      background: linear-gradient(135deg, var(--green-50) 0%, var(--green-100) 100%);
+    }
+
+    /* Large cards styling */
+    .bento-card.async,
+    .bento-card.ros2 {
+      padding: 2.5rem;
+    }
+
+    .bento-card.async .bento-icon,
+    .bento-card.ros2 .bento-icon {
+      width: 64px;
+      height: 64px;
+      font-size: 1.75rem;
+      background: white;
+      box-shadow: 0 8px 30px rgba(22, 163, 74, 0.15);
+    }
+
+    .bento-card.async h3,
+    .bento-card.ros2 h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .bento-card.async p,
+    .bento-card.ros2 p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    .bento-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--green-100);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .bento-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text-dark);
+      transition: color 0.3s ease;
+    }
+
+    .bento-card p {
+      color: var(--text-mid);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      transition: color 0.3s ease;
+    }
+
+    /* Groot2 Section */
+    .groot-section {
+      padding: 6rem 2rem;
+      background: var(--sand);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .groot-blob {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: var(--green-200);
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.5;
+      top: 50%;
+      right: -200px;
+      transform: translateY(-50%);
+    }
+
+    .groot-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .groot-text h2 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .groot-text h2 span {
+      color: var(--green-600);
+    }
+
+    .groot-tagline {
+      font-size: 1.2rem;
+      color: var(--text-mid);
+      margin-bottom: 2rem;
+    }
+
+    .groot-features {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .groot-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      background: white;
+      border-radius: var(--radius-md);
+      transition: all 0.2s;
+    }
+
+    .groot-feature:hover {
+      transform: translateX(8px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    .groot-feature-icon {
+      width: 28px;
+      height: 28px;
+      background: var(--green-500);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: white;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .groot-feature-text strong {
+      color: var(--text-dark);
+      font-weight: 600;
+      display: block;
+    }
+
+    .groot-feature-text span {
+      color: var(--text-mid);
+      font-size: 0.95rem;
+    }
+
+    .groot-visual {
+      position: relative;
+    }
+
+    .groot-preview {
+      background: white;
+      border-radius: var(--radius-xl);
+      padding: 1rem;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+    }
+
+    .groot-preview-header {
+      background: var(--sand);
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .window-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .window-dot.red { background: #ff6b6b; }
+    .window-dot.yellow { background: #ffd93d; }
+    .window-dot.green { background: #6bcb77; }
+
+    .groot-preview-body {
+      height: 350px;
+      background: linear-gradient(180deg, var(--green-50) 0%, white 100%);
+      border-radius: 0 0 var(--radius-md) var(--radius-md);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+      position: relative;
+    }
+
+    .tree-node {
+      background: white;
+      border: 2px solid var(--green-200);
+      border-radius: var(--radius-sm);
+      padding: 0.6rem 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 500;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      position: relative;
+    }
+
+    .tree-node.active {
+      background: var(--green-500);
+      color: white;
+      border-color: var(--green-500);
+    }
+
+    .tree-connector {
+      width: 2px;
+      height: 24px;
+      background: var(--green-300);
+    }
+
+    .tree-row {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      padding: 8rem 2rem;
+      text-align: center;
+      background: linear-gradient(180deg, var(--cream) 0%, var(--green-50) 100%);
+      position: relative;
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .cta-content h2 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .cta-content p {
+      color: var(--text-mid);
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--text-dark);
+      color: white;
+      padding: 4rem 2rem;
+      border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .footer-brand h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+      font-weight: 700;
+    }
+
+    .footer-brand p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .footer-links h4 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--green-400);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      font-size: 0.95rem;
+      display: block;
+      padding: 0.35rem 0;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--green-400);
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 3rem auto 0;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .groot-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .bento-card.async {
+        grid-column: 1 / 3;
+        grid-row: 1;
+      }
+
+      .bento-card.plugin {
+        grid-column: 1;
+        grid-row: 2;
+      }
+
+      .bento-card.blackboard {
+        grid-column: 2;
+        grid-row: 2;
+      }
+
+      .bento-card.xml {
+        grid-column: 1;
+        grid-row: 3;
+      }
+
+      .bento-card.logging {
+        grid-column: 2;
+        grid-row: 3;
+      }
+
+      .bento-card.ros2 {
+        grid-column: 1 / 3;
+        grid-row: 4;
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        padding: 0.75rem 1rem;
+      }
+
+      .nav-links a:not(.github-link) {
+        display: none;
+      }
+
+      .nav-version {
+        display: none;
+      }
+      
+      .hero-stats {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      
+      .trust-logos {
+        gap: 1.5rem;
+      }
+
+      .bento-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .bento-card.async,
+      .bento-card.plugin,
+      .bento-card.blackboard,
+      .bento-card.xml,
+      .bento-card.logging,
+      .bento-card.ros2 {
+        grid-column: 1;
+        grid-row: auto;
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .groot-text h2,
+      .cta-content h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation - Matching original behaviortree.dev -->
+  <nav>
+    <div class="nav-content">
+      <a href="#" class="logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="45" fill="#22c55e"/>
+            <path d="M50 20 L50 45 M50 45 L30 65 M50 45 L70 65 M30 65 L30 80 M70 65 L70 80" stroke="white" stroke-width="6" stroke-linecap="round"/>
+          </svg>
+        </div>
+        BehaviorTree
+      </a>
+      <div class="nav-links">
+        <a href="/docs/intro">Docs</a>
+        <a href="/groot">Groot2</a>
+        <div class="nav-version">
+          4.8
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 9l6 6 6-6"/>
+          </svg>
+        </div>
+        <a href="/blog">Blog</a>
+        <a href="https://github.com/BehaviorTree/BehaviorTree.CPP" class="github-link">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span></span>
+        Powering Nav2 and 100+ robotics companies
+      </div>
+      <h1>The Industry Standard for <span class="highlight">Robot Intelligence</span></h1>
+      <p class="hero-sub">
+        BehaviorTree.CPP is the most advanced, production-ready framework for building 
+        reactive, modular, and debuggable robot behaviors. Design in XML, execute in C++.
+      </p>
+      <div class="hero-ctas">
+        <a href="/docs/intro" class="btn btn-primary">
+          Get Started Free →
+        </a>
+        <a href="#groot" class="btn btn-secondary">
+          Try Groot2 IDE
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-value">3.7k+</div>
+          <div class="stat-label">GitHub Stars</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">100+</div>
+          <div class="stat-label">Companies</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">10+</div>
+          <div class="stat-label">Years Active</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Bar -->
+  <section class="trust-bar">
+    <p>Trusted by teams building autonomous systems</p>
+    <div class="trust-logos">
+      <span class="trust-logo">Nav2 / ROS2</span>
+      <span class="trust-logo">MoveIt2</span>
+      <span class="trust-logo">NVIDIA Isaac</span>
+      <span class="trust-logo">Open Navigation</span>
+      <span class="trust-logo">Husarion</span>
+    </div>
+  </section>
+
+  <!-- Features Section - Bento Grid -->
+  <section class="features-section" id="features">
+    <div class="features-header">
+      <h2>Why BehaviorTree.CPP?</h2>
+      <p>Built for real-world robotics, not just demos</p>
+    </div>
+    
+    <div class="bento-grid">
+      <!-- Row 1: Large left + 2 small right -->
+      <div class="bento-card scalable">
+        <div class="bento-icon">⚡</div>
+        <h3>Async-First Design</h3>
+        <p>Non-blocking actions as first-class citizens. Build reactive behaviors that execute concurrently, making your robots responsive and efficient in complex real-world scenarios.</p>
+      </div>
+      
+      <div class="bento-card plugin">
+        <div class="bento-icon">🔌</div>
+        <h3>Plugin Architecture</h3>
+        <p>Load custom nodes at runtime. Separate behavior design from implementation.</p>
+      </div>
+      
+      <div class="bento-card blackboard">
+        <div class="bento-icon">📊</div>
+        <h3>Type-Safe Blackboard</h3>
+        <p>Strongly-typed data flow between nodes. Catch errors at compile time.</p>
+      </div>
+      
+      <!-- Row 2: 2 small left + Large right -->
+      <div class="bento-card xml">
+        <div class="bento-icon">📝</div>
+        <h3>XML-Defined Trees</h3>
+        <p>Modify behaviors without recompiling. Perfect for field engineers.</p>
+      </div>
+      
+      <div class="bento-card logging">
+        <div class="bento-icon">🔍</div>
+        <h3>Built-in Logging</h3>
+        <p>Record, replay, and analyze state transitions with confidence.</p>
+      </div>
+      
+      <div class="bento-card ros2">
+        <div class="bento-icon">🤖</div>
+        <h3>ROS2 Integration</h3>
+        <p>Official wrappers for actions, services, and topics. Powers the Nav2 navigation stack trusted by hundreds of robots and engineering teams worldwide.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Groot2 Section -->
+  <section class="groot-section" id="groot">
+    <div class="groot-blob"></div>
+    <div class="groot-content">
+      <div class="groot-text">
+        <h2>Meet <span>Groot2</span></h2>
+        <p class="groot-tagline">The IDE for Behavior Trees. Design, debug, and deploy with confidence.</p>
+        
+        <div class="groot-features">
+          <div class="groot-feature">
+            <div class="groot-feature-icon">✓</div>
+            <div class="groot-feature-text">
+              <strong>Visual Editor</strong>
+              <span>Drag-and-drop interface for rapid prototyping</span>
+            </div>
+          </div>
+          <div class="groot-feature">
+            <div class="groot-feature-icon">✓</div>
+            <div class="groot-feature-text">
+              <strong>Real-time Monitoring</strong>
+              <span>Watch your tree execute live on your robot</span>
+            </div>
+          </div>
+          <div class="groot-feature">
+            <div class="groot-feature-icon">✓</div>
+            <div class="groot-feature-text">
+              <strong>Log Replay & Analysis</strong>
+              <span>Debug past runs with full state reconstruction</span>
+            </div>
+          </div>
+          <div class="groot-feature">
+            <div class="groot-feature-icon">✓</div>
+            <div class="groot-feature-text">
+              <strong>Breakpoints & Fault Injection</strong>
+              <span>Pause execution and simulate failures</span>
+            </div>
+          </div>
+        </div>
+        
+        <a href="/groot" class="btn btn-primary">Learn More About Groot2</a>
+      </div>
+      
+      <div class="groot-visual">
+        <div class="groot-preview">
+          <div class="groot-preview-header">
+            <span class="window-dot red"></span>
+            <span class="window-dot yellow"></span>
+            <span class="window-dot green"></span>
+          </div>
+          <div class="groot-preview-body">
+            <div class="tree-node active">Sequence</div>
+            <div class="tree-connector"></div>
+            <div class="tree-row">
+              <div class="tree-node">Fallback</div>
+              <div class="tree-node">Navigate</div>
+            </div>
+            <div class="tree-connector"></div>
+            <div class="tree-row">
+              <div class="tree-node">Check</div>
+              <div class="tree-node active">Pick</div>
+              <div class="tree-node">Place</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="cta-content">
+      <h2>Ready to Build Smarter Robots?</h2>
+      <p>Join thousands of engineers using BehaviorTree.CPP to build production-grade autonomous systems.</p>
+      <div class="hero-ctas">
+        <a href="/docs/intro" class="btn btn-primary">Start the Tutorial</a>
+        <a href="mailto:dfaconti@aurynrobotics.com" class="btn btn-secondary">Contact for Enterprise</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h3>BehaviorTree.CPP</h3>
+        <p>The industry standard for robot intelligence. Open source, professionally supported.</p>
+      </div>
+      
+      <div class="footer-links">
+        <h4>Documentation</h4>
+        <ul>
+          <li><a href="/docs/intro">Tutorials</a></li>
+          <li><a href="https://behaviortree.github.io/BehaviorTree.CPP/">API Reference</a></li>
+          <li><a href="/docs/ros2_integration">ROS2 Integration</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-links">
+        <h4>Community</h4>
+        <ul>
+          <li><a href="https://github.com/BehaviorTree/BehaviorTree.CPP/discussions">Forum</a></li>
+          <li><a href="https://github.com/BehaviorTree/BehaviorTree.CPP">GitHub</a></li>
+          <li><a href="/blog">Blog</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-links">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="mailto:dfaconti@aurynrobotics.com">Contact</a></li>
+          <li><a href="#">Support</a></li>
+          <li><a href="#">Enterprise</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <span>© 2025 Auryn Robotics. All rights reserved.</span>
+      <span>Made with ❤️ for the robotics community</span>
+    </div>
+  </footer>
+</body>
+</html>
