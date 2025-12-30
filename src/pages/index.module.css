@@ -267,7 +267,7 @@
 }
 
 .featuresTitle {
-  font-size: 3.5rem;
+  font-size: 3.0rem;
   font-weight: 800;
   margin-bottom: 0.75rem;
   letter-spacing: -0.02em;
@@ -406,7 +406,7 @@
 }
 
 .grootHeader h2 {
-  font-size: 3.5rem;
+  font-size: 3.0rem;
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--text-dark);

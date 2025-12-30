@@ -18,7 +18,7 @@ const features = [
     icon: "🌳",
     title: "More scalable than State Machines",
     description:
-      "Behavior Trees enable complex behaviors with less code and more modularity, making them easier to maintain and extend.",
+      "Behavior Trees enable complex behaviors with less code and more modularity, making them easier to maintain and extend, compared to traditional state machines.",
   },
   {
     id: "async",
@@ -32,14 +32,14 @@ const features = [
     icon: "🧩",
     title: "Modular Architecture",
     description:
-      "Load custom nodes at runtime, build reusable building blocks.",
+      "Build reusable building blocks, load custom nodes at runtime.",
   },
   {
     id: "xml",
     icon: "📝",
     title: "XML-Defined Trees",
     description:
-      "Separation of concerns between logic and implementation.",
+      "Separation of concerns between logic (XML) and implementation (C++).",
   },
   {
     id: "logging",
@@ -53,7 +53,7 @@ const features = [
     icon: "🤖",
     title: "ROS2 Integration",
     description:
-      "Official wrappers for ROS2. Powers the Nav2 navigation stack.",
+      "The most widely used Robot Deliberation library in the ROS2 ecosystem. The main library is ROS-agnostic, but we provide seamless ROS2 integration.",
   },
 ];
 

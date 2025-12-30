@@ -188,7 +188,7 @@
 }
 
 .pricingTitle {
-  font-size: 3.5rem;
+  font-size: 3.0rem;
   font-weight: 800;
   color: white;
   text-align: center;
@@ -318,7 +318,7 @@
 }
 
 .downloadTitle {
-  font-size: 3.5rem;
+  font-size: 3.0rem;
   font-weight: 800;
   color: var(--green-600);
   text-align: center;
@@ -392,7 +392,7 @@
 }
 
 .faqTitle {
-  font-size: 3.5rem;
+  font-size: 3.0rem;
   font-weight: 800;
   color: var(--text-dark);
   text-align: center;
