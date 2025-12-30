@@ -36,7 +36,7 @@ const config = {
       },
     },
   },
-  
+
   plugins: [],
 
   themes: [
@@ -104,12 +104,12 @@ const config = {
         },
         items: [
           {
-            type: 'doc', label: 'Documentation', docId: 'intro', position: 'left'
-          },
-          {
             position: 'left',
             label: 'Groot2',
-            to: '/groot', 
+            to: '/groot',
+          },
+          {
+            type: 'doc', label: 'Documentation', docId: 'intro', position: 'left'
           },
           {
             type: 'docsVersionDropdown',
@@ -167,7 +167,7 @@ const config = {
       },
     }),
 
-  scripts: [{src: 'https://cdn.usefathom.com/script.js', defer: true, 'data-site': 'SIFIKCAM'}],
+  scripts: [{ src: 'https://cdn.usefathom.com/script.js', defer: true, 'data-site': 'SIFIKCAM' }],
 
 };
 

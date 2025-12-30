@@ -348,15 +348,15 @@
   background: white;
   border-radius: var(--radius-md);
   padding: 2rem;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  border: 1px solid #d1d5db;
   transition: all 0.3s ease;
   text-align: center;
   min-width: 250px;
 }
 
 .downloadCard:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+  border: 2px solid var(--green-400);
 }
 
 .downloadLogo {

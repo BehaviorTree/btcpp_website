@@ -222,7 +222,7 @@
 .trustBar {
   padding: 3rem 1rem;
   text-align: center;
-  background: var(--text-dark);
+  background: #303846;
 }
 
 .trustBarTitle {
@@ -279,6 +279,10 @@
   font-size: 1.8rem;
 }
 
+.highlight {
+  color: var(--green-500);
+}
+
 /* Bento Box Grid */
 .bentoGrid {
   display: grid;
@@ -321,18 +325,16 @@
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04), 0 1px 4px rgba(0, 0, 0, 0.02);
+  border: 1px solid #d1d5db;
 }
 
 .bentoCard:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+  transform: translateY(-2px);
+  border: 2px solid var(--green-400);
 }
 
 .bentoCard:hover .bentoIcon {
-  transform: scale(1.1);
-  background: var(--green-500);
-  color: white;
+  transform: scale(1.05);
 }
 
 
@@ -344,9 +346,9 @@
 }
 
 .bentoIcon {
-  width: 60px;
-  height: 60px;
-  background: var(--green-100);
+  width: 48px;
+  height: 48px;
+  background: var(--green-500);
   border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
@@ -354,6 +356,7 @@
   font-size: 1.2rem;
   flex-shrink: 0;
   transition: all 0.3s ease;
+  color: white;
 }
 
 .bentoCard h3 {
