@@ -116,7 +116,6 @@ const config = {
             position: 'right',
             dropdownActiveClassDisabled: true,
           },
-          {to: '/blog', label: 'Blog', position: 'right'},
           {
             href: 'https://github.com/BehaviorTree/BehaviorTree.CPP',
             label: 'GitHub',
