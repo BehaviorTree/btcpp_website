@@ -1,7 +1,6 @@
 /* Design System - scoped to avoid affecting docs */
 .hero,
 .featureSection,
-.sectionSeparator,
 .pricingSection,
 .downloadSection,
 .faqSection {
@@ -177,16 +176,6 @@
   display: block;
 }
 
-/* Section Separator */
-.sectionSeparator {
-  padding: 3rem 1rem;
-  text-align: center;
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: var(--green-400);
-  background: var(--text-dark);
-}
-
 /* Pricing Section */
 .pricingSection {
   padding: 5rem 1rem;
@@ -203,14 +192,7 @@
   font-weight: 800;
   color: white;
   text-align: center;
-  margin-bottom: 0.5rem;
-}
-
-.pricingSubtitle {
-  font-size: 1.25rem;
-  color: rgba(255, 255, 255, 0.6);
-  text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .pricingTable {
@@ -260,22 +242,6 @@
 
 .proPlan {
   background: rgba(34, 197, 94, 0.1);
-  position: relative;
-}
-
-.planBadge {
-  position: absolute;
-  top: -1px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--green-500);
-  color: white;
-  font-size: 1rem;
-  font-weight: 600;
-  padding: 0.25rem 0.75rem;
-  border-radius: 0 0 8px 8px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
 }
 
 .planName {
@@ -339,13 +305,6 @@
 
 .pricingCta .btnSecondary:hover {
   background: rgba(255, 255, 255, 0.2);
-}
-
-.pricingNote {
-  text-align: center;
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 1rem;
-  margin-top: 2rem;
 }
 
 /* Download Section */
@@ -536,10 +495,6 @@
     font-size: 1.5rem;
   }
 
-  .sectionSeparator {
-    font-size: 2rem;
-  }
-
   .buttonGroup {
     flex-direction: column;
     align-items: center;
@@ -562,16 +517,16 @@
   }
 
   .pricingFeatureCol {
-    font-size: 0.95rem;
-    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    padding: 0.5rem 0.75rem;
   }
 
   .pricingPlanCol {
-    padding: 0.75rem 0.5rem;
+    padding: 0.5rem 0.25rem;
   }
 
   .planPrice {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
   }
 
   .planName {
@@ -579,8 +534,8 @@
   }
 
   .pricingCta .btn {
-    font-size: 0.9rem;
-    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    padding: 0.5rem 0.75rem;
   }
 
   .downloadGrid {
