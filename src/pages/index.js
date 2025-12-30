@@ -221,7 +221,7 @@ function Home() {
       {/* Trust Bar */}
       <section className={styles.trustBar}>
         <p className={styles.trustBarTitle}>
-          Used bysome of the most popular open-source robotics frameworks:
+          Used by some of the most popular robotics frameworks:
         </p>
         <div className={styles.trustLogos}>
           {trustLogos.map((logo, idx) => (

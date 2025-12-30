@@ -10,43 +10,42 @@ import MonitorVideo from "@site/static/img/groot2_monitor.mp4";
 import LogVideo from "@site/static/img/groot2_log.mp4";
 import ContactFormModal from "../components/ContactFormModal";
 
-// Pricing plans data
-const pricingPlans = [
+// Pricing comparison features
+const pricingFeatures = [
+  { name: "Full Behavior Tree Editor", free: true, pro: true },
+  { name: "Real-time XML Preview", free: true, pro: true },
+  { name: "Multi-file Project Support", free: true, pro: true },
+  { name: "Split View", free: true, pro: true },
+  { name: "Monitor & Log Visualizer", free: "20 nodes", pro: "Unlimited" },
+  { name: "Search Nodes in Large Trees", free: false, pro: true },
+  { name: "Blackboard Visualization", free: false, pro: true },
+  { name: "Interactive Breakpoints", free: false, pro: true },
+  { name: "Fault Injection", free: false, pro: true },
+  { name: "Node Substitution at Runtime", free: false, pro: true },
+];
+
+// FAQ data
+const faqItems = [
   {
-    name: "Basic",
-    price: "Free",
-    period: "",
-    features: [
-      "Full Behavior Tree Editor",
-      "Monitor and Log Visualizer limited to 20 Nodes",
-    ],
-    buttonText: "Download",
-    action: "download",
+    question: "What is a floating license?",
+    answer:
+      "A floating license can be used on any machine, but only one at a time. When you close Groot2 on one computer, you can open it on another. This is ideal for teams where multiple people need occasional access.",
   },
   {
-    name: "PRO (floating license)",
-    price: "€690",
-    period: " / year",
-    features: [
-      "Search Nodes in large trees",
-      "Unlimited Nodes in Monitor and Log Visualizer",
-      "Interactive real-time debugger",
-    ],
-    buttonText: "Buy now",
-    action: "checkout",
+    question: "Do you have a Trial version of Groot2 PRO?",
+    answer:
+      "Yes, you can activate 30 days of trial for the PRO version in Preferences -> License.",
   },
   {
-    name: "Training",
-    price: "€1,800",
-    period: " / month",
-    features: [
-      "Includes 1 PRO license (1 year)",
-      "Up to 12 hours per month",
-      "Learn how to use BT.CPP effectively",
-    ],
-    buttonText: "Contact us",
-    action: "contact",
+    question: "What payment methods do you accept?",
+    answer:
+      "We accept all major credit cards (Visa, MasterCard, American Express). Contact us if you prefer wire transfer",
   },
+  {
+    question: "Can I use Groot2 offline?",
+    answer:
+      "Yes, Groot2 works offline. The PRO license requires an internet connection only for initial activation and periodic validation (once every 7 days). If you are in a air-gapped environment, please contact us for offline activation options.",
+  }
 ];
 
 // Feature sections data
@@ -106,47 +105,24 @@ function FeatureSection({ title, items, video, reverse }) {
   );
 }
 
-function PricingCard({ plan, onDownload, onContact }) {
-  const handleClick = () => {
-    if (plan.action === "download") {
-      onDownload();
-    } else if (plan.action === "contact") {
-      onContact();
-    }
-  };
+function PricingFeatureValue({ value }) {
+  if (value === true) {
+    return <span className={styles.checkMark}>✓</span>;
+  } else if (value === false) {
+    return <span className={styles.crossMark}>—</span>;
+  } else {
+    return <span className={styles.textValue}>{value}</span>;
+  }
+}
 
+function FaqItem({ question, answer, isOpen, onClick }) {
   return (
-    <div className={styles.pricingCard}>
-      <h3>{plan.name}</h3>
-      <div className={styles.pricingPrice}>
-        <span className={styles.pricingAmount}>{plan.price}</span>
-        <span className={styles.pricingPeriod}>{plan.period}</span>
-      </div>
-      <ul className={styles.pricingFeatures}>
-        {plan.features.map((feature, idx) => (
-          <li key={idx}>{feature}</li>
-        ))}
-      </ul>
-      <div className={styles.pricingCta}>
-        {plan.action === "checkout" ? (
-          <a
-            className={clsx(styles.btn, styles.btnPrimary)}
-            href="javascript:void(0)"
-            data-cb-type="checkout"
-            data-cb-item-0="Floating-License-fixed2-EUR-Yearly"
-            data-cb-item-0-quantity="1"
-          >
-            {plan.buttonText}
-          </a>
-        ) : (
-          <button
-            className={clsx(styles.btn, styles.btnPrimary)}
-            onClick={handleClick}
-          >
-            {plan.buttonText}
-          </button>
-        )}
-      </div>
+    <div className={clsx(styles.faqItem, { [styles.faqItemOpen]: isOpen })}>
+      <button className={styles.faqQuestion} onClick={onClick}>
+        <span>{question}</span>
+        <span className={styles.faqIcon}>{isOpen ? "−" : "+"}</span>
+      </button>
+      {isOpen && <div className={styles.faqAnswer}>{answer}</div>}
     </div>
   );
 }
@@ -154,6 +130,7 @@ function PricingCard({ plan, onDownload, onContact }) {
 export default function Groot() {
   const [chargebeeInitialized, setChargebeeInitialized] = useState(false);
   const [openContactModal, setOpenContactModal] = useState(false);
+  const [openFaqIndex, setOpenFaqIndex] = useState(null);
 
   useEffect(() => {
     if (!chargebeeInitialized) {
@@ -219,27 +196,69 @@ export default function Groot() {
       ))}
 
       {/* Pricing Section */}
-      <div className={styles.sectionSeparator}>Pricing</div>
       <section className={styles.pricingSection}>
-        <div className={styles.pricingGrid}>
-          {pricingPlans.map((plan, idx) => (
-            <PricingCard
-              key={idx}
-              plan={plan}
-              onDownload={scrollToDownload}
-              onContact={() => setOpenContactModal(true)}
-              chargebeeReady={chargebeeInitialized}
-            />
-          ))}
+        <div className={styles.pricingInner}>
+          <h2 className={styles.pricingTitle}>Pricing</h2>
+          <div className={styles.pricingTable}>
+            {/* Header */}
+            <div className={styles.pricingHeader}>
+              <div className={styles.pricingFeatureCol}>Features</div>
+              <div className={styles.pricingPlanCol}>
+                <div className={styles.planName}>Free</div>
+                <div className={styles.planPrice}>€0</div>
+              </div>
+              <div className={clsx(styles.pricingPlanCol, styles.proPlan)}>
+                <div className={styles.planName}>PRO<br />Floating License</div>
+                <div className={styles.planPrice}>
+                  €690<span className={styles.planPeriod}>/year</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Feature Rows */}
+            {pricingFeatures.map((feature, idx) => (
+              <div key={idx} className={styles.pricingRow}>
+                <div className={styles.pricingFeatureCol}>{feature.name}</div>
+                <div className={styles.pricingPlanCol}>
+                  <PricingFeatureValue value={feature.free} />
+                </div>
+                <div className={clsx(styles.pricingPlanCol, styles.proPlan)}>
+                  <PricingFeatureValue value={feature.pro} />
+                </div>
+              </div>
+            ))}
+
+            {/* CTA Row */}
+            <div className={styles.pricingCta}>
+              <div className={styles.pricingFeatureCol}></div>
+              <div className={styles.pricingPlanCol}>
+                <button
+                  className={clsx(styles.btn, styles.btnSecondary)}
+                  onClick={scrollToDownload}
+                >
+                  Download
+                </button>
+              </div>
+              <div className={clsx(styles.pricingPlanCol, styles.proPlan)}>
+                <a
+                  className={clsx(styles.btn, styles.btnPrimary)}
+                  href="javascript:void(0)"
+                  data-cb-type="checkout"
+                  data-cb-item-0="Floating-License-fixed2-EUR-Yearly"
+                  data-cb-item-0-quantity="1"
+                >
+                  Buy PRO
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Download Section */}
-      <div id="download" className={styles.sectionSeparator}>
-        Download
-      </div>
-      <section className={styles.downloadSection}>
+      <section id="download" className={styles.downloadSection}>
         <div className={styles.downloadInner}>
+          <h2 className={styles.downloadTitle}>Download</h2>
           <h3>Latest release: 1.7.0 (2025-12-14)</h3>
           <div className={styles.downloadGrid}>
             <div className={styles.downloadCard}>
@@ -272,6 +291,26 @@ export default function Groot() {
                 AppImage (Linux)
               </Link>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className={styles.faqSection}>
+        <div className={styles.faqInner}>
+          <h2 className={styles.faqTitle}>Frequently Asked Questions</h2>
+          <div className={styles.faqList}>
+            {faqItems.map((item, idx) => (
+              <FaqItem
+                key={idx}
+                question={item.question}
+                answer={item.answer}
+                isOpen={openFaqIndex === idx}
+                onClick={() =>
+                  setOpenFaqIndex(openFaqIndex === idx ? null : idx)
+                }
+              />
+            ))}
           </div>
         </div>
       </section>

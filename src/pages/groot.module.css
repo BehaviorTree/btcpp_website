@@ -3,7 +3,8 @@
 .featureSection,
 .sectionSeparator,
 .pricingSection,
-.downloadSection {
+.downloadSection,
+.faqSection {
   --green-50: #f0fdf4;
   --green-100: #dcfce7;
   --green-200: #bbf7d0;
@@ -41,7 +42,7 @@
 }
 
 .heroTitle {
-  font-size: 4rem;
+  font-size: 5rem;
   font-weight: 800;
   color: var(--green-500);
   margin-bottom: 1rem;
@@ -182,117 +183,183 @@
   text-align: center;
   font-size: 2.5rem;
   font-weight: 800;
-  color: var(--green-600);
-  background: var(--cream);
+  color: var(--green-400);
+  background: var(--text-dark);
 }
 
 /* Pricing Section */
 .pricingSection {
-  padding: 2rem 1rem 4rem;
-  background: var(--cream);
+  padding: 5rem 1rem;
+  background: var(--text-dark);
 }
 
-.pricingGrid {
-  max-width: 1100px;
+.pricingInner {
+  max-width: 900px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
 }
 
-.pricingCard {
-  background: white;
+.pricingTitle {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: white;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.pricingSubtitle {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.pricingTable {
+  background: rgba(255, 255, 255, 0.05);
   border-radius: var(--radius-md);
-  padding: 2rem;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-  display: flex;
-  flex-direction: column;
-  min-height: 380px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.pricingCard h3 {
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: var(--text-dark);
-  text-align: center;
-  margin-bottom: 1rem;
+.pricingHeader {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  background: rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.pricingPrice {
-  text-align: center;
-  margin-bottom: 1.5rem;
+.pricingRow {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.pricingAmount {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--green-500);
-}
-
-.pricingPeriod {
-  font-size: 1.1rem;
-  color: var(--text-mid);
-}
-
-.pricingFeatures {
-  flex: 1;
-  list-style: none;
-  padding: 0;
-  margin: 0 0 1.5rem 0;
-}
-
-.pricingFeatures li {
-  font-size: 1.1rem;
-  color: var(--text-mid);
-  padding: 0.6rem 0;
-  border-bottom: 1px solid var(--green-50);
-  line-height: 1.5;
-}
-
-.pricingFeatures li:last-child {
+.pricingRow:last-child {
   border-bottom: none;
 }
 
-.pricingCta {
+.pricingFeatureCol {
+  padding: 0.75rem 1.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+}
+
+.pricingPlanCol {
+  padding: 0.75rem 1.5rem;
   text-align: center;
-  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Pricing Note */
-.pricingNote {
-  max-width: 800px;
-  margin: 3rem auto 0;
-  padding: 0 2rem;
+.pricingHeader .pricingPlanCol {
+  padding: 1.25rem 1rem;
 }
 
-.pricingNote h3 {
-  font-size: 1.5rem;
+.proPlan {
+  background: rgba(34, 197, 94, 0.1);
+  position: relative;
+}
+
+.planBadge {
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--green-500);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0 0 8px 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.planName {
+  font-size: 1.4rem;
   font-weight: 700;
-  color: var(--text-dark);
+  color: white;
+  margin-top: 0.5rem;
+}
+
+.planPrice {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--green-400);
+  line-height: 1.2;
+}
+
+.planPeriod {
+  font-size: 1rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.checkMark {
+  color: var(--green-400);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.crossMark {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 1.25rem;
+}
+
+.textValue {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+}
+
+.pricingCta {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  padding: 1.5rem 0;
+  background: rgba(255, 255, 255, 0.03);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pricingCta .pricingPlanCol {
+  padding: 0.5rem 1rem;
+}
+
+.pricingCta .btn {
+  width: 100%;
+  max-width: 160px;
+}
+
+.pricingCta .btnSecondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.pricingCta .btnSecondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.pricingNote {
   text-align: center;
-  margin-bottom: 1rem;
-}
-
-.pricingNote ul {
-  list-style: none;
-  padding: 0;
-}
-
-.pricingNote li {
-  font-size: 1.15rem;
-  color: var(--text-mid);
-  padding: 0.75rem 0;
-  line-height: 1.6;
-}
-
-.pricingNote b {
-  color: var(--text-dark);
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 1rem;
+  margin-top: 2rem;
 }
 
 /* Download Section */
 .downloadSection {
-  padding: 2rem 1rem 5rem;
+  padding: 4rem 1rem 5rem;
   background: var(--cream);
+}
+
+.downloadTitle {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--green-600);
+  text-align: center;
+  margin-bottom: 0.5rem;
 }
 
 .downloadInner {
@@ -302,7 +369,7 @@
 }
 
 .downloadInner h3 {
-  font-size: 1.25rem;
+  font-size: 1.4rem;
   color: var(--text-mid);
   margin-bottom: 2.5rem;
 }
@@ -321,7 +388,7 @@
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
   transition: all 0.3s ease;
   text-align: center;
-  min-width: 200px;
+  min-width: 250px;
 }
 
 .downloadCard:hover {
@@ -330,7 +397,7 @@
 }
 
 .downloadLogo {
-  height: 80px;
+  height: 180px;
   width: auto;
   margin-bottom: 1rem;
   display: block;
@@ -341,12 +408,89 @@
 .downloadCard a {
   color: var(--green-600);
   font-weight: 600;
+  font-size: 1.4rem;
   text-decoration: none;
 }
 
 .downloadCard a:hover {
   color: var(--green-700);
   text-decoration: underline;
+}
+
+/* FAQ Section */
+.faqSection {
+  padding: 5rem 1rem;
+  background: var(--sand);
+}
+
+.faqInner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.faqTitle {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.faqItem {
+  background: white;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: box-shadow 0.2s ease;
+}
+
+.faqItem:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.faqItemOpen {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.faqQuestion {
+  width: 100%;
+  padding: 1.25rem 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  transition: color 0.2s ease;
+}
+
+.faqQuestion:hover {
+  color: var(--green-600);
+}
+
+.faqIcon {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--green-500);
+  flex-shrink: 0;
+  margin-left: 1rem;
+}
+
+.faqAnswer {
+  padding: 0 1.5rem 1.5rem;
+  font-size: 1.1rem;
+  color: var(--text-mid);
+  line-height: 1.7;
 }
 
 /* Responsive */
@@ -370,9 +514,8 @@
     margin: 0 auto;
   }
 
-  .pricingGrid {
-    grid-template-columns: 1fr;
-    max-width: 400px;
+  .pricingTitle {
+    font-size: 2.5rem;
   }
 
   .heroTitle {
@@ -408,8 +551,54 @@
     justify-content: center;
   }
 
+  .pricingTitle {
+    font-size: 2rem;
+  }
+
+  .pricingHeader,
+  .pricingRow,
+  .pricingCta {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+
+  .pricingFeatureCol {
+    font-size: 0.95rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .pricingPlanCol {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .planPrice {
+    font-size: 1.75rem;
+  }
+
+  .planName {
+    font-size: 1rem;
+  }
+
+  .pricingCta .btn {
+    font-size: 0.9rem;
+    padding: 0.75rem 1rem;
+  }
+
   .downloadGrid {
     flex-direction: column;
     align-items: center;
+  }
+
+  .faqTitle {
+    font-size: 2rem;
+  }
+
+  .faqQuestion {
+    font-size: 1rem;
+    padding: 1rem 1.25rem;
+  }
+
+  .faqAnswer {
+    font-size: 1rem;
+    padding: 0 1.25rem 1.25rem;
   }
 }

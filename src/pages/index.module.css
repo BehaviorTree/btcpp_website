@@ -136,7 +136,7 @@
 .heroCtas {
   display: flex;
   gap: 1rem;
-  justify-content: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
   animation: fadeInUp 0.8s ease-out 0.3s both;
 }
@@ -185,7 +185,7 @@
 .heroStats {
   display: flex;
   gap: 3rem;
-  justify-content: flex-start;
+  justify-content: center;
   margin-top: 3rem;
   animation: fadeInUp 0.8s ease-out 0.4s both;
 }
@@ -227,7 +227,7 @@
 
 .trustBarTitle {
   color: rgba(255, 255, 255, 0.5);
-  font-size: 1.0rem;
+  font-size: 1.4rem;
   margin-bottom: 1.5rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
@@ -245,7 +245,7 @@
 .trustLogo {
   color: rgba(255, 255, 255, 0.85);
   font-family: 'JetBrains Mono', monospace;
-  font-size: 1.25rem;
+  font-size: 2.0rem;
   font-weight: 600;
   transition: color 0.2s;
   cursor: default;
