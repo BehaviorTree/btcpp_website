@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "@docusaurus/Link";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import Layout from "@theme/Layout";
@@ -107,8 +107,29 @@ function GrootFeature({ title, description }) {
   );
 }
 
+function formatStars(count) {
+  if (count >= 1000) {
+    return (count / 1000).toFixed(1).replace(/\.0$/, '') + 'k+';
+  }
+  return count.toString();
+}
+
 function Home() {
   const [openContactModal, setOpenContactModal] = useState(false);
+  const [githubStars, setGithubStars] = useState("3.7k+");
+
+  useEffect(() => {
+    fetch("https://api.github.com/repos/BehaviorTree/BehaviorTree.CPP")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.stargazers_count) {
+          setGithubStars(formatStars(data.stargazers_count));
+        }
+      })
+      .catch(() => {
+        // Keep default value on error
+      });
+  }, []);
 
   return (
     <Layout
@@ -183,7 +204,7 @@ function Home() {
                 <div className={styles.statLabel}>Open-Source License</div>
               </div>
               <div className={styles.stat}>
-                <div className={styles.statValue}>3.7k+</div>
+                <div className={styles.statValue}>{githubStars}</div>
                 <div className={styles.statLabel}>GitHub Stars</div>
               </div>
               <div className={styles.stat}>
