@@ -27,24 +27,34 @@ const pricingFeatures = [
 // FAQ data
 const faqItems = [
   {
-    question: "What is a floating license?",
+    question: "What does \"floating license\" mean?",
     answer:
-      "A floating license can be used on any machine, but only one at a time. When you close Groot2 on one computer, you can open it on another. This is ideal for teams where multiple people need occasional access.",
+      "A floating license can be used on a single machine, but it can be migrated from one machine to another an unlimited number of times.",
   },
   {
-    question: "Do you have a Trial version of Groot2 PRO?",
+    question: "How many users can use a floating license?",
     answer:
-      "Yes, you can activate 30 days of trial for the PRO version in Preferences -> License.",
+      "There is no limitation based on the number of users. The license is tied to a single machine.",
+  },
+  {
+    question: "Can I try Groot2 PRO?",
+    answer:
+      "Yes, you can activate a 30-day free trial for the PRO version in Preferences -> License.",
   },
   {
     question: "What payment methods do you accept?",
     answer:
-      "We accept all major credit cards (Visa, MasterCard, American Express). Contact us if you prefer wire transfer",
+      "We accept all major credit cards (Visa, MasterCard, American Express). Contact us if you prefer a wire transfer.",
   },
   {
     question: "Can I use Groot2 offline?",
     answer:
-      "Yes, Groot2 works offline. The PRO license requires an internet connection only for initial activation and periodic validation (once every 7 days). If you are in a air-gapped environment, please contact us for offline activation options.",
+      "Yes, Groot2 works offline. The PRO license requires an internet connection only for initial activation and periodic validation (once every 7 days). If you are in an air-gapped environment, please contact us for offline activation options.",
+  },
+  {
+    question: "What happens if your company goes out of business?",
+    answer:
+      "We use an escrow service to guarantee that, if Auryn Robotics goes out of business, Groot2 will be released under the Apache 2.0 license.",
   }
 ];
 
