@@ -19,7 +19,7 @@ const pricingFeatures = [
   { name: "Blackboard Visualization", free: false, pro: true },
   { name: "Interactive Breakpoints", free: false, pro: true },
   { name: "Fault Injection", free: false, pro: true },
-  { name: "Technical Support", free: "community", pro: "priority" },
+  { name: "Technical Support", free: "Community", pro: "Priority" },
 ];
 
 // FAQ data
@@ -32,7 +32,7 @@ const faqItems = [
   {
     question: "How many users can use a floating license?",
     answer:
-      "There is no limitation based on the number of users. The license is tied to a single machine.",
+      "There is no limitation based on the number of users. The license is tied to a single machine.", git pus
   },
   {
     question: "Can I try Groot2 PRO?",
