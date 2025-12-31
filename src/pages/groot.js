@@ -13,15 +13,13 @@ import ContactFormModal from "../components/ContactFormModal";
 // Pricing comparison features
 const pricingFeatures = [
   { name: "Full Behavior Tree Editor", free: true, pro: true },
-  { name: "Real-time XML Preview", free: true, pro: true },
   { name: "Multi-file Project Support", free: true, pro: true },
-  { name: "Split View", free: true, pro: true },
   { name: "Monitor & Log Visualizer", free: "20 nodes", pro: "Unlimited" },
   { name: "Search Nodes in Large Trees", free: false, pro: true },
   { name: "Blackboard Visualization", free: false, pro: true },
   { name: "Interactive Breakpoints", free: false, pro: true },
   { name: "Fault Injection", free: false, pro: true },
-  { name: "Node Substitution at Runtime", free: false, pro: true },
+  { name: "Technical Support", free: "community", pro: "priority" },
 ];
 
 // FAQ data
