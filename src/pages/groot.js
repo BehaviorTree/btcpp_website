@@ -135,6 +135,22 @@ function FaqItem({ question, answer, isOpen, onClick }) {
   );
 }
 
+const CURRENT_VERSION = "1.7.1";
+
+// Track download event
+const trackDownload = async (file, platform) => {
+  try {
+    await fetch('/api/track-download', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ file, platform, version: CURRENT_VERSION })
+    });
+  } catch (error) {
+    // Don't block download if tracking fails
+    console.error('Failed to track download:', error);
+  }
+};
+
 export default function Groot() {
   const [chargebeeInitialized, setChargebeeInitialized] = useState(false);
   const [openContactModal, setOpenContactModal] = useState(false);
@@ -267,7 +283,7 @@ export default function Groot() {
       <section id="download" className={styles.downloadSection}>
         <div className={styles.downloadInner}>
           <h2 className={styles.downloadTitle}>Download</h2>
-          <h3>Latest release: 1.7.1 (2026-01-04)</h3>
+          <h3>Latest release: {CURRENT_VERSION} (2026-01-04)</h3>
           <div className={styles.downloadGrid}>
             <div className={styles.downloadCard}>
               <img
@@ -275,7 +291,10 @@ export default function Groot() {
                 src={useBaseUrl("img/windows.png")}
                 alt="Windows"
               />
-              <Link to="https://pub-32cef6782a9e411e82222dee82af193e.r2.dev/Groot2-v1.7.1-windows-installer.exe">
+              <Link
+                to={`https://pub-32cef6782a9e411e82222dee82af193e.r2.dev/Groot2-v${CURRENT_VERSION}-windows-installer.exe`}
+                onClick={() => trackDownload('windows-installer.exe', 'windows')}
+              >
                 Windows installer
               </Link>
             </div>
@@ -285,7 +304,10 @@ export default function Groot() {
                 src={useBaseUrl("img/linux.png")}
                 alt="Linux"
               />
-              <Link to="https://pub-32cef6782a9e411e82222dee82af193e.r2.dev/Groot2-v1.7.1-linux-installer.run">
+              <Link
+                to={`https://pub-32cef6782a9e411e82222dee82af193e.r2.dev/Groot2-v${CURRENT_VERSION}-linux-installer.run`}
+                onClick={() => trackDownload('linux-installer.run', 'linux')}
+              >
                 Linux installer
               </Link>
             </div>
@@ -295,7 +317,10 @@ export default function Groot() {
                 src={useBaseUrl("img/appimage.png")}
                 alt="AppImage"
               />
-              <Link to="https://pub-32cef6782a9e411e82222dee82af193e.r2.dev/Groot2-v1.7.1-x86_64.AppImage">
+              <Link
+                to={`https://pub-32cef6782a9e411e82222dee82af193e.r2.dev/Groot2-v${CURRENT_VERSION}-x86_64.AppImage`}
+                onClick={() => trackDownload('x86_64.AppImage', 'linux')}
+              >
                 AppImage (Linux)
               </Link>
             </div>
