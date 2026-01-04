@@ -32,7 +32,7 @@ const faqItems = [
   {
     question: "How many users can use a floating license?",
     answer:
-      "There is no limitation based on the number of users. The license is tied to a single machine.", git pus
+      "There is no limitation based on the number of users. The license is tied to a single machine.",
   },
   {
     question: "Can I try Groot2 PRO?",
