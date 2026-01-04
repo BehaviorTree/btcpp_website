@@ -267,7 +267,7 @@ export default function Groot() {
       <section id="download" className={styles.downloadSection}>
         <div className={styles.downloadInner}>
           <h2 className={styles.downloadTitle}>Download</h2>
-          <h3>Latest release: 1.7.0 (2025-12-14)</h3>
+          <h3>Latest release: 1.7.1 (2026-01-04)</h3>
           <div className={styles.downloadGrid}>
             <div className={styles.downloadCard}>
               <img
@@ -275,7 +275,7 @@ export default function Groot() {
                 src={useBaseUrl("img/windows.png")}
                 alt="Windows"
               />
-              <Link to="https://pub-32cef6782a9e411e82222dee82af193e.r2.dev/Groot2-v1.7.0-windows-installer.exe">
+              <Link to="https://pub-32cef6782a9e411e82222dee82af193e.r2.dev/Groot2-v1.7.1-windows-installer.exe">
                 Windows installer
               </Link>
             </div>
@@ -285,7 +285,7 @@ export default function Groot() {
                 src={useBaseUrl("img/linux.png")}
                 alt="Linux"
               />
-              <Link to="https://pub-32cef6782a9e411e82222dee82af193e.r2.dev/Groot2-v1.7.0-linux-installer.run">
+              <Link to="https://pub-32cef6782a9e411e82222dee82af193e.r2.dev/Groot2-v1.7.1-linux-installer.run">
                 Linux installer
               </Link>
             </div>
@@ -295,7 +295,7 @@ export default function Groot() {
                 src={useBaseUrl("img/appimage.png")}
                 alt="AppImage"
               />
-              <Link to="https://pub-32cef6782a9e411e82222dee82af193e.r2.dev/Groot2-v1.7.0-x86_64.AppImage">
+              <Link to="https://pub-32cef6782a9e411e82222dee82af193e.r2.dev/Groot2-v1.7.1-x86_64.AppImage">
                 AppImage (Linux)
               </Link>
             </div>
@@ -325,3 +325,4 @@ export default function Groot() {
     </Layout>
   );
 }
+
