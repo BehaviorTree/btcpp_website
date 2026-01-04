@@ -166,9 +166,6 @@ const config = {
         additionalLanguages: ['cpp', 'xml-doc'],
       },
     }),
-
-  scripts: [{ src: 'https://cdn.usefathom.com/script.js', defer: true, 'data-site': 'SIFIKCAM' }],
-
 };
 
 module.exports = config;

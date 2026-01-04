@@ -43,5 +43,5 @@ npm run clear      # Clear Docusaurus cache
 ### Key Technical Details
 - Prism syntax highlighting configured for `cpp` and `xml-doc`
 - Bootstrap 5 + React Bootstrap for UI components
-- Fathom Analytics for tracking
+- Download tracking via Netlify Functions + Neon PostgreSQL database
 - Dark mode disabled (light mode only)
