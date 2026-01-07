@@ -2,3 +2,4 @@
 /package-lock.json
 /.docusaurus/
 /build/
+.vscode/*

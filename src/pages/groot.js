@@ -282,46 +282,85 @@ export default function Groot() {
       {/* Download Section */}
       <section id="download" className={styles.downloadSection}>
         <div className={styles.downloadInner}>
-          <h2 className={styles.downloadTitle}>Download</h2>
-          <h3>Latest release: {CURRENT_VERSION} (2026-01-04)</h3>
-          <div className={styles.downloadGrid}>
-            <div className={styles.downloadCard}>
-              <img
-                className={styles.downloadLogo}
-                src={useBaseUrl("img/windows.png")}
-                alt="Windows"
-              />
+          <div className={styles.downloadHeader}>
+            <h2 className={styles.downloadTitle}>Download</h2>
+            <p className={styles.downloadVersion}>Latest release: {CURRENT_VERSION} (2026-01-04)</p>
+          </div>
+
+          {/* Installers Group */}
+          <div className={styles.downloadGroup}>
+            <h3 className={styles.downloadGroupTitle}>Installers</h3>
+            <div className={styles.downloadGrid}>
               <Link
+                className={styles.downloadCard}
                 to={`https://pub-32cef6782a9e411e82222dee82af193e.r2.dev/Groot2-v${CURRENT_VERSION}-windows-installer.exe`}
                 onClick={() => trackDownload('windows-installer.exe', 'windows')}
               >
-                Windows installer
+                <img
+                  className={styles.downloadLogo}
+                  src={useBaseUrl("img/windows.png")}
+                  alt="Windows"
+                />
+                <div className={styles.downloadInfo}>
+                  <span className={styles.downloadName}>Windows</span>
+                  <span className={styles.downloadArch}>x86_64</span>
+                </div>
+                <span className={styles.downloadBtn}>Download</span>
               </Link>
-            </div>
-            <div className={styles.downloadCard}>
-              <img
-                className={styles.downloadLogo}
-                src={useBaseUrl("img/linux.png")}
-                alt="Linux"
-              />
               <Link
+                className={styles.downloadCard}
                 to={`https://pub-32cef6782a9e411e82222dee82af193e.r2.dev/Groot2-v${CURRENT_VERSION}-linux-installer.run`}
                 onClick={() => trackDownload('linux-installer.run', 'linux')}
               >
-                Linux installer
+                <img
+                  className={styles.downloadLogo}
+                  src={useBaseUrl("img/linux.png")}
+                  alt="Linux"
+                />
+                <div className={styles.downloadInfo}>
+                  <span className={styles.downloadName}>Linux</span>
+                  <span className={styles.downloadArch}>x86_64</span>
+                </div>
+                <span className={styles.downloadBtn}>Download</span>
               </Link>
             </div>
-            <div className={styles.downloadCard}>
-              <img
-                className={styles.downloadLogo}
-                src={useBaseUrl("img/appimage.png")}
-                alt="AppImage"
-              />
+          </div>
+
+          {/* AppImage Group */}
+          <div className={styles.downloadGroup}>
+            <h3 className={styles.downloadGroupTitle}>Portable (AppImage)</h3>
+            <div className={styles.downloadGrid}>
               <Link
+                className={styles.downloadCard}
                 to={`https://pub-32cef6782a9e411e82222dee82af193e.r2.dev/Groot2-v${CURRENT_VERSION}-x86_64.AppImage`}
                 onClick={() => trackDownload('x86_64.AppImage', 'linux')}
               >
-                AppImage (Linux)
+                <img
+                  className={styles.downloadLogo}
+                  src={useBaseUrl("img/appimage.png")}
+                  alt="AppImage"
+                />
+                <div className={styles.downloadInfo}>
+                  <span className={styles.downloadName}>AppImage</span>
+                  <span className={styles.downloadArch}>x86_64</span>
+                </div>
+                <span className={styles.downloadBtn}>Download</span>
+              </Link>
+              <Link
+                className={styles.downloadCard}
+                to={`https://pub-32cef6782a9e411e82222dee82af193e.r2.dev/Groot2-v${CURRENT_VERSION}-aarch64.AppImage`}
+                onClick={() => trackDownload('aarch64.AppImage', 'linux')}
+              >
+                <img
+                  className={styles.downloadLogo}
+                  src={useBaseUrl("img/appimage.png")}
+                  alt="AppImage"
+                />
+                <div className={styles.downloadInfo}>
+                  <span className={styles.downloadName}>AppImage</span>
+                  <span className={styles.downloadArch}>aarch64</span>
+                </div>
+                <span className={styles.downloadBtn}>Download</span>
               </Link>
             </div>
           </div>
