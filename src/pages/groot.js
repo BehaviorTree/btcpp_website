@@ -234,7 +234,7 @@ export default function Groot() {
               <div className={clsx(styles.pricingPlanCol, styles.proPlan)}>
                 <div className={styles.planName}>PRO<br />Floating License</div>
                 <div className={styles.planPrice}>
-                  €690<span className={styles.planPeriod}>/year</span>
+                  €590<span className={styles.planPeriod}>/year</span>
                 </div>
               </div>
             </div>
@@ -389,4 +389,5 @@ export default function Groot() {
     </Layout>
   );
 }
+
 
