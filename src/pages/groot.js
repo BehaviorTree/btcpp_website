@@ -165,14 +165,18 @@ export default function Groot() {
         script.id = "chargebeeScript";
         script.src = "https://js.chargebee.com/v2/chargebee.js";
         script.onload = () => {
-          window.Chargebee?.init({ site: "aurynrobotics" });
-          window.Chargebee?.registerAgain();
+          window.Chargebee?.init({
+            site: "aurynrobotics",
+            isItemsModel: true
+          });
           setChargebeeInitialized(true);
         };
         document.body.appendChild(script);
       } else {
-        window.Chargebee?.init({ site: "aurynrobotics" });
-        window.Chargebee?.registerAgain();
+        window.Chargebee?.init({
+          site: "aurynrobotics",
+          isItemsModel: true
+        });
         setChargebeeInitialized(true);
       }
     }
@@ -180,6 +184,23 @@ export default function Groot() {
 
   const scrollToDownload = () => {
     document.getElementById("download")?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const openCheckout = () => {
+    try {
+      const cbInstance = window.Chargebee.getInstance();
+      cbInstance.openCheckout({
+        hostedPage: () => {
+          return Promise.resolve({
+            url: 'https://aurynrobotics.chargebee.com/hosted_pages/checkout?subscription_items[item_price_id][0]=Floating-License-fixed2-EUR-Yearly&subscription_items[quantity][0]=1',
+            state: 'created'
+          });
+        },
+        layout: 'in_app'
+      });
+    } catch (error) {
+      console.error("Chargebee checkout error:", error);
+    }
   };
 
   return (
@@ -264,15 +285,12 @@ export default function Groot() {
                 </button>
               </div>
               <div className={clsx(styles.pricingPlanCol, styles.proPlan)}>
-                <a
+                <button
                   className={clsx(styles.btn, styles.btnPrimary)}
-                  href="javascript:void(0)"
-                  data-cb-type="checkout"
-                  data-cb-item-0="Floating-License-fixed2-EUR-Yearly"
-                  data-cb-item-0-quantity="1"
+                  onClick={openCheckout}
                 >
-                  Buy PRO
-                </a>
+                  Subscribe
+                </button>
               </div>
             </div>
           </div>
@@ -287,82 +305,67 @@ export default function Groot() {
             <p className={styles.downloadVersion}>Latest release: {CURRENT_VERSION} (2026-01-04)</p>
           </div>
 
-          {/* Installers Group */}
-          <div className={styles.downloadGroup}>
-            <h3 className={styles.downloadGroupTitle}>Installers</h3>
-            <div className={styles.downloadGrid}>
-              <Link
-                className={styles.downloadCard}
-                to={`https://pub-32cef6782a9e411e82222dee82af193e.r2.dev/Groot2-v${CURRENT_VERSION}-windows-installer.exe`}
-                onClick={() => trackDownload('windows-installer.exe', 'windows')}
-              >
-                <img
-                  className={styles.downloadLogo}
-                  src={useBaseUrl("img/windows.png")}
-                  alt="Windows"
-                />
-                <div className={styles.downloadInfo}>
-                  <span className={styles.downloadName}>Windows</span>
-                  <span className={styles.downloadArch}>x86_64</span>
-                </div>
-                <span className={styles.downloadBtn}>Download</span>
-              </Link>
-              <Link
-                className={styles.downloadCard}
-                to={`https://pub-32cef6782a9e411e82222dee82af193e.r2.dev/Groot2-v${CURRENT_VERSION}-linux-installer.run`}
-                onClick={() => trackDownload('linux-installer.run', 'linux')}
-              >
-                <img
-                  className={styles.downloadLogo}
-                  src={useBaseUrl("img/linux.png")}
-                  alt="Linux"
-                />
-                <div className={styles.downloadInfo}>
-                  <span className={styles.downloadName}>Linux</span>
-                  <span className={styles.downloadArch}>x86_64</span>
-                </div>
-                <span className={styles.downloadBtn}>Download</span>
-              </Link>
-            </div>
-          </div>
-
-          {/* AppImage Group */}
-          <div className={styles.downloadGroup}>
-            <h3 className={styles.downloadGroupTitle}>Portable (AppImage)</h3>
-            <div className={styles.downloadGrid}>
-              <Link
-                className={styles.downloadCard}
-                to={`https://pub-32cef6782a9e411e82222dee82af193e.r2.dev/Groot2-v${CURRENT_VERSION}-x86_64.AppImage`}
-                onClick={() => trackDownload('x86_64.AppImage', 'linux')}
-              >
-                <img
-                  className={styles.downloadLogo}
-                  src={useBaseUrl("img/appimage.png")}
-                  alt="AppImage"
-                />
-                <div className={styles.downloadInfo}>
-                  <span className={styles.downloadName}>AppImage</span>
-                  <span className={styles.downloadArch}>x86_64</span>
-                </div>
-                <span className={styles.downloadBtn}>Download</span>
-              </Link>
-              <Link
-                className={styles.downloadCard}
-                to={`https://pub-32cef6782a9e411e82222dee82af193e.r2.dev/Groot2-v${CURRENT_VERSION}-aarch64.AppImage`}
-                onClick={() => trackDownload('aarch64.AppImage', 'linux')}
-              >
-                <img
-                  className={styles.downloadLogo}
-                  src={useBaseUrl("img/appimage.png")}
-                  alt="AppImage"
-                />
-                <div className={styles.downloadInfo}>
-                  <span className={styles.downloadName}>AppImage</span>
-                  <span className={styles.downloadArch}>aarch64</span>
-                </div>
-                <span className={styles.downloadBtn}>Download</span>
-              </Link>
-            </div>
+          <div className={styles.downloadGrid}>
+            <Link
+              className={styles.downloadCard}
+              to={`https://pub-32cef6782a9e411e82222dee82af193e.r2.dev/Groot2-v${CURRENT_VERSION}-windows-installer.exe`}
+              onClick={() => trackDownload('windows-installer.exe', 'windows')}
+            >
+              <img
+                className={styles.downloadLogo}
+                src={useBaseUrl("img/windows.png")}
+                alt="Windows"
+              />
+              <div className={styles.downloadInfo}>
+                <span className={styles.downloadName}>Windows</span>
+                <span className={styles.downloadArch}>x86_64 Installer</span>
+              </div>
+            </Link>
+            <Link
+              className={styles.downloadCard}
+              to={`https://pub-32cef6782a9e411e82222dee82af193e.r2.dev/Groot2-v${CURRENT_VERSION}-linux-installer.run`}
+              onClick={() => trackDownload('linux-installer.run', 'linux')}
+            >
+              <img
+                className={styles.downloadLogo}
+                src={useBaseUrl("img/linux.png")}
+                alt="Linux"
+              />
+              <div className={styles.downloadInfo}>
+                <span className={styles.downloadName}>Linux</span>
+                <span className={styles.downloadArch}>x86_64 Installer</span>
+              </div>
+            </Link>
+            <Link
+              className={styles.downloadCard}
+              to={`https://pub-32cef6782a9e411e82222dee82af193e.r2.dev/Groot2-v${CURRENT_VERSION}-x86_64.AppImage`}
+              onClick={() => trackDownload('x86_64.AppImage', 'linux')}
+            >
+              <img
+                className={styles.downloadLogo}
+                src={useBaseUrl("img/appimage.png")}
+                alt="AppImage"
+              />
+              <div className={styles.downloadInfo}>
+                <span className={styles.downloadName}>AppImage</span>
+                <span className={styles.downloadArch}>x86_64 Portable</span>
+              </div>
+            </Link>
+            <Link
+              className={styles.downloadCard}
+              to={`https://pub-32cef6782a9e411e82222dee82af193e.r2.dev/Groot2-v${CURRENT_VERSION}-aarch64.AppImage`}
+              onClick={() => trackDownload('aarch64.AppImage', 'linux')}
+            >
+              <img
+                className={styles.downloadLogo}
+                src={useBaseUrl("img/appimage.png")}
+                alt="AppImage"
+              />
+              <div className={styles.downloadInfo}>
+                <span className={styles.downloadName}>AppImage</span>
+                <span className={styles.downloadArch}>aarch64 Portable</span>
+              </div>
+            </Link>
           </div>
         </div>
       </section>
@@ -370,7 +373,17 @@ export default function Groot() {
       {/* FAQ Section */}
       <section className={styles.faqSection}>
         <div className={styles.faqInner}>
-          <h2 className={styles.faqTitle}>Frequently Asked Questions</h2>
+          <div className={styles.faqHeader}>
+            <h2 className={styles.faqTitle}>Frequently Asked Questions</h2>
+            <p className={styles.faqSubtitle}>
+              Everything you need to know about Groot2 licensing and features.
+            </p>
+            <div className={styles.faqDecoration}>
+              <span className={styles.faqDecorationDot}></span>
+              <span className={styles.faqDecorationDot}></span>
+              <span className={styles.faqDecorationDot}></span>
+            </div>
+          </div>
           <div className={styles.faqList}>
             {faqItems.map((item, idx) => (
               <FaqItem

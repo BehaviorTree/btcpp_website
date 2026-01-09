@@ -219,7 +219,8 @@ function Home() {
         <div className={styles.heroInner}>
           <div className={styles.heroContent}>
             <h1 className={styles.heroTitle}>
-              The Industry Standard for{" "}
+              The Industry Standard for
+              <br />
               <span className={styles.heroTitleHighlight}>Robot Behaviors</span>
             </h1>
             <p className={styles.heroSub}>
@@ -249,7 +250,7 @@ function Home() {
             <div className={styles.heroStats}>
               <div className={styles.stat}>
                 <div className={styles.statValue}>MIT</div>
-                <div className={styles.statLabel}>Open-Source License</div>
+                <div className={styles.statLabel}><b>OSS</b> License</div>
               </div>
               <div className={styles.stat}>
                 <div className={styles.statValue}>{githubStars}</div>

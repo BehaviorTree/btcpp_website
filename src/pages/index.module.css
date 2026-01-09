@@ -108,35 +108,42 @@
 }
 
 .heroTitle {
-  font-size: clamp(3rem, 7vw, 4.0rem);
+  font-size: clamp(3.5rem, 8vw, 5.5rem);
   font-weight: 800;
-  line-height: 1.1;
-  margin-bottom: 1.5rem;
-  letter-spacing: -0.03em;
+  line-height: 1.0;
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.04em;
   animation: fadeInUp 0.8s ease-out 0.1s both;
   color: var(--text-dark);
 }
 
 .heroTitleHighlight {
-  background: linear-gradient(135deg, var(--green-500) 0%, var(--green-400) 100%);
+  background: linear-gradient(135deg, #047857 0%, #059669 50%, #10b981 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.15); }
 }
 
 .heroSub {
-  font-size: 1.5rem;
+  font-size: 1.35rem;
   color: var(--text-mid);
-  max-width: 600px;
-  margin: 0 auto 2.5rem;
+  max-width: 540px;
+  margin: 0 0 2rem;
   animation: fadeInUp 0.8s ease-out 0.2s both;
-  line-height: 1.6;
+  line-height: 1.5;
+  font-weight: 400;
 }
 
 .heroCtas {
   display: flex;
   gap: 1rem;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
   animation: fadeInUp 0.8s ease-out 0.3s both;
 }
@@ -185,26 +192,30 @@
 .heroStats {
   display: flex;
   gap: 3rem;
-  justify-content: center;
+  justify-content: flex-start;
   margin-top: 3rem;
   animation: fadeInUp 0.8s ease-out 0.4s both;
 }
 
 .stat {
-  text-align: center;
+  text-align: left;
 }
 
 .statValue {
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 800;
   color: var(--green-600);
   line-height: 1;
+  letter-spacing: -0.02em;
 }
 
 .statLabel {
-  font-size: 1.0rem;
+  font-size: 0.875rem;
   color: var(--text-light);
-  margin-top: 0.25rem;
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
 }
 
 @keyframes fadeInUp {
@@ -267,16 +278,17 @@
 }
 
 .featuresTitle {
-  font-size: 3.0rem;
+  font-size: 3.5rem;
   font-weight: 800;
-  margin-bottom: 0.75rem;
-  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.03em;
   color: var(--text-dark);
 }
 
 .featuresSubtitle {
   color: var(--text-mid);
-  font-size: 1.8rem;
+  font-size: 1.4rem;
+  font-weight: 400;
 }
 
 .highlight {
@@ -378,22 +390,35 @@
 /* Groot2 Section */
 .grootSection {
   padding: 6rem 1rem;
-  background: var(--sand);
+  background: var(--text-dark);
   position: relative;
   overflow: hidden;
 }
 
-.grootBlob {
+.grootSection::before {
+  content: "";
   position: absolute;
+  top: -200px;
+  left: -200px;
   width: 500px;
   height: 500px;
-  background: var(--green-200);
-  border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.5;
-  top: 50%;
-  right: -200px;
-  transform: translateY(-50%);
+  background: radial-gradient(circle, rgba(34, 197, 94, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.grootSection::after {
+  content: "";
+  position: absolute;
+  bottom: -150px;
+  right: -150px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(34, 197, 94, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.grootBlob {
+  display: none;
 }
 
 .grootContent {
@@ -409,10 +434,10 @@
 }
 
 .grootHeader h2 {
-  font-size: 3.0rem;
+  font-size: 3.5rem;
   font-weight: 800;
-  letter-spacing: -0.02em;
-  color: var(--text-dark);
+  letter-spacing: -0.03em;
+  color: white;
 }
 
 .grootBody {
@@ -423,7 +448,7 @@
 }
 
 .grootTextHighlight {
-  color: var(--green-600);
+  color: var(--green-400);
 }
 
 .grootFeatures {
@@ -438,14 +463,16 @@
   align-items: flex-start;
   gap: 1rem;
   padding: 1rem 1.25rem;
-  background: white;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-md);
   transition: all 0.2s;
 }
 
 .grootFeature:hover {
   transform: translateX(8px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(34, 197, 94, 0.3);
 }
 
 .grootFeatureIcon {
@@ -463,13 +490,13 @@
 }
 
 .grootFeatureText strong {
-  color: var(--text-dark);
+  color: rgba(255, 255, 255, 0.9);
   font-weight: 600;
   display: block;
 }
 
 .grootFeatureText span {
-  color: var(--text-mid);
+  color: rgba(255, 255, 255, 0.6);
   font-size: 1.1rem;
 }
 
@@ -480,7 +507,8 @@
 .grootPreview {
   border-radius: var(--radius-sm);
   overflow: hidden;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .grootPreview video {
@@ -523,6 +551,10 @@
 
   .heroStats {
     justify-content: center;
+  }
+
+  .stat {
+    text-align: center;
   }
 
   .grootBody {
