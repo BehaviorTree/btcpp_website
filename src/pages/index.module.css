@@ -399,22 +399,39 @@
   content: "";
   position: absolute;
   top: -200px;
-  left: -200px;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(34, 197, 94, 0.15) 0%, transparent 70%);
+  right: -200px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(34, 197, 94, 0.2) 0%, transparent 70%);
   pointer-events: none;
+  animation: floatGlow 20s ease-in-out infinite;
 }
 
 .grootSection::after {
   content: "";
   position: absolute;
   bottom: -150px;
-  right: -150px;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(34, 197, 94, 0.1) 0%, transparent 70%);
+  left: -150px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(34, 197, 94, 0.15) 0%, transparent 70%);
   pointer-events: none;
+  animation: floatGlow 25s ease-in-out infinite reverse;
+}
+
+@keyframes floatGlow {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(150px, 100px) scale(1.2);
+  }
+  50% {
+    transform: translate(-100px, 150px) scale(0.9);
+  }
+  75% {
+    transform: translate(100px, -80px) scale(1.15);
+  }
 }
 
 .grootBlob {
