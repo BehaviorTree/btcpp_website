@@ -135,7 +135,7 @@ function FaqItem({ question, answer, isOpen, onClick }) {
   );
 }
 
-const CURRENT_VERSION = "1.7.1";
+const CURRENT_VERSION = "1.8.0";
 
 // Track download event
 const trackDownload = async (file, platform) => {
@@ -302,7 +302,7 @@ export default function Groot() {
         <div className={styles.downloadInner}>
           <div className={styles.downloadHeader}>
             <h2 className={styles.downloadTitle}>Download</h2>
-            <p className={styles.downloadVersion}>Latest release: {CURRENT_VERSION} (2026-01-04)</p>
+            <p className={styles.downloadVersion}>Latest release: {CURRENT_VERSION} (2026-01-18)</p>
           </div>
 
           <div className={styles.downloadGrid}>
@@ -402,5 +402,6 @@ export default function Groot() {
     </Layout>
   );
 }
+
 
 
