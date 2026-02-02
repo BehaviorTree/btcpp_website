@@ -146,62 +146,74 @@ int main()
 
 The content inside the blackboard is sent to Groot2 using a JSON format.
 
-To add a new type, and allow Groot2 to visualize them, you should 
-follow the instructions here:
+Basic types (integers, reals, strings) are supported out of the box. To allow
+Groot2 to visualize your own custom types, you need to include
+**behaviortree_cpp/json_export.h** and define a JSON converter.
 
-https://json.nlohmann.me/features/arbitrary_types/
+### Using the BT_JSON_CONVERTER macro (recommended)
 
-For instance, given a user-defined type:
+The simplest approach is to use the `BT_JSON_CONVERTER` macro.
+Given a user-defined type:
 
 ```cpp
-struct Pose2D {
-    double x;
-    double y;
-    double theta;
+struct Position2D
+{
+  double x;
+  double y;
+};
+```
+
+Define the converter at file scope (outside any function):
+
+```cpp
+#include "behaviortree_cpp/json_export.h"
+
+BT_JSON_CONVERTER(Position2D, pos)
+{
+  add_field("x", &pos.x);
+  add_field("y", &pos.y);
 }
 ```
 
-You will need to include **behaviortree_cpp/json_export.h** and follow these 
-instructions, based on your BT.CPP version.
-
-
-### Version 4.3.5 or earlier
-
-Implement the function `nlohmann::to_json()`:
+This works with nested types too:
 
 ```cpp
-namespace nlohmann {
-  void to_json(nlohmann::json& dest, const Pose2D& pose) {
-    dest["x"] = pose.x;
-    dest["y"] = pose.y;
-    dest["theta"] = pose.theta;
-  }
+struct Waypoint
+{
+  std::string name;
+  Position2D position;
+  double speed = 1.0;
+};
+
+BT_JSON_CONVERTER(Waypoint, wp)
+{
+  add_field("name", &wp.name);
+  add_field("position", &wp.position);
+  add_field("speed", &wp.speed);
 }
 ```
 
-Then, register the function adding this to your **main**:
+Then, register the types in your **main** (before creating the tree):
 
 ```cpp
-BT::JsonExporter::get().addConverter<Pose2D>();
+BT::RegisterJsonDefinition<Position2D>();
+BT::RegisterJsonDefinition<Waypoint>();
 ```
 
-### Version 4.3.6 or later
+See the full example in [t11_groot_howto.cpp](https://github.com/BehaviorTree/BehaviorTree.CPP/blob/master/examples/t11_groot_howto.cpp).
 
-The implementation of the "to_json" function can have any name or namespace, 
-but it must conform to the function signature `void(nlohmann::json&, const T&)`.
+### Manual converter (alternative)
 
-For instance:
+If you need more control over the JSON serialization, you can write
+a conversion function with the signature `void(nlohmann::json&, const T&)` and
+register it explicitly:
 
 ```cpp
-void PoseToJson(nlohmann::json& dest, const Pose2D& pose) {
-  dest["x"] = pose.x;
-  dest["y"] = pose.y;
-  dest["theta"] = pose.theta;
+void PositionToJson(nlohmann::json& dest, const Position2D& pos) {
+  dest["x"] = pos.x;
+  dest["y"] = pos.y;
 }
-```
 
-Register the function adding this to your **main**:
-
-```cpp
-BT::RegisterJsonDefinition<Pose2D>(PoseToJson);
+// in main()
+BT::RegisterJsonDefinition<Position2D>(PositionToJson);
 ```

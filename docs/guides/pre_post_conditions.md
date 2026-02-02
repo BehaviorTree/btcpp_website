@@ -32,6 +32,11 @@ reconsider your decision to use them.
 | **_successIf** |  Skip and return SUCCESS, if the condition is true |
 | **_while**     |  Same as _skipIf, but may also interrupt a RUNNING Node if the condition becomes false. |
 
+:::note
+Pre conditions are evaluated in this order: `_failureIf` -> `_successIf` -> `_skipIf` -> `_while`.
+The first condition that is satisfied will determine the result.
+:::
+
 ### Example
 
 In previous tutorials, we saw how to build an if-then-else

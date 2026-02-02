@@ -197,9 +197,8 @@ using the previous example, we may split the two behavior trees into two files:
  </root>
 ```
 
-:::note
-Note "Note for ROS users"
-If you want to find a file inside a [ROS package](http://wiki.ros.org/Packages), 
+:::note[Note for ROS users]
+If you want to find a file inside a [ROS package](http://wiki.ros.org/Packages),
 you can use this syntax:
 :::
 

@@ -127,12 +127,16 @@ Cf. [Compose behaviors using Subtrees](../tutorial-basics/tutorial_05_subtrees).
 
 ### ConsumeQueue
 
+:::caution Deprecated
+ConsumeQueue is deprecated. Use `LoopNode` instead (see [Tutorial 13](../tutorial-advanced/tutorial_13_blackboard_reference.md)).
+:::
+
 Execute the child node as long as the queue is not empty.
 At each iteration, an item of type T is popped from the "queue" and inserted in "popped_item".
 
 An empty queue will return SUCCESS
 
-Register for example with `factory.registerNodeType<ConsumeQueue<Pose2D>>("ConsumeQueue");` Cf. [ex04_waypoints.cpp](https://github.com/BehaviorTree/BehaviorTree.CPP/blob/master/examples/ex04_waypoints.cpp).
+Register for example with `factory.registerNodeType<ConsumeQueue<Pose2D>>("ConsumeQueue");` Cf. [t18_waypoints.cpp](https://github.com/BehaviorTree/BehaviorTree.CPP/blob/master/examples/t18_waypoints.cpp).
 
 ### SimpleDecoratorNode
 
