@@ -5,7 +5,7 @@ A decorator is a node that must have a single child.
 It is up to the Decorator to decide if, when and how many times the child should be
 ticked.
 
-> Some nodes are not listed yet. See [decorators](https://github.com/BehaviorTree/BehaviorTree.CPP/tree/master/include/behaviortree_cpp/decorators) on Github for complete definitions.
+> For the complete list of built-in nodes, see the other pages in this section and the [source code](https://github.com/BehaviorTree/BehaviorTree.CPP/tree/master/include/behaviortree_cpp) on Github.
 
 ## Inverter
 
@@ -28,24 +28,45 @@ Otherwise, it returns always FAILURE.
 
 ## Repeat
 
-Tick the child up to N times (within one of its tick), where N is passed as [Input Port](tutorial-basics/tutorial_02_basic_ports.md) `num_cycles`,
-as long as the child returns SUCCESS.
-Return SUCCESS after the N repetitions in the case that the child always returned SUCCESS.
-If `num_cycles` is -1, repeat indefinitely.
+Tick the child up to N times, as long as the child returns SUCCESS.
 
-Interrupt the loop if the child returns FAILURE and, in that case, return FAILURE too.
+| Port | Type | Default | Description |
+|------|------|---------|-------------|
+| `num_cycles` | InputPort\<int\> | (required) | Number of repetitions. Use `-1` for infinite loop. |
 
-If the child returns RUNNING, this node returns RUNNING too and the repetitions will continue without incrementing on the next tick of the Repeat node.
+- Returns **SUCCESS** after all N repetitions complete successfully.
+- Returns **FAILURE** immediately if the child returns FAILURE (loop is interrupted).
+- Returns **RUNNING** if the child returns RUNNING; the counter is **not** incremented and the same iteration resumes on the next tick.
+- If the child returns **SKIPPED**, the child is reset but the counter is not incremented.
+
+```xml
+<Repeat num_cycles="3">
+    <ClapYourHandsOnce/>
+</Repeat>
+```
 
 ## RetryUntilSuccessful
 
-Tick the child up to N times, where N is passed as [Input Port](tutorial-basics/tutorial_02_basic_ports.md) `num_attempts`,
-as long as the child returns FAILURE.
-Return FAILURE after the N attempts in the case that the child always returned FAILURE.
+Tick the child up to N times, as long as the child returns FAILURE.
 
-Interrupt the loop if the child returns SUCCESS and, in that case, return SUCCESS too.
+| Port | Type | Default | Description |
+|------|------|---------|-------------|
+| `num_attempts` | InputPort\<int\> | (required) | Number of attempts. Use `-1` for infinite retries. |
 
-If the child returns RUNNING, this node returns RUNNING too and the attempts will continue without incrementing on the next tick of the RetryUntilSuccessful node.
+- Returns **SUCCESS** immediately if the child returns SUCCESS (loop is interrupted).
+- Returns **FAILURE** after all N attempts are exhausted.
+- Returns **RUNNING** if the child returns RUNNING; the attempt counter is **not** incremented and the same iteration resumes on the next tick.
+- If the child returns **SKIPPED**, the child is reset and SKIPPED is returned.
+
+```xml
+<RetryUntilSuccessful num_attempts="3">
+    <OpenDoor/>
+</RetryUntilSuccessful>
+```
+
+:::note
+The deprecated name `RetryUntilSuccesful` (single 's') is still supported for backward compatibility but should not be used in new trees.
+:::
 
 ## KeepRunningUntilFailure
 
@@ -54,6 +75,35 @@ The KeepRunningUntilFailure node returns always FAILURE (FAILURE in child) or RU
 ## Delay
 
 Tick the child after a specified time has passed. The delay is specified as [Input Port](tutorial-basics/tutorial_02_basic_ports.md) `delay_msec`. If the child returns RUNNING, this node returns RUNNING too and will tick the child on next tick of the Delay node. Otherwise, return the status of the child node.
+
+## Timeout
+
+Halt a running child if it has been RUNNING longer than a given duration. This is the opposite of Delay: while Delay waits *before* ticking the child, Timeout interrupts a child that takes *too long*.
+
+| Port | Type | Default | Description |
+|------|------|---------|-------------|
+| `msec` | InputPort\<unsigned\> | (required) | Timeout duration in milliseconds. |
+
+- If the child completes (SUCCESS or FAILURE) before the timeout, its status is returned.
+- If the child is still RUNNING when the timeout expires, it is halted and **FAILURE** is returned.
+
+```xml
+<Timeout msec="5000">
+    <KeepYourBreath/>
+</Timeout>
+```
+
+:::tip
+Combine Timeout with RetryUntilSuccessful for a robust retry-with-timeout pattern:
+
+```xml
+<RetryUntilSuccessful num_attempts="3">
+    <Timeout msec="5000">
+        <LongRunningAction/>
+    </Timeout>
+</RetryUntilSuccessful>
+```
+:::
 
 ## RunOnce
 

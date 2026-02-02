@@ -36,7 +36,7 @@ To understand how the two ControlNodes differ, refer to the following table:
   same child is ticked again. Previous siblings, which returned FAILURE already,
   are not ticked again.
 
-> Some nodes are not listed yet. See [controls](https://github.com/BehaviorTree/BehaviorTree.CPP/tree/master/include/behaviortree_cpp/controls) on Github for complete definitions.
+> For the complete list of built-in nodes, see the other pages in this section and the [source code](https://github.com/BehaviorTree/BehaviorTree.CPP/tree/master/include/behaviortree_cpp) on Github.
 
 ## Fallback
 
