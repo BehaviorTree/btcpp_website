@@ -10,7 +10,7 @@ All children are ticked in sequence within a single tick of the tree, and multip
 may be in the RUNNING state at the same time.
 
 :::caution
-"Parallel" refers to the fact that multiple children can be RUNNING simultaneously.
+"Parallel" refers to the fact that multiple children can be RUNNING **concurrently**.
 The children are still ticked sequentially within the same thread.
 For actual multi-threaded execution, children must be asynchronous nodes internally.
 :::
@@ -20,9 +20,10 @@ Currently the framework provides two kinds of nodes:
 - Parallel
 - ParallelAll
 
+The Parallel Nodes are the **only** ones that can have multiple children RUNNING at the same time.
+
 ## Parallel
 
-The ParallelNode is the **only** node that can have multiple children RUNNING at the same time.
 It is completed when either the SUCCESS or FAILURE threshold is reached. Any remaining
 running children are halted.
 

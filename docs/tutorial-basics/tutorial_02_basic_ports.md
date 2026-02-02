@@ -170,57 +170,21 @@ for __SetBlackboard__, which is now discouraged.
 ## Bidirectional ports
 
 Sometimes a node needs to both **read and modify** a value on the blackboard.
-For these cases, use `BidirectionalPort<T>`.
-
-A bidirectional port combines the capabilities of InputPort and OutputPort. This is
-particularly useful when a node needs to modify a shared data structure in place
-(e.g., appending to a vector).
+For these cases, use `BidirectionalPort<T>`, which combines the capabilities of
+InputPort and OutputPort.
 
 ``` cpp
-class PushIntoVector : public SyncActionNode
+static PortsList providedPorts()
 {
-public:
-  PushIntoVector(const std::string& name, const NodeConfig& config)
-    : SyncActionNode(name, config)
-  { }
-
-  static PortsList providedPorts()
-  {
     return { BidirectionalPort<std::vector<int>>("vector"),
              InputPort<int>("value") };
-  }
-
-  NodeStatus tick() override
-  {
-    const int number = getInput<int>("value").value();
-
-    // Use getLockedPortContent() for thread-safe read+write access
-    if(auto any_ptr = getLockedPortContent("vector"))
-    {
-      if(any_ptr->empty())
-      {
-        any_ptr.assign(std::vector<int>{ number });
-      }
-      else if(auto* vect = any_ptr->castPtr<std::vector<int>>())
-      {
-        vect->push_back(number);
-      }
-      return NodeStatus::SUCCESS;
-    }
-    return NodeStatus::FAILURE;
-  }
-};
+}
 ```
 
-``` xml
-<PushIntoVector vector="{vect}" value="3"/>
-<PushIntoVector vector="{vect}" value="5"/>
-```
-
-:::tip
-Use `getLockedPortContent()` instead of `getInput()`/`setOutput()` when you need
-atomic read-modify-write access to a blackboard entry.
-:::
+A bidirectional port is typically used with `getLockedPortContent()` for
+thread-safe read-modify-write access to the blackboard entry.
+See [Tutorial 13: Access a port by reference](../tutorial-advanced/tutorial_13_blackboard_reference.md)
+for a complete explanation and examples.
 
 ## A complete example
 

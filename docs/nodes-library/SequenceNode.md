@@ -1,11 +1,12 @@
 # Sequences
 
-A __Sequence__ ticks all its children as long as 
+A __Sequence__ ticks all its children as long as
 they return SUCCESS. If any child returns FAILURE, the sequence is aborted.
 
-Currently the framework provides three kinds of nodes:
+Currently the framework provides four kinds of nodes:
 
 - Sequence
+- AsyncSequence
 - SequenceWithMemory
 - ReactiveSequence
 
@@ -18,19 +19,36 @@ They share the following rules:
 - If the __last__ child returns __SUCCESS__ too, all the children are halted and
  the sequence returns __SUCCESS__.
 
-To understand how the three ControlNodes differ, refer to the following table:
+### Synchronous vs Asynchronous
 
- 
-| Type of ControlNode | Child returns FAILURE  |  Child returns RUNNING |
-|---|:---:|:---:|
-| Sequence | Restart  | Tick again  |
-| ReactiveSequence  | Restart  |  Restart |
-| SequenceWithMemory | Tick again  | Tick again  |
+`Sequence` and `AsyncSequence` share the same logic, but differ in how they
+handle the transition between children:
 
-- "__Restart__" means that the entire sequence is restarted from the first 
+- **Sequence** ticks all children in a single tick of the tree. When a child
+  returns SUCCESS, the next child is ticked immediately within the same call.
+- **AsyncSequence** yields execution back to the tree after each child succeeds,
+  returning RUNNING and emitting a wake-up signal. This makes the sequence
+  **interruptible** between children, allowing other parts of the tree (e.g., a
+  ReactiveSequence parent) to re-evaluate conditions before the next child starts.
+
+Use `AsyncSequence` when the sequence is inside a reactive parent and you need
+conditions to be re-checked between each step.
+
+### Comparison table
+
+To understand how the four ControlNodes differ, refer to the following table:
+
+| Type of ControlNode | Child returns FAILURE  |  Child returns RUNNING | Yields between children |
+|---|:---:|:---:|:---:|
+| Sequence | Restart  | Tick again  | No |
+| AsyncSequence | Restart | Tick again | Yes |
+| ReactiveSequence  | Restart  |  Restart | No |
+| SequenceWithMemory | Tick again  | Tick again  | No |
+
+- "__Restart__" means that the entire sequence is restarted from the first
   child of the list.
 
-- "__Tick again__" means that the next time the sequence is ticked, the 
+- "__Tick again__" means that the next time the sequence is ticked, the
   same child is ticked again. Previous siblings, which returned SUCCESS already,
   are not ticked again.
 
@@ -42,6 +60,27 @@ This tree represents the behavior of a sniper in a computer game.
 
 ![SequenceNode](images/SequenceNode.svg)
 
+
+## AsyncSequence
+
+AsyncSequence behaves like Sequence, but **yields execution** back to the tree
+after each child returns SUCCESS. It returns RUNNING and emits a wake-up signal,
+allowing a reactive parent to re-evaluate conditions before the next child is ticked.
+
+```xml
+<ReactiveSequence>
+    <IsEnemyVisible/>
+    <AsyncSequence>
+        <AimWeapon/>
+        <FireWeapon/>
+        <ReloadWeapon/>
+    </AsyncSequence>
+</ReactiveSequence>
+```
+
+In this example, `IsEnemyVisible` is re-checked between each step of the
+AsyncSequence. If the enemy disappears after `AimWeapon` succeeds, the sequence
+is interrupted before `FireWeapon` starts.
 
 ## ReactiveSequence
 
