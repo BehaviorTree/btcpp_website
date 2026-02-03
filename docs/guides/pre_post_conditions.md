@@ -25,14 +25,25 @@ reconsider your decision to use them.
 
 ## Pre conditions
 
-| Name | Description |
-|-------------|---------|
-| **_skipIf**    |  Skip the execution of this Node, if the condition is true   |
-| **_failureIf** |  Skip and return FAILURE, if the condition is true |
-| **_successIf** |  Skip and return SUCCESS, if the condition is true |
-| **_while**     |  Same as _skipIf, but may also interrupt a RUNNING Node if the condition becomes false. |
+| Name | Description | When Evaluated |
+|-------------|---------|----------------|
+| **_skipIf**    |  Skip the execution of this Node, if the condition is true   | IDLE only (once) |
+| **_failureIf** |  Skip and return FAILURE, if the condition is true | IDLE only (once) |
+| **_successIf** |  Skip and return SUCCESS, if the condition is true | IDLE only (once) |
+| **_while**     |  If false when IDLE, skip. If false when RUNNING, halt the node and return SKIPPED. | IDLE and RUNNING (every tick) |
 
-:::note
+:::caution Important: One-time vs. Continuous Evaluation
+**`_skipIf`, `_failureIf`, and `_successIf` are evaluated only once** when the node
+transitions from IDLE to another state. They are **NOT re-evaluated** while the node
+is RUNNING.
+
+Only **`_while`** is checked on every tick, including while the node is running.
+
+If you need a condition to be re-evaluated on every tick, use the `<Precondition>`
+decorator node with `else="RUNNING"` instead of these attributes.
+:::
+
+:::note Evaluation Order
 Pre conditions are evaluated in this order: `_failureIf` -> `_successIf` -> `_skipIf` -> `_while`.
 The first condition that is satisfied will determine the result.
 :::
@@ -63,6 +74,35 @@ we can store a boolean in an entry called `door_closed`, the XML can be rewritte
 ``` xml
 <OpenDoor _skipIf="!door_closed"/>
 ```
+
+### Using `<Precondition>` for Per-Tick Evaluation
+
+When you need a condition to be checked on **every tick** (not just when the node starts),
+use the `<Precondition>` decorator node instead of inline attributes.
+
+This is particularly useful in **ReactiveSequence** or **ReactiveFallback** where you want
+the condition to be re-evaluated each time the running child is ticked:
+
+``` xml
+<!-- This checks the condition on every tick -->
+<Precondition if="battery_ok" else="RUNNING">
+    <MoveToGoal/>
+</Precondition>
+```
+
+With `else="RUNNING"`, if the condition becomes false while the child is running,
+the decorator returns RUNNING (keeping the tree alive) instead of immediately
+returning FAILURE or SKIPPED.
+
+Compare this to the inline attribute:
+
+``` xml
+<!-- This checks the condition ONLY when MoveToGoal starts -->
+<MoveToGoal _successIf="battery_ok"/>
+```
+
+The inline `_successIf` is evaluated once when `MoveToGoal` transitions from IDLE.
+If `battery_ok` changes while `MoveToGoal` is RUNNING, the change is ignored.
 
 ## Post conditions
 

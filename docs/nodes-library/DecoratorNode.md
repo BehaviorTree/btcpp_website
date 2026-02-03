@@ -115,24 +115,47 @@ After that first execution, you can set value of the [Input Port](tutorial-basic
 - TRUE (default), the node will be skipped in the future.
 - FALSE, return synchronously the same status returned by the child, forever.
 
-## PreCondition
+## Precondition
 
-Cf. [Introduction to the Scripting language](../tutorial-basics/tutorial_09_scripting.md#script-and-precondition-nodes)
+The Precondition decorator evaluates a script condition before ticking its child.
+
+| Port | Type | Default | Description |
+|------|------|---------|-------------|
+| `if` | InputPort\<std::string\> | (required) | Script condition to evaluate |
+| `else` | InputPort\<NodeStatus\> | FAILURE | Status to return if condition is false |
+
+- If the condition is **true**, the child is ticked.
+- If the condition is **false**, the node returns the status specified in `else`.
+- Once the child starts (returns RUNNING), the condition is **not re-evaluated** until the child completes.
+
+```xml
+<Precondition if="battery_level > 20" else="FAILURE">
+    <MoveToGoal/>
+</Precondition>
+```
+
+:::tip Per-Tick Evaluation
+If you need the condition to be checked on every tick while the child is running
+(e.g., to interrupt a running action when a condition changes), use `else="RUNNING"`:
+
+```xml
+<Precondition if="battery_ok" else="RUNNING">
+    <LongRunningAction/>
+</Precondition>
+```
+
+With `else="RUNNING"`, if the condition becomes false, the decorator returns RUNNING
+instead of FAILURE, allowing the tree to continue ticking and re-check the condition.
+:::
+
+For more details, see [Pre and Post conditions](../guides/pre_post_conditions.md) and
+[Introduction to the Scripting language](../tutorial-basics/tutorial_09_scripting.md#script-and-precondition-nodes).
 
 ## SubTree
 
 Cf. [Compose behaviors using Subtrees](../tutorial-basics/tutorial_05_subtrees).
 
 ## Other decorators requiring registration in C++
-
-### ConsumeQueue
-
-:::caution Deprecated
-ConsumeQueue is deprecated. Use `LoopNode` instead (see [Tutorial 13](../tutorial-advanced/tutorial_13_blackboard_reference.md)).
-:::
-
-Execute the child node as long as the queue is not empty.
-At each iteration, an item of type T is popped from the "queue" and inserted in "popped_item".
 
 An empty queue will return SUCCESS
 
