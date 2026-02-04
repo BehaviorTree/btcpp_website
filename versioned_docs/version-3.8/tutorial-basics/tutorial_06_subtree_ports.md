@@ -30,8 +30,8 @@ Let's consider this Behavior Tree.
         <Sequence>
             <SetBlackboard   output_key="move_goal" value="-1;3" />
             // highlight-start
-            <SubTree ID="MoveRobot" target="{move_goal}" 
-                                    result="{move_result}" />
+            <SubTree ID="MoveRobot" target="move_goal"
+                                    result="move_result" />
             // highlight-end
             <SaySomething message="{move_result}"/>
         </Sequence>
