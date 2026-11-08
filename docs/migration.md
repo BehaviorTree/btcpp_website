@@ -186,3 +186,35 @@ When `AsyncSequence` is used, **RUNNING** is returned after the execution of **e
 
 In the example above, to complete the entire tree successfully we need 3 ticks.
 
+# Name validation in 4.8.4
+
+Version 4.8.4 added stricter rules for names. XML and code that worked in 4.8.3 may now throw a `RuntimeError`.
+
+Names must match these regular expressions:
+
+| Name | Where | Regex (4.8.4+) |
+|------|-------|----------------|
+| Tree or node ID | `<BehaviorTree ID>`, `<SubTree ID>`, custom node tags like `<MyAction/>` | `^(?![Rr]oot$)[^\x00-\x20\x7F<>&"'/\\:*?\|.]+$` |
+| C++ port | `InputPort`, `OutputPort`, `BidirectionalPort` | `^(?!(name\|ID)$)[A-Za-z][^\x00-\x20\x7F<>&"'/\\:*?\|.]*$` |
+| SubTree port | ports of a `<SubTree>` in `<TreeNodesModel>` | `^(?!(name\|ID\|_autoremap\|_failureIf\|_successIf\|_skipIf\|_while\|_onHalted\|_onFailure\|_onSuccess\|_post)$)[^\x00-\x20\x7F<>&"'/\\:*?\|.0-9][^\x00-\x20\x7F<>&"'/\\:*?\|.]*$` |
+| Instance name | `name` attribute | `^[^\x00-\x08\x0B\x0C\x0E-\x1F\x7F]*$` |
+
+In other words, IDs and port names can't contain whitespace, control characters, or any of `< > & " ' / \ : * ? | .`. `Root` is reserved as an ID. Hyphens, underscores and non-ASCII letters are still allowed.
+
+Before:
+```xml
+<BehaviorTree ID="Navigate.Main">
+```
+
+Now:
+```xml
+<BehaviorTree ID="Navigate_Main">
+```
+
+A C++ port with a forbidden character throws when the node is registered, with this message:
+
+```
+The name of a port must not be `name` or `ID` and must start with an alphabetic character. Underscore is reserved.
+```
+
+Finally, two `<SubTree>` nodes in the same tree can't share a `name`, even under different parents. `createTree()` throws `Duplicate SubTree path detected`. Use different names, or remove `name`.
