@@ -31,9 +31,19 @@ reconsider your decision to use them.
 | **_failureIf** |  Skip and return FAILURE, if the condition is true | IDLE only (once) |
 | **_successIf** |  Skip and return SUCCESS, if the condition is true | IDLE only (once) |
 | **_while**     |  If false when IDLE, skip. If false when RUNNING, halt the node and return SKIPPED. | IDLE and RUNNING (every tick) |
+| **_onlyIf**    |  Skip the execution of this Node, if the condition is false (the opposite of `_skipIf`) | IDLE only (once) |
+| **_onStart**   |  Not a condition: execute this script right before the Node starts | IDLE only (once) |
+
+:::info Since 4.11
+`_onlyIf` and `_onStart` were added in BT.CPP 4.11.
+Older versions (4.10 and earlier) **silently ignore** attributes starting with `_`
+that they don't know: the tree loads without errors, but `_onlyIf` never skips
+the node and the `_onStart` script is never executed.
+A tree that uses them must run on BT.CPP 4.11 or later.
+:::
 
 :::caution Important: One-time vs. Continuous Evaluation
-**`_skipIf`, `_failureIf`, and `_successIf` are evaluated only once** when the node
+**`_skipIf`, `_failureIf`, `_successIf`, `_onlyIf` and `_onStart` are evaluated only once** when the node
 transitions from IDLE to another state. They are **NOT re-evaluated** while the node
 is RUNNING.
 
@@ -44,8 +54,10 @@ decorator node with `else="RUNNING"` instead of these attributes.
 :::
 
 :::note Evaluation Order
-Pre conditions are evaluated in this order: `_failureIf` -> `_successIf` -> `_skipIf` -> `_while`.
+Pre conditions are evaluated in this order: `_failureIf` -> `_successIf` -> `_skipIf` -> `_while` -> `_onlyIf` -> `_onStart`.
 The first condition that is satisfied will determine the result.
+`_onStart` comes last, so its script is executed only if none of the
+conditions before it returned a status.
 :::
 
 ### Example
@@ -74,6 +86,44 @@ we can store a boolean in an entry called `door_closed`, the XML can be rewritte
 ``` xml
 <OpenDoor _skipIf="!door_closed"/>
 ```
+
+### `_onlyIf` and `_onStart`
+
+`_onlyIf="condition"` is equivalent to `_skipIf="!condition"`, and often easier to read.
+The previous example becomes:
+
+``` xml
+<OpenDoor _onlyIf="door_closed"/>
+```
+
+- Like `_while`, it skips a node that is IDLE when the condition is false. Unlike `_while`,
+  it is **not** checked again while the node is RUNNING, so it never halts a running node.
+- If a node has both `_skipIf` and `_onlyIf`, either one can skip it: the node is executed
+  only if `_skipIf` is false **and** `_onlyIf` is true.
+
+`_onStart` is not a condition, but a script: its result is ignored and it never changes the
+status of the Node. Use it to initialize or reset blackboard entries when a Node starts:
+
+``` xml
+<MoveBase goal="{target}"
+          _onStart="arrived := false"
+          _onSuccess="arrived := true"/>
+```
+
+- It is executed when the Node starts from IDLE, right before its first __tick()__,
+  and only if no other pre condition skipped the Node or returned a status.
+  Unlike a `<Script>` placed before the Node in a Sequence, it is skipped together with the Node.
+- It is not executed again while the Node is RUNNING (`_while`, instead, is evaluated on every tick).
+- It is executed __every time__ the Node starts from IDLE, not once per execution of the tree:
+  after a halt, at every iteration of `RetryUntilSuccessful` or `Repeat` and, in a
+  `ReactiveSequence`, on every tick for the children that come before the RUNNING one
+  (they are halted and ticked again from IDLE).
+- It runs after the other pre conditions, so they don't see what it writes when the Node starts:
+  if `done` is false, `<MyAction _skipIf="done" _onStart="done := true"/>` is executed.
+- A pre-tick callback, such as the ones used by Groot2 for breakpoints and fault injection,
+  may still replace the __tick()__ of the Node after `_onStart` was executed.
+- Like the other pre conditions, it is ignored by `ThreadedAction`, which doesn't evaluate
+  pre and post conditions.
 
 ### Using `<Precondition>` for Per-Tick Evaluation
 
