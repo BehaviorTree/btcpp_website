@@ -52,9 +52,9 @@ As you can see:
   It must always return a `NodeStatus`, i.e. RUNNING, SUCCESS or FAILURE. 
 
 Alternatively, we can use __dependency injection__ to create a TreeNode given 
-a function pointer (i.e. "functor"). 
+a function pointer. 
 
-The functor must have this signature:
+The Functions (to use as a function pointer) must have this signature:
 
 ``` cpp
 BT::NodeStatus myFunction(BT::TreeNode& self) 
@@ -98,7 +98,7 @@ private:
 
 ``` 
 
-We can build a `SimpleActionNode` from any of these functors:
+We can build a `SimpleActionNode` from any of these functions:
 
 - CheckBattery()
 - GripperInterface::open()
