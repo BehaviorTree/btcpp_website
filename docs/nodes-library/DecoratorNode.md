@@ -134,9 +134,9 @@ The Precondition decorator evaluates a script condition before ticking its child
 </Precondition>
 ```
 
-:::tip Per-Tick Evaluation
-If you need the condition to be checked on every tick while the child is running
-(e.g., to interrupt a running action when a condition changes), use `else="RUNNING"`:
+:::tip Waiting for a condition
+With `else="RUNNING"`, the decorator returns RUNNING while the condition is false,
+so the tree keeps ticking and the child starts as soon as the condition is true:
 
 ```xml
 <Precondition if="battery_ok" else="RUNNING">
@@ -144,8 +144,9 @@ If you need the condition to be checked on every tick while the child is running
 </Precondition>
 ```
 
-With `else="RUNNING"`, if the condition becomes false, the decorator returns RUNNING
-instead of FAILURE, allowing the tree to continue ticking and re-check the condition.
+This doesn't interrupt a running child. To halt it when the condition becomes false,
+use the `_while` pre condition or a `ReactiveSequence`
+(see [Checking a condition on every tick](../guides/pre_post_conditions.md#checking-a-condition-on-every-tick)).
 :::
 
 For more details, see [Pre and Post conditions](../guides/pre_post_conditions.md) and

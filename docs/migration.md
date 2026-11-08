@@ -218,3 +218,10 @@ The name of a port must not be `name` or `ID` and must start with an alphabetic 
 ```
 
 Finally, two `<SubTree>` nodes in the same tree can't share a `name`, even under different parents. `createTree()` throws `Duplicate SubTree path detected`. Use different names, or remove `name`.
+
+:::info Since 4.11
+- `_onlyIf` and `_onStart`, the new [pre conditions](guides/pre_post_conditions.md), are reserved too: a SubTree port can't use them.
+- A C++ port name with a forbidden character throws a more specific message, for instance:
+  `Port name 'my.port' contains forbidden character '.'`.
+  The message above is still used for the other errors (`name`, `ID`, or a name that doesn't start with a letter).
+:::

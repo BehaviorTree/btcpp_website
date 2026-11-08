@@ -99,7 +99,7 @@ When a custom TreeNode has input and/or output ports, these ports must be
 declared in the __static__ method:
 
 ``` cpp
-static PortsList MyCustomNode::providedPorts();
+static PortsList providedPorts();
 ```
 
 The input from the port `message` can be read using the template method 

@@ -19,13 +19,13 @@ npm run clear      # Clear Docusaurus cache
 ## Architecture
 
 ### Documentation Structure
-- `docs/` - Current version (4.8) documentation in Markdown
+- `docs/` - Current version (4.11) documentation in Markdown
   - `learn-the-basics/` - Fundamental BT concepts
   - `tutorial-basics/` - Tutorials 01-11 (beginner)
   - `tutorial-advanced/` - Tutorials 12-16 (advanced)
   - `guides/` - Topic guides (async nodes, ports, scripting)
   - `nodes-library/` - Node type reference
-- `versioned_docs/` - Legacy versions (3.8, 4.0.2)
+- `versioned_docs/` - Legacy version (3.8)
 - `blog/` - Release announcements
 
 ### Custom Pages (React)

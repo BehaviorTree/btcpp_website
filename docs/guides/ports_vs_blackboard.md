@@ -110,5 +110,60 @@ and also to check at deployment time if the connection is done correctly.
 
 5. The template specialization `convertFromString()` will not work correctly.
 
+## Reacting to changes of an input port
+
+:::info Since 4.11
+`TreeNode::subscribeToInputPort()` was added in BT.CPP 4.11.
+:::
+
+Usually, a Node reads its input ports with `getInput()` inside `tick()`.
+With `subscribeToInputPort()`, a Node can also be notified when the blackboard entry
+connected to one of its input ports is written, without waiting for its next tick.
+Like `getInput()`, it follows the remapping of the port, including SubTree remapping,
+so the Node doesn't need to know the name of the entry.
+
+```cpp
+class TopicListener : public BT::SyncActionNode
+{
+public:
+  TopicListener(const std::string& name, const BT::NodeConfig& config)
+    : BT::SyncActionNode(name, config)
+  {
+    topic_subscription_ = subscribeToInputPort("topic", [this] {
+      if(auto topic = getInput<std::string>("topic"))
+      {
+        configureSubscription(topic.value());
+      }
+    });
+  }
+
+  static BT::PortsList providedPorts()
+  {
+    return { BT::InputPort<std::string>("topic") };
+  }
+
+  BT::NodeStatus tick() override;
+
+private:
+  void configureSubscription(const std::string& topic);
+  BT::Blackboard::EntryUpdatedSubscriber topic_subscription_;
+};
+```
+
+- Keep the returned handle: the callback is unsubscribed when the handle is reset or destroyed.
+  This doesn't wait for a callback that is already running, so stop the writers before
+  destroying the Node.
+- The callback is not invoked when you subscribe: use `getInput()` to read the initial value.
+- It is invoked synchronously, in the thread that writes the entry, after the value was stored,
+  on every write, even if the value didn't change.
+- `setOutput()`, `Blackboard::set()` and scripts notify the subscribers. If you modify the value
+  in place through `getAnyLocked()`, call `Blackboard::notifyEntryUpdated()` after releasing the lock.
+- If the port has a constant value, for instance `topic="chatter"` instead of `topic="{topic_name}"`,
+  an empty handle is returned, since the value can't change. If the port has no value at all,
+  or it is an output-only port, `LogicError` is thrown.
+
+See [INPUT_PORT_CALLBACKS.md](https://github.com/BehaviorTree/BehaviorTree.CPP/blob/4.11.0/docs/INPUT_PORT_CALLBACKS.md)
+for the complete list of rules.
+
 
 
