@@ -122,9 +122,9 @@ this node could be either:
 
 The node __Inverter__ is a Decorator that inverts 
 the result returned by its child; an Inverter followed by the node called
-__isDoorClosed__ is, therefore, equivalent to 
+__isDoorOpen__ is, therefore, equivalent to 
 
-    "Is the door open?".
+    "Is the door closed?".
 
 The node __Retry__ will repeat ticking the child up to __num_attempts__ times (5 in this case)
 if the child returns FAILURE.
@@ -137,8 +137,9 @@ __Apparently__, the branch on the left side means:
 But...
     
 :::caution Find the BUG!
+The tree expects the door to be closed so it can attempt up to 5 times to open it.
 If __isDoorOpen__ returns FAILURE, we have the desired behavior.
-But if it returns SUCCESS, the left branch fails, and the entire Sequence
+But if it returns SUCCESS (i.e. the door is already open), the bottom-left branch fails, and the top-level Sequence
 is interrupted.
 :::
     
