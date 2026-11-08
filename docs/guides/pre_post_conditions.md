@@ -49,8 +49,8 @@ is RUNNING.
 
 Only **`_while`** is checked on every tick, including while the node is running.
 
-If you need a condition to be re-evaluated on every tick, use the `<Precondition>`
-decorator node with `else="RUNNING"` instead of these attributes.
+If you need a condition to be checked on every tick, use `_while` or a `ReactiveSequence`
+(see [below](#checking-a-condition-on-every-tick)).
 :::
 
 :::note Evaluation Order
@@ -125,34 +125,43 @@ status of the Node. Use it to initialize or reset blackboard entries when a Node
 - Like the other pre conditions, it is ignored by `ThreadedAction`, which doesn't evaluate
   pre and post conditions.
 
-### Using `<Precondition>` for Per-Tick Evaluation
+### Checking a condition on every tick
 
-When you need a condition to be checked on **every tick** (not just when the node starts),
-use the `<Precondition>` decorator node instead of inline attributes.
-
-This is particularly useful in **ReactiveSequence** or **ReactiveFallback** where you want
-the condition to be re-evaluated each time the running child is ticked:
+The inline `_successIf` below is evaluated once, when `MoveToGoal` transitions from IDLE.
+If `battery_ok` changes while `MoveToGoal` is RUNNING, the change is ignored.
 
 ``` xml
-<!-- This checks the condition on every tick -->
+<MoveToGoal _successIf="battery_ok"/>
+```
+
+The `<Precondition>` decorator node doesn't change this: it evaluates `if` only while its
+child isn't RUNNING. Once the child returns RUNNING, the condition is not checked again
+until the child completes. With `else="RUNNING"`, it returns RUNNING while the condition
+is false, so it **waits** for the condition before starting the child:
+
+``` xml
+<!-- Waits until battery_ok is true, then runs MoveToGoal to the end -->
 <Precondition if="battery_ok" else="RUNNING">
     <MoveToGoal/>
 </Precondition>
 ```
 
-With `else="RUNNING"`, if the condition becomes false while the child is running,
-the decorator returns RUNNING (keeping the tree alive) instead of immediately
-returning FAILURE or SKIPPED.
-
-Compare this to the inline attribute:
+To **stop** a running node as soon as a condition becomes false, use `_while`,
+that halts the node and returns SKIPPED:
 
 ``` xml
-<!-- This checks the condition ONLY when MoveToGoal starts -->
-<MoveToGoal _successIf="battery_ok"/>
+<MoveToGoal _while="battery_ok"/>
 ```
 
-The inline `_successIf` is evaluated once when `MoveToGoal` transitions from IDLE.
-If `battery_ok` changes while `MoveToGoal` is RUNNING, the change is ignored.
+or check the condition before the node in a `ReactiveSequence`, that halts the
+running child and returns FAILURE:
+
+``` xml
+<ReactiveSequence>
+    <ScriptCondition code="battery_ok"/>
+    <MoveToGoal/>
+</ReactiveSequence>
+```
 
 ## Post conditions
 

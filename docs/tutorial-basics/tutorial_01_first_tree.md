@@ -52,9 +52,9 @@ As you can see:
   It must always return a `NodeStatus`, i.e. RUNNING, SUCCESS or FAILURE. 
 
 Alternatively, we can use __dependency injection__ to create a TreeNode given 
-a function pointer. 
+a callable object (a function pointer, a lambda or a functor).
 
-The Functions (to use as a function pointer) must have this signature:
+The callable must have this signature:
 
 ``` cpp
 BT::NodeStatus myFunction(BT::TreeNode& self) 
