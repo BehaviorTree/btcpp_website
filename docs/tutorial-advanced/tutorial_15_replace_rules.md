@@ -64,14 +64,14 @@ We will use this XML:
   <BehaviorTree ID="MainTree">
     <Sequence>
       <SaySomething name="talk" message="hello world"/>
-        <Fallback>
-          <AlwaysFailure name="failing_action"/>
-          <SubTree ID="MySub" name="mysub"/>
-        </Fallback>
-        <SaySomething message="before last_action"/>
-        <Script code="msg:='after last_action'"/>
-        <AlwaysSuccess name="last_action"/>
-        <SaySomething message="{msg}"/>
+      <Fallback>
+        <AlwaysFailure name="failing_action"/>
+        <SubTree ID="MySub" name="mysub"/>
+      </Fallback>
+      <SaySomething message="before last_action"/>
+      <Script code="msg:='after last_action'"/>
+      <AlwaysSuccess name="last_action"/>
+      <SaySomething message="{msg}"/>
     </Sequence>
   </BehaviorTree>
 
@@ -128,8 +128,8 @@ int main(int argc, char** argv)
       factory.loadSubstitutionRuleFromJSON(json_text);
     }
     else {
-      // Substitute nodes which match this wildcard pattern with TestAction
-      factory.addSubstitutionRule("mysub/action_*", "TestAction");
+      // Substitute nodes which match this wildcard pattern with DummyAction
+      factory.addSubstitutionRule("mysub/action_*", "DummyAction");
 
       // Substitute the node with name [talk] with TestSaySomething
       factory.addSubstitutionRule("talk", "TestSaySomething");
@@ -174,7 +174,7 @@ The JSON file, equivalent to the branch executed when `USE_JSON == false` is:
   },
 
   "SubstitutionRules": {
-    "mysub/action_*": "TestAction",
+    "mysub/action_*": "DummyAction",
     "talk": "TestSaySomething",
     "last_action": "MyTest"
   }
