@@ -63,6 +63,10 @@ const config = {
             current: {
               label: '4.11',
             },
+            '4.10': {
+              label: '4.10',
+              path: '4.10',
+            },
             3.8: {
               label: '3.8',
               path: '3.8',
