@@ -25,7 +25,7 @@ npm run clear      # Clear Docusaurus cache
   - `tutorial-advanced/` - Tutorials 12-16 (advanced)
   - `guides/` - Topic guides (async nodes, ports, scripting)
   - `nodes-library/` - Node type reference
-- `versioned_docs/` - Legacy version (3.8)
+- `versioned_docs/` - Legacy versions (4.10, 3.8)
 - `blog/` - Release announcements
 
 ### Custom Pages (React)

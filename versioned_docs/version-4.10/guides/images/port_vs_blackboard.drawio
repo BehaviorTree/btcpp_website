@@ -1,0 +1,52 @@
+<mxfile host="Electron" modified="2024-03-05T12:54:40.845Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/23.1.5 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="5YSRajxAK6bo9uk-gnCg" version="23.1.5" type="device">
+  <diagram name="Page-1" id="gSZtd7ybaE-YaSdB-lf6">
+    <mxGraphModel dx="717" dy="440" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Tmei_RwYaEZryfnuTa6W-7" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Tmei_RwYaEZryfnuTa6W-2" target="Tmei_RwYaEZryfnuTa6W-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Tmei_RwYaEZryfnuTa6W-10" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Tmei_RwYaEZryfnuTa6W-2" target="Tmei_RwYaEZryfnuTa6W-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Tmei_RwYaEZryfnuTa6W-2" value="Sequence" style="rounded=0;whiteSpace=wrap;html=1;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="380" y="270" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Tmei_RwYaEZryfnuTa6W-3" value="DetectObject" style="rounded=0;whiteSpace=wrap;html=1;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="305" y="360" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Tmei_RwYaEZryfnuTa6W-4" value="GraspObject" style="rounded=0;whiteSpace=wrap;html=1;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="460" y="360" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Tmei_RwYaEZryfnuTa6W-6" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Tmei_RwYaEZryfnuTa6W-5" target="Tmei_RwYaEZryfnuTa6W-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Tmei_RwYaEZryfnuTa6W-5" value="Which object?&lt;div&gt;Is the result store in the&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;blackboard? Where?&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#3333FF;" vertex="1" parent="1">
+          <mxGeometry x="178" y="254" width="162" height="63.5" as="geometry" />
+        </mxCell>
+        <mxCell id="Tmei_RwYaEZryfnuTa6W-9" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Tmei_RwYaEZryfnuTa6W-8" target="Tmei_RwYaEZryfnuTa6W-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Tmei_RwYaEZryfnuTa6W-8" value="&lt;span style=&quot;background-color: initial;&quot;&gt;Where do we get the pose of the object to grasp?&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#3333FF;" vertex="1" parent="1">
+          <mxGeometry x="559" y="285" width="146" height="32.5" as="geometry" />
+        </mxCell>
+        <mxCell id="Tmei_RwYaEZryfnuTa6W-11" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Tmei_RwYaEZryfnuTa6W-13" target="Tmei_RwYaEZryfnuTa6W-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Tmei_RwYaEZryfnuTa6W-12" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Tmei_RwYaEZryfnuTa6W-13" target="Tmei_RwYaEZryfnuTa6W-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Tmei_RwYaEZryfnuTa6W-13" value="Sequence" style="rounded=0;whiteSpace=wrap;html=1;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="377.5" y="446" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Tmei_RwYaEZryfnuTa6W-14" value="DetectObject&lt;br&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;[IN] name = &quot;apple&quot;&lt;br&gt;[OUT] pose = &quot;{apple_pose}&quot;&lt;br&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="262" y="536" width="160.5" height="88" as="geometry" />
+        </mxCell>
+        <mxCell id="Tmei_RwYaEZryfnuTa6W-15" value="GraspObject&lt;br style=&quot;font-size: 15px;&quot;&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;[IN] location = &quot;{apple_pose}&quot;&lt;br&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="457.5" y="536" width="163.5" height="88" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
