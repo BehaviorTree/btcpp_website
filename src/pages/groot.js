@@ -135,15 +135,17 @@ function FaqItem({ question, answer, isOpen, onClick }) {
   );
 }
 
-const CURRENT_VERSION = "1.9.0";
+const CURRENT_VERSION = "1.10.0";
+// No aarch64 build since 1.9.0: keep offering the last one.
+const AARCH64_VERSION = "1.9.0";
 
 // Track download event
-const trackDownload = async (file, platform) => {
+const trackDownload = async (file, platform, version = CURRENT_VERSION) => {
   try {
     await fetch('/api/track-download', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ file, platform, version: CURRENT_VERSION })
+      body: JSON.stringify({ file, platform, version })
     });
   } catch (error) {
     // Don't block download if tracking fails
@@ -302,7 +304,7 @@ export default function Groot() {
         <div className={styles.downloadInner}>
           <div className={styles.downloadHeader}>
             <h2 className={styles.downloadTitle}>Download</h2>
-            <p className={styles.downloadVersion}>Latest release: {CURRENT_VERSION} (2026-02-14)</p>
+            <p className={styles.downloadVersion}>Latest release: {CURRENT_VERSION} (2026-11-09)</p>
           </div>
 
           <div className={styles.downloadGrid}>
@@ -353,8 +355,8 @@ export default function Groot() {
             </Link>
             <Link
               className={styles.downloadCard}
-              to={`https://pub-32cef6782a9e411e82222dee82af193e.r2.dev/Groot2-v${CURRENT_VERSION}-aarch64.AppImage`}
-              onClick={() => trackDownload('aarch64.AppImage', 'linux')}
+              to={`https://pub-32cef6782a9e411e82222dee82af193e.r2.dev/Groot2-v${AARCH64_VERSION}-aarch64.AppImage`}
+              onClick={() => trackDownload('aarch64.AppImage', 'linux', AARCH64_VERSION)}
             >
               <img
                 className={styles.downloadLogo}
@@ -363,7 +365,7 @@ export default function Groot() {
               />
               <div className={styles.downloadInfo}>
                 <span className={styles.downloadName}>AppImage</span>
-                <span className={styles.downloadArch}>aarch64 Portable</span>
+                <span className={styles.downloadArch}>aarch64 Portable (v{AARCH64_VERSION})</span>
               </div>
             </Link>
           </div>
